@@ -1,57 +1,113 @@
-% VO and VODML in a nutshell
+% Virtual Observatory Data Modeling in a nutshell
 % Omar Laurino
 % June 4, 2015
 
 # Virtual Observatory in a nutshell
 
 ## IVOA
->- The International Virtual Observatory Alliance defines standards for interoperability between astronomy services/archives.
+>- The International Virtual Observatory Alliance defines standards for interoperability among
+astronomy services, archives, and applications.
 
 ## A Use Case
 - Build a Knowledge Base without VO:
-	1. Go to the specific mission's webpage
-	2. Make a query against the mission's archive
+	1. Go to a specific archive's webpage
+	2. Make a query
 	3. Download data
-	4. GoTo 1 For Each Mission 
+	4. GoTo 1 for each archive in your list
 	5. Discover new knowledge and publish papers
 	6. ~~Publish derived data products in custom service~~
 
 - Build a Knowledge Base with VO:
-    1. Go to your favorite VO enabled application 
-    2. Make a query against any compliant services
+    1. Open your favorite VO application 
+    2. Make queries against all compliant services
     3. Download data in your Knowledge Base
     4. Discover new knowledge and publish papers
-    5. Publish derived data products in VO service
+    5. Publish derived data products in a VO service
 
 ## With VO
-- services can implement standard query and retrieval protocols
-- clients implementing the same protocols represent a single point of entry for users
+>- services can implement standard data discovery and retrieval protocols
+- clients implementing the same protocols serve as a single point of entry for users
+
+##
+![Cone Search](cone_search.png)
+
+##
+![MAST Portal](m57_Results.png)
 
 ## VO Standards
 - VOTable
 - Data Models (e.g. Spectrum, Cube, SpaceTime Coordinates)
-- Data Access Protocols (e.g. Table Access Protocol, Spectral Access, Image Access)
+- Data Access Protocols (e.g. Table, Spectral, Image Access Protocol, Cone Search)
 - Simple Application Messaging Protocol
+- ...
 
 ## VOTable
-- an XML schema representing tables (header + rows and columns)
-- can wrap FITS files.
-- Semantics provided by:
+> - an XML schema representing tables:
+	- structured header (PARAMs, FIELDs, GROUPs)
+	- rows and columns (different serializations)
+    - can wrap FITS files.
+
+. . .
+
+> - Semantics provided by:
     - UCD Unified Content Descriptors (a vocabulary)
     	- e.g. stat.error;phot.mag;em.opt.V
    	- UTYPE: pointer into a data model definition
 
-- UTYPEs:
+## Data Models (pre-VODML)
+- UTYPEs (pointers):
 	- did not have a proper standard
-
-## Data Models (before)
-- description, i.e. the target of the pointing:
+- Models, i.e. the target of the pointing:
     - Human readable
-    - Custom serialization
-    - XSDs defined but unused as they clashed with the more common tabular representation.
+    - Defined custom serializations
+    - XML schemata defined but unused:
+		- clashed with the more common tabular representation
 
 . . .
 
-Mismatch between the tabular representation of data astronomers are used to
-and the structured semantics of the underlying domain of discourse.
+Mismatch between the tabular representation astronomers are used to
+and the structured nature of a data model.
 
+# VODML in a nutshell
+
+## VO Data Modeling Language
+- a set of standardized languages for:
+    - describing data models (a safe subset of UML class diagrams):
+        - extensible
+        - machine readable
+        - easily implementable on client/server side
+        - interoperable (unlike XMI)
+        - defines IDs for Data Model elements.
+    - mapping meta-models:
+        - e.g. VODML &#8596; VOTable 
+        - decouples Model from Serialization
+        - uses Data Model element pointers (UTYPEs)
+
+##
+- VODML bridges the mismatch between:
+	- the tabular representation of astronomical data (usually completely de-normalized)
+	- the Object model underlying the astronomical domain.
+
+. . .
+
+Catalogs, Sources, Luminosities, Spectra
+
+vs
+
+A Bunch of Columns and Keywords
+
+## Applications of VODML
+- consolidation of I/O libraries into interoperable modules
+	- models and their representations are separate
+- interoperability of Data Models
+    - e.g. find a position (Space Time Coordinate) in an unknown container (e.g. a Source in a Catalog)
+	- Data Cubes, Images, Spectra, Time Series
+
+## Future applications
+- data integration in astronomy (Global as View)
+	- query against a global data model
+    - mediate query from global to local model
+    - query against the local data model
+    - integrate result set according to the global data model
+
+## Questions!
