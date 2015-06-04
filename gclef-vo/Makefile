@@ -6,7 +6,7 @@ reveal:
 	   --include-in-header=style-override.css -o ${NAME}.html
 
 beamer:
-	pandoc -t beamer ${NAME}.txt -i -V theme=${THEME} -o ${NAME}.pdf
+	pandoc -t beamer ${NAME}.txt --latex-engine=xelatex -i -V theme=${THEME} -o ${NAME}.pdf
 
 slidy:
 	pandoc -t slidy ${NAME}.txt -s -i -o ${NAME}-slidy.html
