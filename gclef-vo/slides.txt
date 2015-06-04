@@ -4,4 +4,54 @@
 
 # Virtual Observatory in a nutshell
 
-# VO Data Modeling Language in a nutshell
+## IVOA
+>- The International Virtual Observatory Alliance defines standards for interoperability between astronomy services/archives.
+
+## A Use Case
+- Build a Knowledge Base without VO:
+	1. Go to the specific mission's webpage
+	2. Make a query against the mission's archive
+	3. Download data
+	4. GoTo 1 For Each Mission 
+	5. Discover new knowledge and publish papers
+	6. ~~Publish derived data products in custom service~~
+
+- Build a Knowledge Base with VO:
+    1. Go to your favorite VO enabled application 
+    2. Make a query against any compliant services
+    3. Download data in your Knowledge Base
+    4. Discover new knowledge and publish papers
+    5. Publish derived data products in VO service
+
+## With VO
+- services can implement standard query and retrieval protocols
+- clients implementing the same protocols represent a single point of entry for users
+
+## VO Standards
+- VOTable
+- Data Models (e.g. Spectrum, Cube, SpaceTime Coordinates)
+- Data Access Protocols (e.g. Table Access Protocol, Spectral Access, Image Access)
+- Simple Application Messaging Protocol
+
+## VOTable
+- an XML schema representing tables (header + rows and columns)
+- can wrap FITS files.
+- Semantics provided by:
+    - UCD Unified Content Descriptors (a vocabulary)
+    	- e.g. stat.error;phot.mag;em.opt.V
+   	- UTYPE: pointer into a data model definition
+
+- UTYPEs:
+	- did not have a proper standard
+
+## Data Models (before)
+- description, i.e. the target of the pointing:
+    - Human readable
+    - Custom serialization
+    - XSDs defined but unused as they clashed with the more common tabular representation.
+
+. . .
+
+Mismatch between the tabular representation of data astronomers are used to
+and the structured semantics of the underlying domain of discourse.
+
