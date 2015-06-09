@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Omar Laurino" />
+  <title>Virtual Observatory Data Modeling in a Nutshell</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css"/>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+  <script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = 'reveal.js/css/print/pdf.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <style>
+  .reveal h1 {
+  	font-size: 2.5em;
+  }
+  
+  .reveal ul {
+  	text-align: left;
+  }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">Virtual Observatory Data Modeling in a Nutshell</h1>
+    <h2 class="author">Omar Laurino</h2>
+    <h3 class="date">June 4, 2015</h3>
+</section>
+
+<section><section id="virtual-observatory-in-a-nutshell" class="titleslide slide level1"><h1>Virtual Observatory in a nutshell</h1></section><section id="ivoa" class="slide level2">
+<h1>IVOA</h1>
+<ul>
+<li>The International Virtual Observatory Alliance defines standards for interoperability among astronomy services, archives, and applications.</li>
+</ul>
+</section><section id="a-use-case" class="slide level2">
+<h1>A Use Case</h1>
+<ul>
+<li class="fragment">Build a Knowledge Base without VO:
+<ol type="1">
+<li class="fragment">Go to a specific archive's webpage</li>
+<li class="fragment">Make a query</li>
+<li class="fragment">Download data</li>
+<li class="fragment">GoTo 1 for each archive in your list</li>
+<li class="fragment">Discover new knowledge and publish papers</li>
+<li class="fragment"><del>Publish derived data products in custom service</del></li>
+</ol></li>
+<li class="fragment">Build a Knowledge Base with VO:
+<ol type="1">
+<li class="fragment">Open your favorite VO application</li>
+<li class="fragment">Make queries against all compliant services</li>
+<li class="fragment">Download data in your Knowledge Base</li>
+<li class="fragment">Discover new knowledge and publish papers</li>
+<li class="fragment">Publish derived data products in a VO service</li>
+</ol></li>
+</ul>
+</section><section id="with-vo" class="slide level2">
+<h1>With VO</h1>
+<ul>
+<li>services can implement standard data discovery and retrieval protocols</li>
+<li>clients implementing the same protocols serve as a single point of entry for users</li>
+</ul>
+</section><section id="section" class="slide level2">
+<h1></h1>
+<figure>
+<img src="cone_search.png" alt="Cone Search" /><figcaption>Cone Search</figcaption>
+</figure>
+</section><section id="section-1" class="slide level2">
+<h1></h1>
+<figure>
+<img src="m57_Results.png" alt="MAST Portal" /><figcaption>MAST Portal</figcaption>
+</figure>
+</section><section id="vo-standards" class="slide level2">
+<h1>VO Standards</h1>
+<ul>
+<li class="fragment">VOTable</li>
+<li class="fragment">Data Models (e.g. Spectrum, Cube, SpaceTime Coordinates)</li>
+<li class="fragment">Data Access Protocols (e.g. Table, Spectral, Image Access Protocol, Cone Search)</li>
+<li class="fragment">Simple Application Messaging Protocol</li>
+<li class="fragment">...</li>
+</ul>
+</section><section id="votable" class="slide level2">
+<h1>VOTable</h1>
+<ul>
+<li>an XML schema representing tables:
+<ul>
+<li>structured header (PARAMs, FIELDs, GROUPs)</li>
+<li>rows and columns (different serializations)</li>
+<li>can wrap FITS files.</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Semantics provided by:
+<ul>
+<li>UCD Unified Content Descriptors (a vocabulary)
+<ul>
+<li>e.g. stat.error;phot.mag;em.opt.V</li>
+</ul></li>
+<li>UTYPE: pointer into a data model definition</li>
+</ul></li>
+</ul>
+</div>
+</section><section id="data-models-pre-vodml" class="slide level2">
+<h1>Data Models (pre-VODML)</h1>
+<ul>
+<li class="fragment">UTYPEs (pointers):
+<ul>
+<li class="fragment">did not have a proper standard</li>
+</ul></li>
+<li class="fragment">Models, i.e. the target of the pointing:
+<ul>
+<li class="fragment">Human readable</li>
+<li class="fragment">Defined custom serializations</li>
+<li class="fragment">XML schemata defined but unused:
+<ul>
+<li class="fragment">clashed with the more common tabular representation</li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="fragment">
+<p>Mismatch between the tabular representation astronomers are used to and the structured nature of a data model.</p>
+</div>
+</section></section>
+<section><section id="vodml-in-a-nutshell" class="titleslide slide level1"><h1>VODML in a nutshell</h1></section><section id="vo-data-modeling-language" class="slide level2">
+<h1>VO Data Modeling Language</h1>
+<ul>
+<li class="fragment">A set of standardized languages for:
+<ul>
+<li class="fragment">describing data models (a safe subset of UML class diagrams):
+<ul>
+<li class="fragment">extensible</li>
+<li class="fragment">machine readable</li>
+<li class="fragment">easily implementable on client/server side</li>
+<li class="fragment">interoperable (unlike XMI)</li>
+<li class="fragment">defines IDs for Data Model elements.</li>
+</ul></li>
+<li class="fragment">mapping meta-models:
+<ul>
+<li class="fragment">e.g. VODML <span class="math inline"> ⇔ </span> VOTable</li>
+<li class="fragment">decouples Model from Serialization</li>
+<li class="fragment">uses Data Model element pointers (UTYPEs)</li>
+</ul></li>
+</ul></li>
+</ul>
+</section><section id="section-2" class="slide level2">
+<h1></h1>
+<ul>
+<li class="fragment">VODML bridges the mismatch between:
+<ul>
+<li class="fragment">the tabular representation of astronomical data (usually completely de-normalized)</li>
+<li class="fragment">the Object model underlying the astronomical domain.</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<div align="center">
+<p>Catalogs, Sources, Luminosities, Spectra</p>
+<p>vs</p>
+<p>A Bunch of Columns and Keywords</p>
+</div>
+</div>
+</section><section id="applications-of-vodml" class="slide level2">
+<h1>Applications of VODML</h1>
+<ul>
+<li class="fragment">consolidation of I/O libraries into interoperable modules
+<ul>
+<li class="fragment">models and their representations are separate</li>
+</ul></li>
+<li class="fragment">interoperability of Data Models
+<ul>
+<li class="fragment">e.g. find a position (Space Time Coordinate) in an unknown container (e.g. a Source in a Catalog)</li>
+<li class="fragment">Data Cubes, Images, Spectra, Time Series</li>
+</ul></li>
+</ul>
+</section><section id="future-applications" class="slide level2">
+<h1>Future applications</h1>
+<ul>
+<li class="fragment">data integration in astronomy (Global as View)
+<ul>
+<li class="fragment">query against a global data model</li>
+<li class="fragment">mediate query from global to local model</li>
+<li class="fragment">query against the local data model</li>
+<li class="fragment">integrate result set according to the global data model</li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="questions" class="titleslide slide level1"><h1>Questions!</h1></section></section>
+    </div>
+  </div>
+
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,         // Display controls in the bottom right corner
+        progress: true,         // Display a presentation progress bar
+        history: true,          // Push each slide change to the browser history
+        center: true,                       // Vertical centering of slides
+        maxScale: 1.5,                  // Bounds for smallest/largest possible content scale
+        slideNumber: false,                // Display the page number of the current slide
+        theme: 'night', // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+//          { src: 'reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; }, }
+//          { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+]});
+    </script>
+    </body>
+</html>
