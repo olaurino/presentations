@@ -1,0 +1,43 @@
+div .slides {
+	background-color:rgba(0,0,0,0.5);
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.reveal h1, .reveal h2, .reveal h3,
+.reveal h4, .reveal h5, .reveal div {
+    text-shadow: 5px 5px #000000;	
+}
+
+.reveal h1 {
+	color: #ffeeaa;
+	font-size: 2.0em;
+}
+
+.reveal ul {
+	text-align: left;
+}
+
+.title header {
+	visibility: hidden;
+}
+
+.reveal header {
+	z-index: 500;
+	font-size: 1.0em;
+}
+
+.hleft {
+	background-color:rgba(0,0,0,0);
+	position: absolute;
+	left: 50px;
+	top: 50px;
+}
+
+.hbottom {
+	background-color:rgba(0,0,0,0.5);
+	width: 100%;
+	position: absolute;
+	bottom: 3px;
+	text-align: center;
+}
