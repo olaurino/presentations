@@ -1,4 +1,4 @@
-% Virtual Observatory Data Modeling in a nutshell
+% Virtual Observatory Data Modeling in a Nutshell
 % Omar Laurino
 % June 4, 2015
 
@@ -71,7 +71,7 @@ and the structured nature of a data model.
 # VODML in a nutshell
 
 ## VO Data Modeling Language
-- a set of standardized languages for:
+- A set of standardized languages for:
     - describing data models (a safe subset of UML class diagrams):
         - extensible
         - machine readable
@@ -79,7 +79,7 @@ and the structured nature of a data model.
         - interoperable (unlike XMI)
         - defines IDs for Data Model elements.
     - mapping meta-models:
-        - e.g. VODML &#8596; VOTable 
+        - e.g. VODML $\Leftrightarrow$ VOTable 
         - decouples Model from Serialization
         - uses Data Model element pointers (UTYPEs)
 
@@ -90,11 +90,13 @@ and the structured nature of a data model.
 
 . . .
 
+<div align="center">
 Catalogs, Sources, Luminosities, Spectra
 
 vs
 
 A Bunch of Columns and Keywords
+</div>
 
 ## Applications of VODML
 - consolidation of I/O libraries into interoperable modules
@@ -110,4 +112,4 @@ A Bunch of Columns and Keywords
     - query against the local data model
     - integrate result set according to the global data model
 
-## Questions!
+# Questions!
