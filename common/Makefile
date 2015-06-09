@@ -19,7 +19,6 @@ dz:
 
 project:
 	- mkdir -p ${PROJECT}
-	- cp * ${PROJECT}
-	- cp -r ../reveal.js ${PROJECT}
+	- cp slides.md.template template-revealjs.html Makefile variables.yaml ${PROJECT}
 
 
