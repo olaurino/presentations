@@ -19,6 +19,6 @@ dz:
 
 project:
 	- mkdir -p ${PROJECT}
-	- cp slides.md.template template-revealjs.html Makefile variables.yaml ${PROJECT}
+	- cp slides.md.template style-override.css template-revealjs.html Makefile variables.yaml ${PROJECT}
 
 
