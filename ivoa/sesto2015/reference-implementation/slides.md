@@ -151,7 +151,7 @@ to ensure interoperability and usability.
 An unambiguous, sustainable, development lifecycle.
 
 ## Conformance Testing
-![](images/conformance.png)
+![Is **something like** this achievable?](images/conformance.png)
 
 ## How VODML helps
 >- Implements the DM WG charter:
@@ -161,11 +161,11 @@ An unambiguous, sustainable, development lifecycle.
     - takes into account client (Apps) and server (DAL) needs
 
 ## How VODML helps
->- Model-agnostic tools for sustainable development:
+>- Enables Model-agnostic tools for sustainable development of standards:
     - VO Mapper
-    - one validator to rule them all
-    - [VO Modeler]
-    - [I/O libraries]
+    - One validator to rule them all
+    - VO Modeler
+    - I/O libraries may come for free
 
 ## How VODML helps
 - A first step towards conformance requirements:
