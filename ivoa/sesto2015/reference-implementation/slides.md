@@ -169,7 +169,7 @@ An unambiguous, sustainable, development lifecycle.
     - I/O libraries may come for free
 
 ## How VODML helps
-- A first step towards conformance requirements:
+- A significant step towards conformance requirements:
     - DM specifications **must** have a VODML description
         - **model** can be validated
         - model **instances** can be validated
@@ -180,6 +180,6 @@ An unambiguous, sustainable, development lifecycle.
 
 ## Some questions to answer
 - **What is a DM reference implementation?** Should we clarify the standard process description regarding reference implementations?
-- **Who implements it?** Do we need coordination among working groups? A specification is a team effort with multiple stakeholders.
+- **Who implements it?** Do we need coordination among working groups? A specification is a team effort with multiple stakeholders. Is the DM editor the best person to drive implementations?
 - **What do we need?** VODML is a start, but should we refine the recommendation process?
 
