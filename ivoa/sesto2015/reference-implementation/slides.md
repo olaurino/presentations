@@ -155,13 +155,14 @@ An unambiguous, sustainable, development lifecycle.
 
 ## How VODML helps
 >- Implements the DM WG charter:
-    - provides a framework for the description of metadata
+    - framework for the description of metadata
     - focuses on logical relationships
     - provides an architecture to handle metadata
-    - takes into account client (Apps) and server (DAL) needs
+    - takes into account Apps and DAL needs
 
-## How VODML helps
->- Enables Model-agnostic tools for sustainable development of standards:
+. . .
+
+>- Enables model-agnostic tools for sustainable development of standards:
     - VO Mapper
     - One validator to rule them all
     - VO Modeler
