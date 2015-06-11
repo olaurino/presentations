@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<title>Reference Implementation of Data Models</title>
+
+<meta name="description" content="Reference Implementation of Data Models">    
+
+  <meta name="author" content="Omar Laurino" />
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link rel="stylesheet" href="https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/css/reveal.css">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/css/theme/night.css" id="theme">
+
+
+<!-- For syntax highlighting -->
+  <link rel="stylesheet" href="https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/lib/css/zenburn.css">
+
+<!-- Local stylesheet -->
+  <link rel="stylesheet" href="https://cdn.rawgit.com/olaurino/presentations/master/common/style-override.css">
+  <link rel="stylesheet" href="style-override.css">
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<script>
+  document.write( '<link rel="stylesheet" href="https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/css/print/' +
+    ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + 
+    '.css" type="text/css" media="print">' );
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+$(document).mousemove(function(event) {
+    $('#light').offset({
+        top: event.pageY - 50,
+        left: event.pageX - 50
+    });
+});
+
+document.onkeydown = function(evt) {
+    evt = evt || window.event;
+    if (evt.keyCode==65) {
+        $('#light').toggle();
+		$('#light').css('cursor', 'none');
+    }
+};
+
+</script>
+
+<!--[if lt IE 9]>
+<script src="https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/lib/js/html5shiv.js"></script>
+<![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+<header class="hleft"><img src="http://library.cfa.harvard.edu/files/wolbach/files/cfalogort.png"></header>
+<header class="hbottom">Omar Laurino - Reference Implementation of Data Models - June 13, 2015 - Sesto</header>
+
+<div id="light"></div>
+
+
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+
+<section data-state="title">
+<h1>Reference Implementation of Data Models</h1>
+<h3>Omar Laurino</h3>
+<p>
+<h4>June 13, 2015</h4>
+</p>
+</section>  
+
+
+<section><section id="why-this-presentation" class="titleslide slide level1"><h1>Why this presentation</h1></section><section id="reference-implementation-of-a-data-model-specification" class="slide level2">
+<h1>Reference Implementation of a Data Model specification</h1>
+<p>SpectrumDM 1.1 discussion page (no info on 1.03 and 1.1 RFC):</p>
+<blockquote>
+<p>SSA is considered as the main reference implementation for Spectrum DM . It is widely implemented in the VO (check with VO registry)</p>
+</blockquote>
+<div class="fragment">
+<p>ObsCore RFC Page:</p>
+<blockquote>
+<p>CDAC OBsTAP service<br />
+XMM SSC ObsTAP service<br />
+GAVO ObsCore table</p>
+</blockquote>
+</div>
+</section><section id="spectral-2.0" class="slide level2">
+<h1>Spectral 2.0</h1>
+<p>TCG review period ended on Sep 15, 2014.</p>
+<blockquote>
+<p>Are there <strong>two interoperating reference implementations</strong> of SpectralDM? <strong>How does one demonstrate/explain that a reference implementation is complete?</strong> Until we can answer these questions, it will not be possible to ask the Exec for endorsement as a recommendation. (<em>Oct 11, 2014</em>)</p>
+</blockquote>
+</section><section id="spectral-2.0-1" class="slide level2">
+<h1>Spectral 2.0</h1>
+<p>TCG review period ended on Sep 15, 2014.</p>
+<blockquote>
+<p>as the model is so large, I`d like to get an idea <strong>what part of the standard these actually use/support, and in what sense interoperability has been shown</strong>. I am a bit surprised that TSAP is a reference implementation, when 7.1.2 requires a 'SpatialAxis'. On the mailing list, the rationale for this was that the model was meant for observational spectra. As a baseline, I think there should be <strong>at least example serialisations using all features</strong> provided by the DM. (<em>Sep 16, 2014</em>)</p>
+</blockquote>
+</section><section id="spectral-2.0-2" class="slide level2">
+<h1>Spectral 2.0</h1>
+<p>Fair comments, however:</p>
+<ul>
+<li class="fragment">Was the timing appropriate? Is the process properly spec'ed out? <!-- ' --></li>
+<li class="fragment">What <strong>exactly</strong> are the requirements for reference implementations of Data Models?</li>
+</ul>
+</section></section>
+<section><section id="a-step-back-reference-implementations" class="titleslide slide level1"><h1>A step back<br />
+Reference Implementations</h1></section><section id="an-operational-definition" class="slide level2">
+<h1>An operational definition</h1>
+<p>A reference implementation</p>
+<ul>
+<li class="fragment">Verifies that the specification is implementable</li>
+<li class="fragment">Helps to clarify the intent of the specification in situations where <strong>conformance tests</strong> are inadequate</li>
+<li class="fragment">Is developed concurrently with the specification <strong>and test suite</strong></li>
+<li class="fragment">Serves as Gold Standard against which other implementations can be measured</li>
+</ul>
+<p>From: <a href="https://web.archive.org/web/20120303000051/http://vote.nist.gov/speeches/1%20-%20Specification%20Panel/6%20-%20Curran.pdf">Curran, Patrick (2003). Conformance Testing: An Industry Perspective. Sun Microsystems.</a></p>
+</section><section id="conformance-testing" class="slide level2">
+<h1>Conformance Testing</h1>
+<figure>
+<img src="images/conformance.png" alt="" />
+</figure>
+</section><section id="highlights" class="slide level2">
+<h1>Highlights</h1>
+<ul>
+<li class="fragment">Specifications must be testable <!--    - testable assertions are derived from normative statements
+    - unspecified, ambiguous, implementation-specific statements cannot be tested --></li>
+<li class="fragment">Optional behavior is discouraged
+<ul>
+<li class="fragment">Can be tested, but weakens uniformity and interoperability</li>
+</ul></li>
+<li class="fragment">All implementations must pass the same test suite</li>
+<li class="fragment">Conformance Requirements documents specify... the requirements for conformance</li>
+</ul>
+</section><section id="a-w3c-example" class="slide level2">
+<h1>A W3C example</h1>
+<blockquote>
+<p>[WG must show] that <strong>each feature of the technical report has been implemented</strong>. <strong>Preferably</strong>, the Working Group should be able to demonstrate <strong>two interoperable implementations of each feature</strong>.</p>
+</blockquote>
+<blockquote>
+<p>If the Director believes that immediate Advisory Committee review is critical to the success of a technical report, the Director may accept to Call for Review of a Proposed Recommendation even <strong>without adequate implementation experience</strong>;</p>
+</blockquote>
+</section><section id="a-w3c-example-1" class="slide level2">
+<h1>A W3C example</h1>
+<iframe height="550px" width="800px" src="http://www.w3.org/TR/1998/REC-CSS2-19980512/conform.html">
+</iframe>
+</section></section>
+<section><section id="a-step-back-data-models-in-ivoa" class="titleslide slide level1"><h1>A step back<br />
+Data Models in IVOA</h1></section><section id="the-dm-working-group..." class="slide level2">
+<h1>The DM Working Group...</h1>
+<blockquote>
+<p>[...] provide[s] a <strong>framework for the description of metadata</strong> attached to observed or simulated data.</p>
+</blockquote>
+<div class="fragment">
+<blockquote>
+<p>[...] focuses on <strong>logical relationships between these metadata</strong>, examines how an astronomer wants to retrieve, process and interpret astronomical data, and <strong>provides an architecture</strong> to handle them.</p>
+</blockquote>
+</div>
+<div class="fragment">
+<blockquote>
+<p>[...] What is defined in this WG can then be <strong>re-used</strong> in the protocols defined <strong>by the DAL WG or in VO aware applications</strong>.</p>
+</blockquote>
+</div>
+</section><section id="ivoa-document-standards" class="slide level2">
+<h1>IVOA Document Standards</h1>
+<blockquote>
+<p>Working Group reviews the Working Draft. Two reference implementations of any associated <strong>software</strong> are expected, as well as provision of <strong>validation tools</strong>.</p>
+</blockquote>
+<div class="fragment">
+<ul>
+<li>the term <em>reference implementation</em> is not defined</li>
+<li>validators mandated</li>
+<li>one definition for all the standards</li>
+<li>no univocal interpretation for DMs</li>
+</ul>
+</div>
+</section><section id="what-is-a-data-model-implementation" class="slide level2">
+<h1>What is a Data Model implementation?</h1>
+<ul>
+<li class="fragment">Server side:
+<ul>
+<li class="fragment">relational database</li>
+<li class="fragment">DAL service implementation</li>
+</ul></li>
+<li class="fragment">Client side:
+<ul>
+<li class="fragment">DAL client</li>
+<li class="fragment">domain specific application</li>
+</ul></li>
+<li class="fragment">Client ∩ Server:
+<ul>
+<li class="fragment">instance serialization(s) [no software]</li>
+<li class="fragment">XML schema [unused]</li>
+<li class="fragment">validators</li>
+</ul></li>
+</ul>
+</section><section id="difficulties" class="slide level2">
+<h1>Difficulties</h1>
+<ul>
+<li class="fragment">Implementations are open-ended
+<ul>
+<li class="fragment">local vs standard DM</li>
+<li class="fragment">should a reference serialization implement <strong>ALL</strong> possible permutations?</li>
+</ul></li>
+<li class="fragment">Human readable documents make validators...:
+<ul>
+<li class="fragment">hard to develop</li>
+<li class="fragment">ad hoc, hardly reusable</li>
+</ul></li>
+<li class="fragment">Stakeholders:
+<ul>
+<li class="fragment">are implementors, not necessarily modelers (in the IVOA sense)</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<p>Can we create <strong>some sort of</strong> Conformance Test?</p>
+</div>
+</section></section>
+<section><section id="a-proposal" class="titleslide slide level1"><h1>A proposal</h1></section><section id="lesprit-des-lois" class="slide level2">
+<h1>L`esprit des lois</h1>
+<p>[The spirit of the laws]</p>
+<ul>
+<li class="fragment">DMs do not grow in a vacuum:
+<ul>
+<li class="fragment">Use Cases come from CSP, DAL, and Applications</li>
+<li class="fragment">Existing services/apps may already implement custom models</li>
+<li class="fragment">If somebody is modeling, somebody (else) must have interest in implementations</li>
+</ul></li>
+</ul>
+<p>The standard recommendation process requires reference implementations to ensure interoperability and usability.</p>
+</section><section id="what-are-we-missing" class="slide level2">
+<h1>What are we missing?</h1>
+<ul>
+<li class="fragment">Standardized Data Model descriptions and serialization strategies</li>
+<li class="fragment">Conformance Requirements:
+<ul>
+<li class="fragment">how to run the conformance tests</li>
+<li class="fragment">what it means to pass</li>
+<li class="fragment">untestable criteria to meet</li>
+</ul></li>
+<li class="fragment">Apps and DAL involvement in the reference implementation process?</li>
+</ul>
+<p>An unambiguous, sustainable, development lifecycle.</p>
+</section><section id="conformance-testing-1" class="slide level2">
+<h1>Conformance Testing</h1>
+<figure>
+<img src="images/conformance.png" alt="" />
+</figure>
+</section><section id="how-vodml-helps" class="slide level2">
+<h1>How VODML helps</h1>
+<ul>
+<li>Implements the DM WG charter:
+<ul>
+<li>provides a framework for the description of metadata</li>
+<li>focuses on logical relationships</li>
+<li>provides an architecture to handle metadata</li>
+<li>takes into account client (Apps) and server (DAL) needs</li>
+</ul></li>
+</ul>
+</section><section id="how-vodml-helps-1" class="slide level2">
+<h1>How VODML helps</h1>
+<ul>
+<li>Model-agnostic tools for sustainable development:
+<ul>
+<li>VO Mapper</li>
+<li>one validator to rule them all</li>
+<li>[VO Modeler]</li>
+<li>[I/O libraries]</li>
+</ul></li>
+</ul>
+</section><section id="how-vodml-helps-2" class="slide level2">
+<h1>How VODML helps</h1>
+<ul>
+<li class="fragment">A first step towards conformance requirements:
+<ul>
+<li class="fragment">DM specifications <strong>must</strong> have a VODML description
+<ul>
+<li class="fragment"><strong>model</strong> can be validated</li>
+<li class="fragment">model <strong>instances</strong> can be validated</li>
+<li class="fragment"><strong>DAL responses</strong> can be validated</li>
+<li class="fragment">implementation <strong>coverage</strong> can be measured</li>
+</ul></li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="summary" class="titleslide slide level1"><h1>Summary</h1></section><section id="some-questions-to-answer" class="slide level2">
+<h1>Some questions to answer</h1>
+<ul>
+<li class="fragment"><strong>What is a DM reference implementation?</strong> Should we clarify the standard process description regarding reference implementations?</li>
+<li class="fragment"><strong>Who implements it?</strong> Do we need coordination among working groups? A specification is a team effort with multiple stakeholders.</li>
+<li class="fragment"><strong>What do we need?</strong> VODML is a start, but should we refine the recommendation process?</li>
+</ul>
+</section></section>
+</div>
+
+<script src="https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/lib/js/head.min.js"></script>
+<script src="https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/js/reveal.js"></script>
+
+<script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+
+    parallaxBackgroundImage: 'http://upload.wikimedia.org/wikipedia/commons/c/c7/Marmolada_nelle_Dolomiti_%E2%80%93_CN.jpg',
+    parallaxBackgroundSize: '4288 2508',
+    parallaxBackgroundHorizontal: 200,
+    parallaxBackgroundVertical: 40,
+	
+  // available themes are in /css/theme
+      theme: Reveal.getQueryHash().theme || 'night', 
+  
+  // default/cube/page/concave/zoom/linear/fade/none
+      transition: Reveal.getQueryHash().transition || 'default',
+  
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+    // { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+  ]
+  });
+
+</script>
+
+</body>
+</html>
