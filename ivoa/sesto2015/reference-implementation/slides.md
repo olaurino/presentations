@@ -146,6 +146,9 @@ Can we create **some sort of** Conformance Test?
 The standard recommendation process requires reference implementations
 to ensure interoperability and usability.
 
+## Conformance Testing
+![Is **something like** this achievable? Or is it too much work?](images/conformance.png)
+
 # A proposal
 
 ## What are we missing?
@@ -157,9 +160,6 @@ to ensure interoperability and usability.
 - Apps and DAL involvement in the reference implementation process?
 
 An unambiguous, sustainable development lifecycle.
-
-## Conformance Testing
-![Is **something like** this achievable? Or is it too much work?](images/conformance.png)
 
 ## How VODML helps
 >- Implements the DM WG charter:
