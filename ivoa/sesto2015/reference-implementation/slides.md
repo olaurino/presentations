@@ -25,7 +25,15 @@ TCG review period ended on Sep 15, 2014.
 ## Spectral 2.0
 TCG review period ended on Sep 15, 2014.
 
->as the model is so large, I`d like to get an idea **what part of the standard these actually use/support, and in what sense interoperability has been shown**. I am a bit surprised that TSAP is a reference implementation, when 7.1.2 requires a 'SpatialAxis'. On the mailing list, the rationale for this was that the model was meant for observational spectra. As a baseline, I think there should be **at least example serialisations using all features** provided by the DM. (*Sep 16, 2014*)
+>as the model is so large, I`d like to get an idea **what part of the standard these actually use/support,
+and in what sense interoperability has been shown**.
+I am a bit surprised that TSAP is a reference implementation,
+when 7.1.2 requires a 'SpatialAxis'.
+On the mailing list, the rationale for this was
+that the model was meant for observational spectra.
+As a baseline, I think there should be **at least example
+serialisations using all features**
+provided by the DM. (*Sep 16, 2014*)
 
 ## Spectral 2.0
 Fair comments, however:
@@ -64,7 +72,7 @@ From: [Curran, Patrick (2003). Conformance Testing: An Industry Perspective. Sun
 **two interoperable implementations of each feature**.
 
 >If the Director believes that immediate Advisory Committee review is critical
-to the success of a technical report, the Director may accept to
+to the success of a technical report, the Director **may accept** to
 Call for Review of a Proposed Recommendation
 even **without adequate implementation experience**;
 
