@@ -94,31 +94,34 @@ document.onkeydown = function(evt) {
 <section id="speclib-java" class="slide level2">
 <h1>SpecLib (Java)</h1>
 <ul>
-<li class="fragment">Defines a generic meta-model for old-style UTYPEs-based models</li>
-<li class="fragment">Model-agnostic I/O</li>
-<li class="fragment">Models are implemented as Java Interfaces</li>
-<li class="fragment">Tries to cope with optional GROUPs</li>
-<li class="fragment">Allows service-specific overrides</li>
-<li class="fragment">Implements Spectral 2.0. Other implementations are planned</li>
-<li class="fragment"><a href="https://github.com/ChandraCXC/speclib">Available on GitHub</a></li>
+<li>Defines a generic meta-model for old-style UTYPEs-based models</li>
+<li>Model-agnostic I/O</li>
+<li>Models are implemented as Java Interfaces</li>
+<li>Tries to cope with optional GROUPs</li>
+<li>Allows service-specific overrides</li>
+<li>Implements Spectral 2.0. Other implementations are planned</li>
+<li><a href="https://github.com/ChandraCXC/speclib">Available on GitHub</a></li>
 </ul>
 </section>
 <section id="gavo-serializations" class="slide level2">
 <h1>GAVO serializations</h1>
 <ul>
-<li class="fragment">Flash/Heros observed spectra</li>
-<li class="fragment">Theoretical spectra</li>
-<li class="fragment">Use 'spec2' prefix</li>
-<li class="fragment">Custom usage of GROUPs</li>
+<li>Flash/Heros observed spectra</li>
+<li>Theoretical spectra</li>
+<li>Use <code>spec2</code> prefix</li>
+<li>Different interpretation of <code>GROUP</code>s
+<ul>
+<li>Ambiguity in the spec?</li>
+</ul></li>
 </ul>
 </section>
 <section id="interoperability-demo-speclist" class="slide level2">
 <h1>Interoperability Demo (SpecList)</h1>
 <ol type="1">
-<li class="fragment">Load URL (GAVO) using SpecLib</li>
-<li class="fragment">List available metadata</li>
-<li class="fragment">Plot data</li>
-<li class="fragment">Use metadata information to annotate the plot</li>
+<li>Load URL (GAVO) using SpecLib</li>
+<li>List available metadata</li>
+<li>Plot data</li>
+<li>Use metadata information to annotate the plot</li>
 </ol>
 <p><a href="https://github.com/ChandraCXC/speclist">Available on GitHub</a> and <a href="http://speclist-ivoa.rhcloud.com/">deployed on a free cloud hosting site</a></p>
 <div class="fragment">
@@ -133,16 +136,16 @@ document.onkeydown = function(evt) {
 <section id="issues" class="slide level2">
 <h1>Issues</h1>
 <ul>
-<li class="fragment">UTYPE Prefix: 'spec' or 'spec2'</li>
-<li class="fragment">media-type</li>
-<li class="fragment">AOB</li>
+<li><code>UTYPE</code> Prefix: 'spec' or 'spec2'</li>
+<li>media-type</li>
+<li>AOB (e.g. Use Cases)</li>
 </ul>
 <div class="fragment">
 <p>Our proposal:</p>
 <ul>
 <li class="fragment">Release 2.0 as is.</li>
 <li class="fragment">UTYPE prefix: do not change. Model version can be inferred anyway.</li>
-<li class="fragment">media-type: include it in a 2.1 version.</li>
+<li class="fragment">media-type: include it in a 2.1 version along with any errata/clarifications (e.g. <code>GROUP</code>s).</li>
 <li class="fragment">AOB: A 3.0 version will be required anyway for harmonization with Cube DM.</li>
 </ul>
 </div>

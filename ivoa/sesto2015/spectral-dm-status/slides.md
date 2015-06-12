@@ -3,7 +3,7 @@
 % June 14, 2015
 
 ## SpecLib (Java)
-- Defines a generic meta-model for old-style UTYPEs-based models
+>- Defines a generic meta-model for old-style UTYPEs-based models
 - Model-agnostic I/O
 - Models are implemented as Java Interfaces
 - Tries to cope with optional GROUPs
@@ -12,13 +12,14 @@
 - [Available on GitHub](https://github.com/ChandraCXC/speclib)
 
 ## GAVO serializations
-- Flash/Heros observed spectra
+>- Flash/Heros observed spectra
 - Theoretical spectra
-- Use 'spec2' prefix
-- Custom usage of GROUPs
+- Use `spec2` prefix
+- Different interpretation of `GROUP`s
+    - Ambiguity in the spec?
 
 ## Interoperability Demo (SpecList)
-1. Load URL (GAVO) using SpecLib
+>1. Load URL (GAVO) using SpecLib
 2. List available metadata
 3. Plot data
 4. Use metadata information to annotate the plot
@@ -30,13 +31,17 @@ and [deployed on a free cloud hosting site](http://speclist-ivoa.rhcloud.com/)
 
 Accuracy of reconstruction was evaluated by visually inspecting the serialization header and the Demo output.
 
+. . .
+
+Small implementation issues left to be resolved off-line.
+
 ## Interoperability Demo (SpecList)
 <iframe height="550px" width="800px" src="http://speclist-ivoa.rhcloud.com/"></iframe>
 
 ## Issues
-- UTYPE Prefix: 'spec' or 'spec2'
+>- `UTYPE` Prefix: 'spec' or 'spec2'
 - media-type
-- AOB
+- AOB (e.g. Use Cases)
 
 . . .
 
@@ -44,5 +49,7 @@ Our proposal:
 
 - Release 2.0 as is.
 - UTYPE prefix: do not change. Model version can be inferred anyway.
-- media-type: include it in a 2.1 version.
+- media-type: include it in a 2.1 version along with any errata/clarifications (e.g. `GROUP`s).
 - AOB: A 3.0 version will be required anyway for harmonization with Cube DM.
+
+
