@@ -51,7 +51,7 @@ document.onkeydown = function(evt) {
     evt = evt || window.event;
     if (evt.keyCode==65 || evt.keyCode==90) {
         $('#light').toggle();
-		//$('#light').css('cursor', 'none');
+		$('#light').css('cursor', 'none');
     }
 
 	if (evt.keyCode==65) {
@@ -91,7 +91,27 @@ document.onkeydown = function(evt) {
 </section>  
 
 
-<section><section id="why-this-presentation" class="titleslide slide level1"><h1>Why this presentation</h1></section><section id="reference-implementation-of-a-data-model-specification" class="slide level2">
+<section><section id="why-this-presentation" class="titleslide slide level1"><h1>Why this presentation</h1></section><section id="spectral-2.0" class="slide level2">
+<h1>Spectral 2.0</h1>
+<p>TCG review period ended on <strong>Sep 15, 2014</strong>.</p>
+<blockquote>
+<p>as the model is so large, I`d like to get an idea <strong>what part of the standard these [implementations] actually use/support, and in what sense interoperability has been shown</strong>. I am a bit surprised that TSAP is a reference implementation, when 7.1.2 requires a 'SpatialAxis'. On the mailing list, the rationale for this was that the model was meant for observational spectra. As a baseline, I think there should be <strong>at least example serialisations using all features</strong> provided by the DM. (<strong>Sep 16, 2014</strong>)</p>
+</blockquote>
+</section><section id="spectral-2.0-1" class="slide level2">
+<h1>Spectral 2.0</h1>
+<p>TCG review period ended on <strong>Sep 15, 2014</strong>.</p>
+<blockquote>
+<p>Are there <strong>two interoperating reference implementations</strong> of SpectralDM? <strong>How does one demonstrate/explain that a reference implementation is complete?</strong> Until we can answer these questions, it will not be possible to ask the Exec for endorsement as a recommendation. (<strong>Oct 11, 2014</strong>)</p>
+</blockquote>
+</section><section id="spectral-2.0-2" class="slide level2">
+<h1>Spectral 2.0</h1>
+<p>Fair comments, however:</p>
+<ul>
+<li class="fragment">Past DM specs did not seem to have such stringent requirements</li>
+<li class="fragment">Was the timing appropriate? Is the process properly spec'ed out? <!-- ' --></li>
+<li class="fragment">What <strong>exactly</strong> are the requirements for reference implementations of Data Models?</li>
+</ul>
+</section><section id="reference-implementation-of-a-data-model-specification" class="slide level2">
 <h1>Reference Implementation of a Data Model specification</h1>
 <p>SpectrumDM 1.1 discussion page (no info on 1.03 and 1.1 RFC):</p>
 <blockquote>
@@ -105,25 +125,6 @@ XMM SSC ObsTAP service<br />
 GAVO ObsCore table</p>
 </blockquote>
 </div>
-</section><section id="spectral-2.0" class="slide level2">
-<h1>Spectral 2.0</h1>
-<p>TCG review period ended on Sep 15, 2014.</p>
-<blockquote>
-<p>Are there <strong>two interoperating reference implementations</strong> of SpectralDM? <strong>How does one demonstrate/explain that a reference implementation is complete?</strong> Until we can answer these questions, it will not be possible to ask the Exec for endorsement as a recommendation. (<em>Oct 11, 2014</em>)</p>
-</blockquote>
-</section><section id="spectral-2.0-1" class="slide level2">
-<h1>Spectral 2.0</h1>
-<p>TCG review period ended on Sep 15, 2014.</p>
-<blockquote>
-<p>as the model is so large, I`d like to get an idea <strong>what part of the standard these actually use/support, and in what sense interoperability has been shown</strong>. I am a bit surprised that TSAP is a reference implementation, when 7.1.2 requires a 'SpatialAxis'. On the mailing list, the rationale for this was that the model was meant for observational spectra. As a baseline, I think there should be <strong>at least example serialisations using all features</strong> provided by the DM. (<em>Sep 16, 2014</em>)</p>
-</blockquote>
-</section><section id="spectral-2.0-2" class="slide level2">
-<h1>Spectral 2.0</h1>
-<p>Fair comments, however:</p>
-<ul>
-<li class="fragment">Was the timing appropriate? Is the process properly spec'ed out? <!-- ' --></li>
-<li class="fragment">What <strong>exactly</strong> are the requirements for reference implementations of Data Models?</li>
-</ul>
 </section></section>
 <section><section id="a-step-back-reference-implementations" class="titleslide slide level1"><h1>A step back<br />
 Reference Implementations</h1></section><section id="an-operational-definition" class="slide level2">
@@ -192,7 +193,6 @@ Data Models in IVOA</h1></section><section id="the-dm-working-group..." class="s
 <li>the term <em>reference implementation</em> is not defined</li>
 <li>validators mandated</li>
 <li>one definition for all the standards</li>
-<li>no univocal interpretation for DMs</li>
 </ul>
 </div>
 </section><section id="what-is-a-data-model-implementation" class="slide level2">
@@ -221,7 +221,7 @@ Data Models in IVOA</h1></section><section id="the-dm-working-group..." class="s
 <li class="fragment">Implementations are open-ended
 <ul>
 <li class="fragment">local vs standard DM</li>
-<li class="fragment">should a reference serialization implement <strong>ALL</strong> possible permutations?</li>
+<li class="fragment">should a reference serialization implement <strong>ALL</strong> possible combinations of elements?</li>
 </ul></li>
 <li class="fragment">Human readable documents make validators...:
 <ul>
@@ -236,8 +236,7 @@ Data Models in IVOA</h1></section><section id="the-dm-working-group..." class="s
 <div class="fragment">
 <p>Can we create <strong>some sort of</strong> Conformance Test?</p>
 </div>
-</section></section>
-<section><section id="a-proposal" class="titleslide slide level1"><h1>A proposal</h1></section><section id="lesprit-des-lois" class="slide level2">
+</section><section id="lesprit-des-lois" class="slide level2">
 <h1>L`esprit des lois</h1>
 <p>[The spirit of the laws]</p>
 <ul>
@@ -249,23 +248,24 @@ Data Models in IVOA</h1></section><section id="the-dm-working-group..." class="s
 </ul></li>
 </ul>
 <p>The standard recommendation process requires reference implementations to ensure interoperability and usability.</p>
-</section><section id="what-are-we-missing" class="slide level2">
+</section></section>
+<section><section id="a-proposal" class="titleslide slide level1"><h1>A proposal</h1></section><section id="what-are-we-missing" class="slide level2">
 <h1>What are we missing?</h1>
 <ul>
-<li class="fragment">Standardized Data Model descriptions and serialization strategies</li>
-<li class="fragment">Conformance Requirements:
+<li class="fragment">Conformance Requirements, e.g.:
 <ul>
-<li class="fragment">how to run the conformance tests</li>
-<li class="fragment">what it means to pass</li>
-<li class="fragment">untestable criteria to meet</li>
+<li class="fragment">use cases</li>
+<li class="fragment">what it means for an <em>agent</em> to be compliant</li>
+<li class="fragment">error handling</li>
 </ul></li>
+<li class="fragment">Standardized Data Model descriptions and serialization strategies</li>
 <li class="fragment">Apps and DAL involvement in the reference implementation process?</li>
 </ul>
-<p>An unambiguous, sustainable, development lifecycle.</p>
+<p>An unambiguous, sustainable development lifecycle.</p>
 </section><section id="conformance-testing-1" class="slide level2">
 <h1>Conformance Testing</h1>
 <figure>
-<img src="images/conformance.png" alt="Is something like this achievable?" /><figcaption>Is <strong>something like</strong> this achievable?</figcaption>
+<img src="images/conformance.png" alt="Is something like this achievable? Or is it too much work?" /><figcaption>Is <strong>something like</strong> this achievable? Or is it too much work?</figcaption>
 </figure>
 </section><section id="how-vodml-helps" class="slide level2">
 <h1>How VODML helps</h1>
@@ -296,7 +296,7 @@ Data Models in IVOA</h1></section><section id="the-dm-working-group..." class="s
 <ul>
 <li class="fragment">DM specifications <strong>must</strong> have a VODML description
 <ul>
-<li class="fragment"><strong>model</strong> can be validated</li>
+<li class="fragment"><strong>models</strong> can be validated</li>
 <li class="fragment">model <strong>instances</strong> can be validated</li>
 <li class="fragment"><strong>DAL responses</strong> can be validated</li>
 <li class="fragment">implementation <strong>coverage</strong> can be measured</li>

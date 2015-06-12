@@ -4,6 +4,31 @@
 
 # Why this presentation
 
+## Spectral 2.0
+TCG review period ended on **Sep 15, 2014**.
+
+>as the model is so large, I`d like to get an idea **what part of the standard these [implementations] actually use/support,
+and in what sense interoperability has been shown**.
+I am a bit surprised that TSAP is a reference implementation,
+when 7.1.2 requires a 'SpatialAxis'.
+On the mailing list, the rationale for this was
+that the model was meant for observational spectra.
+As a baseline, I think there should be **at least example
+serialisations using all features**
+provided by the DM. (**Sep 16, 2014**)
+
+## Spectral 2.0
+TCG review period ended on **Sep 15, 2014**.
+
+>Are there **two interoperating reference implementations** of SpectralDM? **How does one demonstrate/explain that a reference implementation is complete?** Until we can answer these questions, it will not be possible to ask the Exec for endorsement as a recommendation. (**Oct 11, 2014**)
+
+## Spectral 2.0
+Fair comments, however:
+
+- Past DM specs did not seem to have such stringent requirements
+- Was the timing appropriate? Is the process properly spec'ed out? <!-- ' -->
+- What **exactly** are the requirements for reference implementations of Data Models?
+
 ## Reference Implementation of a Data Model specification
 SpectrumDM 1.1 discussion page (no info on 1.03 and 1.1 RFC):
 
@@ -16,30 +41,6 @@ ObsCore RFC Page:
 > CDAC OBsTAP service  
 XMM SSC ObsTAP service   
 GAVO ObsCore table
-
-## Spectral 2.0
-TCG review period ended on Sep 15, 2014.
-
->Are there **two interoperating reference implementations** of SpectralDM? **How does one demonstrate/explain that a reference implementation is complete?** Until we can answer these questions, it will not be possible to ask the Exec for endorsement as a recommendation. (*Oct 11, 2014*)
-
-## Spectral 2.0
-TCG review period ended on Sep 15, 2014.
-
->as the model is so large, I`d like to get an idea **what part of the standard these actually use/support,
-and in what sense interoperability has been shown**.
-I am a bit surprised that TSAP is a reference implementation,
-when 7.1.2 requires a 'SpatialAxis'.
-On the mailing list, the rationale for this was
-that the model was meant for observational spectra.
-As a baseline, I think there should be **at least example
-serialisations using all features**
-provided by the DM. (*Sep 16, 2014*)
-
-## Spectral 2.0
-Fair comments, however:
-
-- Was the timing appropriate? Is the process properly spec'ed out? <!-- ' -->
-- What **exactly** are the requirements for reference implementations of Data Models?
 
 # A step back\
 Reference Implementations 
@@ -107,7 +108,6 @@ associated **software** are expected, as well as provision of **validation tools
 >- the term *reference implementation* is not defined
 - validators mandated
 - one definition for all the standards 
-- no univocal interpretation for DMs
 
 ## What is a Data Model implementation?
 - Server side:
@@ -124,7 +124,7 @@ associated **software** are expected, as well as provision of **validation tools
 ## Difficulties
 - Implementations are open-ended
     - local vs standard DM 
-    - should a reference serialization implement **ALL** possible permutations?
+    - should a reference serialization implement **ALL** possible combinations of elements?
 - Human readable documents make validators...:
     - hard to develop
     - ad hoc, hardly reusable
@@ -134,8 +134,6 @@ associated **software** are expected, as well as provision of **validation tools
 . . .
 
 Can we create **some sort of** Conformance Test?
-
-# A proposal
 
 ## L`esprit des lois
 [The spirit of the laws]
@@ -148,18 +146,20 @@ Can we create **some sort of** Conformance Test?
 The standard recommendation process requires reference implementations
 to ensure interoperability and usability.
 
+# A proposal
+
 ## What are we missing?
+- Conformance Requirements, e.g.:
+    - use cases
+    - what it means for an *agent* to be compliant
+    - error handling
 - Standardized Data Model descriptions and serialization strategies
-- Conformance Requirements:
-    - how to run the conformance tests
-    - what it means to pass
-    - untestable criteria to meet
 - Apps and DAL involvement in the reference implementation process?
 
-An unambiguous, sustainable, development lifecycle.
+An unambiguous, sustainable development lifecycle.
 
 ## Conformance Testing
-![Is **something like** this achievable?](images/conformance.png)
+![Is **something like** this achievable? Or is it too much work?](images/conformance.png)
 
 ## How VODML helps
 >- Implements the DM WG charter:
@@ -179,7 +179,7 @@ An unambiguous, sustainable, development lifecycle.
 ## How VODML helps
 - A significant step towards conformance requirements:
     - DM specifications **must** have a VODML description
-        - **model** can be validated
+        - **models** can be validated
         - model **instances** can be validated
         - **DAL responses** can be validated
         - implementation **coverage** can be measured
