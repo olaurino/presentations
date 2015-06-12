@@ -35,18 +35,32 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
 $(document).mousemove(function(event) {
+		var xoff = -50;
+		var yoff = -50;
+		if ($('#light').hasClass('line')) {
+			xoff = -150;
+			yoff = -5;
+		}
     $('#light').offset({
-        top: event.pageY - 50,
-        left: event.pageX - 50
+        top: event.pageY + yoff,
+        left: event.pageX + xoff
     });
 });
 
 document.onkeydown = function(evt) {
     evt = evt || window.event;
-    if (evt.keyCode==65) {
+    if (evt.keyCode==65 || evt.keyCode==90) {
         $('#light').toggle();
-		$('#light').css('cursor', 'none');
+		//$('#light').css('cursor', 'none');
     }
+
+	if (evt.keyCode==65) {
+		$('#light').addClass('circle').removeClass('line');
+	}
+
+	if (evt.keyCode==90) {
+		$('#light').addClass('line').removeClass('circle');
+	}
 };
 
 </script>
