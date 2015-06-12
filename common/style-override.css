@@ -1,5 +1,5 @@
 div .slides {
-	background-color:rgba(0,0,0,0.5);
+	background-color:rgba(0,0,0,0.7);
 	padding-left: 10px;
 	padding-right: 10px;
 }
@@ -37,18 +37,20 @@ div .slides {
 	top: 50px;
 }
 
-.hbottom {
+.reveal header.hbottom {
 	background-color:rgba(0,0,0,0.5);
 	width: 100%;
 	position: absolute;
 	bottom: 3px;
 	text-align: center;
+	z-index: 10;
+	font-size: 1.0em;
 }
 
 
-.reveal ul { 
+.reveal ul, .reveal ul ul, .reveal ul ul ul { 
 	list-style:none;
-	width: 80%;
+	width: 90%;
 }
 .reveal ul li {
 	border-radius: 25px;
@@ -65,11 +67,11 @@ div .slides {
 }
 
 .reveal ul li:hover:before, .reveal li.current-fragment:before {
-	color: #883333;
+	color: #ffeeaa;
 }
 
 .reveal ul li:hover, .reveal li.current-fragment { 
-    text-shadow: 0px 0px 30px #CC3300;
+    text-shadow: 0px 0px 30px #FFEEAA;
 	color: #CCCCCC;
 }
 
@@ -78,4 +80,46 @@ div .slides {
     text-shadow: none;
 	font-size: 1.4em;
 	line-height: 1.4em;
+}
+
+.reveal blockquote {
+	width: 85%;
+	text-align: left;
+}
+
+.reveal strong {
+	color: #ffeeaa;
+}
+
+.reveal {
+	z-index:10;
+}
+
+#light.circle {
+	z-index: 10000;
+    top: 50px;
+    left: 50px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    background-color: rgba(255, 0, 0, 0.4);
+	box-shadow: 0px 0px 100px #FF0000;
+	display: none;
+}
+
+#light.line {
+	z-index: 10000;
+	top: 50px;
+	left: 50px;
+	width: 600px;
+	height: 10px;
+	position: absolute;
+	box-shadow: 0px 0px 5px #FF0000;
+	background-color: rgba(255, 0, 0, 0.4);
+	display: none;
+}
+
+.slides {
+	cursor: none;
 }
