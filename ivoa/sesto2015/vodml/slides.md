@@ -1,6 +1,6 @@
 % VODML - Status and start of RFC process
 % Omar Laurino
-% June, 18th 2015
+% June, 18 2015
 
 # Specification
 
@@ -16,7 +16,7 @@
 ## Some benefits
 From the Data Model WG charter:
 
->[...] provide[s] a **framework
+>[The WG] provide[s] a **framework
 for the description of metadata** attached to observed or simulated data.
 
 . . .
@@ -67,11 +67,7 @@ in the protocols defined **by the DAL WG or in VO aware applications**.
 ```
 
 ## Portable Data Model references
-```
-<VODML>
-  <ROLE>src:source.SkyCoordinate.longitude</ROLE>
-</VODML>
-```
+`src:source.SkyCoordinate.longitude`
 
 *points to*
 
@@ -85,6 +81,16 @@ in the protocols defined **by the DAL WG or in VO aware applications**.
    </datatype>
    <multiplicity>1</multiplicity>
  </attribute>
+```
+
+. . .
+
+Can be used in VOTable (pending VOTable discussion)
+
+```
+<VODML>
+  <ROLE>src:source.SkyCoordinate.longitude</ROLE>
+</VODML>
 ```
 
 ## Meta-Model
@@ -146,7 +152,7 @@ Should models (and prefixes) be registered?
 
 VODML supports both Enumerations and SKOS concepts. The alternative
 is dropping enumerations in favor of *simple* vocabularies.
-:w
+
 
 
 
