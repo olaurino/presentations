@@ -39,7 +39,7 @@ Small implementation issues left to be resolved off-line.
 <iframe height="550px" width="800px" src="http://speclist-ivoa.rhcloud.com/"></iframe>
 
 ## Issues
->- `UTYPE` Prefix: 'spec' or 'spec2'
+>- `UTYPE` Prefix: 'spec' or 'spec2' + `GROUP`s
 - media-type
 - AOB (e.g. Use Cases)
 

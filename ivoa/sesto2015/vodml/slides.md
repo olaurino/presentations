@@ -98,7 +98,7 @@ Can be used in VOTable (pending VOTable discussion)
 Document seems stable. Should be ready for Proposed Recommendation
 pending few TBDs.
 
-## To Be Defined
+## To Be Discussed
 >- Few minor TBDs left in the document:
     - prefix: globally unique or defined in serialization?
     - SKOSConcept/RDF/Enumeration
