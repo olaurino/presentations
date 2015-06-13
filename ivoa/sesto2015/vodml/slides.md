@@ -1,17 +1,17 @@
-% VODML - Status and start of RFC process
+% VODML - Status update 
 % Omar Laurino
 % June, 18 2015
 
 # Specification
 
 ## Goals
-- provide formal rules for data modeling in IVOA
+>- provide formal rules for data modeling in IVOA
 - provide standard, machine-readable Data Model descriptions
 - define Portable Data Model References
 
 . . .
 
-- define primitives types (IVOA model)
+>- define primitives types (IVOA model)
 
 ## Some benefits
 From the Data Model WG charter:
@@ -39,17 +39,6 @@ in the protocols defined **by the DAL WG or in VO aware applications**.
 ## Data Model descriptions
 
 ```xml
-<primitiveType>
- <vodml-id>quantity/Unit</vodml-id>
- <name>Unit</name>
- <description>
- Must conform to definition of unit in VOUnit spec.
- </description>
- <extends>
- <utype>ivoa:string</utype>
- </extends>
-</primitiveType>
-
 <dataType>
  <vodml-id>source.SkyCoordinate</vodml-id>
  <name>SkyCoordinate</name>
@@ -96,28 +85,24 @@ Can be used in VOTable (pending VOTable discussion)
 ## Meta-Model
 
 ## Updates
-- Nothing changed since Banff.
-- Normative part is basically unchanged since Heidelberg:
+>- Normative part is basically unchanged since Heidelberg:
    - `utype` -> `vodml-ref`
 - Informative sections improved before Banff.
-- Implementation feedback is good.
+- Nothing major changed since Banff.
+    - Few minor *To Be Discussed* addressed.
+- Implementation feedback is good: only one issue identified.
 - Working on more XMI translation scripts.
 
 . . .
 
-Document seems stable. Few minor TBD left
+Document seems stable. Should be ready for Proposed Recommendation
+pending few TBDs.
 
 ## To Be Defined
-- Few minor TBDs left in the document:
-    - detailed list of authors
-    - check statement: *all VODML elements are from UML 2.4.1*
+>- Few minor TBDs left in the document:
     - prefix: globally unique or defined in serialization?
-    - SKOSConcept concrete notation
-    - Constraint XML description (leave it for future version? PDL?)
-    - HTML documentation MAY or SHOULD be created?
-    - Suggestion on DM definitions.
-    - Other notable absences?
-    - Concrete reference to `IVOA` model. 
+    - SKOSConcept/RDF/Enumeration
+	- subsets issues from implementation feedback
 - One TODO:
     - reformat a figure 
 
@@ -127,7 +112,7 @@ Document seems stable. Few minor TBD left
 - Have them globally unique (e.g. `stc2`, `char`, `spec`)
 - Define them dynamically (a la XML namespace)
 
-Consensus seems to be that they are globally unique.
+Consensus seems to be that they are globally unique. Can we confirm this?
 
 . . .
 

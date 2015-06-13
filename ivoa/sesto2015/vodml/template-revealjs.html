@@ -59,10 +59,16 @@ $$(document).mousemove(function(event) {
 
 document.onkeydown = function(evt) {
     evt = evt || window.event;
-    if (evt.keyCode==65 || evt.keyCode==90) {
-        $$('#light').toggle();
-		$$('#light').css('cursor', 'none');
-    }
+
+	if (evt.keyCode==67) {
+		cursor = $$('div.slides').css('cursor');
+		if (cursor == 'auto') {
+			cursor = 'none';
+		} else {
+			cursor = 'auto';
+		}
+		$$('div.slides').css('cursor', cursor);
+	}
 
 	if (evt.keyCode==65) {
 		$$('#light').addClass('circle').removeClass('line');
@@ -71,6 +77,11 @@ document.onkeydown = function(evt) {
 	if (evt.keyCode==90) {
 		$$('#light').addClass('line').removeClass('circle');
 	}
+
+    if (evt.keyCode==65 || evt.keyCode==90) {
+        $$('#light').toggle();
+		$$('#light').css('cursor', 'none');
+    }
 };
 
 </script>
