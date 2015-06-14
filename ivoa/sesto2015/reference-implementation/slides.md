@@ -7,20 +7,17 @@
 ## Spectral 2.0
 TCG review period ended on **Sep 15, 2014**.
 
->as the model is so large, I`d like to get an idea **what part of the standard these [implementations] actually use/support,
+>[..] as the model is so large, I`d like to get an idea **what part of the standard these [implementations] actually use/support,
 and in what sense interoperability has been shown**.
-I am a bit surprised that TSAP is a reference implementation,
-when 7.1.2 requires a 'SpatialAxis'.
-On the mailing list, the rationale for this was
-that the model was meant for observational spectra.
-As a baseline, I think there should be **at least example
+
+>As a baseline, I think **there should be at least example
 serialisations using all features**
 provided by the DM. (**Sep 16, 2014**)
 
 ## Spectral 2.0
 TCG review period ended on **Sep 15, 2014**.
 
->Are there **two interoperating reference implementations** of SpectralDM? **How does one demonstrate/explain that a reference implementation is complete?** Until we can answer these questions, it will not be possible to ask the Exec for endorsement as a recommendation. (**Oct 11, 2014**)
+>Are there **two interoperating reference implementations** of SpectralDM? **How does one demonstrate/explain that a reference implementation is complete?** Until we can answer these questions, **it will not be possible to ask the Exec for endorsement as a recommendation**. (**Oct 11, 2014**)
 
 ## Spectral 2.0
 Fair comments, however:
@@ -58,14 +55,16 @@ From: [Curran, Patrick (2003). Conformance Testing: An Industry Perspective. Sun
 ## Conformance Testing
 ![](images/conformance.png)
 
+<!--
 ## Highlights
 - Specifications must be testable
-<!--    - testable assertions are derived from normative statements
-    - unspecified, ambiguous, implementation-specific statements cannot be tested -->
+    - testable assertions are derived from normative statements
+    - unspecified, ambiguous, implementation-specific statements cannot be tested
 - Optional behavior is discouraged
     - Can be tested, but weakens uniformity and interoperability
 - All implementations must pass the same test suite
 - Conformance Requirements documents specify... the requirements for conformance
+-->
 
 ## A W3C example
 >[WG must show] that **each feature of the technical report has been implemented**.
@@ -110,7 +109,7 @@ associated **software** are expected, as well as provision of **validation tools
 - one definition for all the standards 
 
 ## What is a Data Model implementation?
-- Server side:
+>- Server side:
     - relational database
     - DAL service implementation
 - Client side:
@@ -125,7 +124,7 @@ associated **software** are expected, as well as provision of **validation tools
 - Implementations are open-ended
     - local vs standard DM 
     - should a reference serialization implement **ALL** possible combinations of elements?
-- Human readable documents make validators...:
+- **Free form** Data Model specs make validators...:
     - hard to develop
     - ad hoc, hardly reusable
 - Stakeholders:
@@ -162,11 +161,7 @@ to ensure interoperability and usability.
 An unambiguous, sustainable development lifecycle.
 
 ## How VODML helps
->- Implements the DM WG charter:
-    - framework for the description of metadata
-    - focuses on logical relationships
-    - provides an architecture to handle metadata
-    - takes into account Apps and DAL needs
+- Implements the DM WG charter
 
 . . .
 

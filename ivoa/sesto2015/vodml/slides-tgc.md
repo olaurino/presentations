@@ -20,14 +20,14 @@ pending few TBDs at this meeting.
 >- Few TBDs left in the document:
     - prefix: globally unique or defined in serialization?
     - SKOSConcept/RDF/Enumeration
-	- subsets issues from implementation feedback
+	- **"subsets"** attribute issue uncovered by implementation (STC2)
 - One TODO:
     - reformat a figure 
 
 ## Mapping Document
 >- Semantics basically unchanged since Heidelberg:
     - Syntax now has `VODML` element i.s.o. `utype` attribute, pending VOTable decision
-    - Updated *reference* VOTable serialization with new syntax
+    - Updated *reference* VOTable serialization with new proposed syntax
 - Added support for Object Relational Mapping
 - Work in progress (with Apps WG) 
 

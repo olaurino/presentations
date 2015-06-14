@@ -56,13 +56,11 @@ document.onkeydown = function(evt) {
 
 	if (evt.keyCode==67) {
 		cursor = $('div.slides').css('cursor');
-		console.log(cursor);
 		if (cursor == 'auto') {
 			cursor = 'none';
 		} else {
 			cursor = 'auto';
 		}
-		console.log(cursor);
 		$('div.slides').css('cursor', cursor);
 	}
 
@@ -107,13 +105,16 @@ document.onkeydown = function(evt) {
 <h1>Spectral 2.0</h1>
 <p>TCG review period ended on <strong>Sep 15, 2014</strong>.</p>
 <blockquote>
-<p>as the model is so large, I`d like to get an idea <strong>what part of the standard these [implementations] actually use/support, and in what sense interoperability has been shown</strong>. I am a bit surprised that TSAP is a reference implementation, when 7.1.2 requires a 'SpatialAxis'. On the mailing list, the rationale for this was that the model was meant for observational spectra. As a baseline, I think there should be <strong>at least example serialisations using all features</strong> provided by the DM. (<strong>Sep 16, 2014</strong>)</p>
+<p>[..] as the model is so large, I`d like to get an idea <strong>what part of the standard these [implementations] actually use/support, and in what sense interoperability has been shown</strong>.</p>
+</blockquote>
+<blockquote>
+<p>As a baseline, I think <strong>there should be at least example serialisations using all features</strong> provided by the DM. (<strong>Sep 16, 2014</strong>)</p>
 </blockquote>
 </section><section id="spectral-2.0-1" class="slide level2">
 <h1>Spectral 2.0</h1>
 <p>TCG review period ended on <strong>Sep 15, 2014</strong>.</p>
 <blockquote>
-<p>Are there <strong>two interoperating reference implementations</strong> of SpectralDM? <strong>How does one demonstrate/explain that a reference implementation is complete?</strong> Until we can answer these questions, it will not be possible to ask the Exec for endorsement as a recommendation. (<strong>Oct 11, 2014</strong>)</p>
+<p>Are there <strong>two interoperating reference implementations</strong> of SpectralDM? <strong>How does one demonstrate/explain that a reference implementation is complete?</strong> Until we can answer these questions, <strong>it will not be possible to ask the Exec for endorsement as a recommendation</strong>. (<strong>Oct 11, 2014</strong>)</p>
 </blockquote>
 </section><section id="spectral-2.0-2" class="slide level2">
 <h1>Spectral 2.0</h1>
@@ -154,18 +155,16 @@ Reference Implementations</h1></section><section id="an-operational-definition" 
 <figure>
 <img src="images/conformance.png" alt="" />
 </figure>
-</section><section id="highlights" class="slide level2">
-<h1>Highlights</h1>
-<ul>
-<li class="fragment">Specifications must be testable <!--    - testable assertions are derived from normative statements
-    - unspecified, ambiguous, implementation-specific statements cannot be tested --></li>
-<li class="fragment">Optional behavior is discouraged
-<ul>
-<li class="fragment">Can be tested, but weakens uniformity and interoperability</li>
-</ul></li>
-<li class="fragment">All implementations must pass the same test suite</li>
-<li class="fragment">Conformance Requirements documents specify... the requirements for conformance</li>
-</ul>
+<!--
+## Highlights
+- Specifications must be testable
+    - testable assertions are derived from normative statements
+    - unspecified, ambiguous, implementation-specific statements cannot be tested
+- Optional behavior is discouraged
+    - Can be tested, but weakens uniformity and interoperability
+- All implementations must pass the same test suite
+- Conformance Requirements documents specify... the requirements for conformance
+-->
 </section><section id="a-w3c-example" class="slide level2">
 <h1>A W3C example</h1>
 <blockquote>
@@ -210,21 +209,21 @@ Data Models in IVOA</h1></section><section id="the-dm-working-group..." class="s
 </section><section id="what-is-a-data-model-implementation" class="slide level2">
 <h1>What is a Data Model implementation?</h1>
 <ul>
-<li class="fragment">Server side:
+<li>Server side:
 <ul>
-<li class="fragment">relational database</li>
-<li class="fragment">DAL service implementation</li>
+<li>relational database</li>
+<li>DAL service implementation</li>
 </ul></li>
-<li class="fragment">Client side:
+<li>Client side:
 <ul>
-<li class="fragment">DAL client</li>
-<li class="fragment">domain specific application</li>
+<li>DAL client</li>
+<li>domain specific application</li>
 </ul></li>
-<li class="fragment">Client ∩ Server:
+<li>Client ∩ Server:
 <ul>
-<li class="fragment">instance serialization(s) [no software]</li>
-<li class="fragment">XML schema [unused]</li>
-<li class="fragment">validators</li>
+<li>instance serialization(s) [no software]</li>
+<li>XML schema [unused]</li>
+<li>validators</li>
 </ul></li>
 </ul>
 </section><section id="difficulties" class="slide level2">
@@ -235,7 +234,7 @@ Data Models in IVOA</h1></section><section id="the-dm-working-group..." class="s
 <li class="fragment">local vs standard DM</li>
 <li class="fragment">should a reference serialization implement <strong>ALL</strong> possible combinations of elements?</li>
 </ul></li>
-<li class="fragment">Human readable documents make validators...:
+<li class="fragment"><strong>Free form</strong> Data Model specs make validators...:
 <ul>
 <li class="fragment">hard to develop</li>
 <li class="fragment">ad hoc, hardly reusable</li>
@@ -282,13 +281,7 @@ Data Models in IVOA</h1></section><section id="the-dm-working-group..." class="s
 </section><section id="how-vodml-helps" class="slide level2">
 <h1>How VODML helps</h1>
 <ul>
-<li>Implements the DM WG charter:
-<ul>
-<li>framework for the description of metadata</li>
-<li>focuses on logical relationships</li>
-<li>provides an architecture to handle metadata</li>
-<li>takes into account Apps and DAL needs</li>
-</ul></li>
+<li class="fragment">Implements the DM WG charter</li>
 </ul>
 <div class="fragment">
 <ul>

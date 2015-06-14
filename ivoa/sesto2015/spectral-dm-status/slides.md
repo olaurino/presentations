@@ -4,10 +4,8 @@
 
 ## SpecLib (Java)
 >- Defines a generic meta-model for old-style UTYPEs-based models
-- Model-agnostic I/O
 - Models are implemented as Java Interfaces
-- Tries to cope with optional GROUPs
-- Allows service-specific overrides
+- Tries to cope with "misleading" GROUPs
 - Implements Spectral 2.0. Other implementations are planned
 - [Available on GitHub](https://github.com/ChandraCXC/speclib)
 
@@ -52,4 +50,11 @@ Our proposal:
 - media-type: include it in a 2.1 version along with any errata/clarifications (e.g. `GROUP`s).
 - AOB: A 3.0 version will be required anyway for harmonization with Cube DM.
 
+# Resources
+
+## Spectral DM 2.0 PR
+<iframe height="550px" width="800px" src="http://docs.google.com/gview?url=http://ivoa.net/documents/SpectralDM/20150528/PR-SpectralDM-2.0-20150528.pdf&embedded=true"></iframe>
+
+## Spectral DM 2.0 RFC
+<iframe height="550px" width="800px" src="http://wiki.ivoa.net/bin/view/IVOA/Spectral2RFC"></iframe>
 
