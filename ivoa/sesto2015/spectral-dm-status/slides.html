@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 
-<title>Spectral DM 2.0 reference implementations</title>
+<title>Spectral DM 2.0 status</title>
 
-<meta name="description" content="Spectral DM 2.0 reference implementations">    
+<meta name="description" content="Spectral DM 2.0 status">    
 
   <meta name="author" content="Omar Laurino" />
 
@@ -74,7 +74,7 @@ document.onkeydown = function(evt) {
 
 <div class="reveal">
 <header class="hleft"><img src="http://library.cfa.harvard.edu/files/wolbach/files/cfalogort.png"></header>
-<header class="hbottom">Omar Laurino - Spectral DM 2.0 reference implementations - June 14, 2015 - Sesto</header>
+<header class="hbottom">Omar Laurino - Spectral DM 2.0 status - June 14, 2015 - Sesto</header>
 
 <div id="light"></div>
 
@@ -83,7 +83,7 @@ document.onkeydown = function(evt) {
 <div class="slides">
 
 <section data-state="title">
-<h1>Spectral DM 2.0 reference implementations</h1>
+<h1>Spectral DM 2.0 status</h1>
 <h3>Omar Laurino</h3>
 <p>
 <h4>June 14, 2015</h4>
@@ -91,7 +91,21 @@ document.onkeydown = function(evt) {
 </section>  
 
 
-<section id="speclib-java" class="slide level2">
+<section><section id="specification" class="titleslide slide level1"><h1>Specification</h1></section><section id="tcg-review" class="slide level2">
+<h1>TCG Review</h1>
+<p>TCG Review ended Sept 15, 2015</p>
+<ul>
+<li class="fragment">Major concerns:
+<ul>
+<li class="fragment">lack of reference implementations</li>
+<li class="fragment">many comments from Registry WG</li>
+</ul></li>
+<li class="fragment">Document editor responded and provided one RI</li>
+<li class="fragment">GAVO provided RI</li>
+<li class="fragment">More comments/issues after latest PR changes</li>
+</ul>
+</section></section>
+<section><section id="reference-implementations" class="titleslide slide level1"><h1>Reference implementations</h1></section><section id="speclib-java" class="slide level2">
 <h1>SpecLib (Java)</h1>
 <ul>
 <li>Defines a generic meta-model for old-style UTYPEs-based models</li>
@@ -100,8 +114,7 @@ document.onkeydown = function(evt) {
 <li>Implements Spectral 2.0. Other implementations are planned</li>
 <li><a href="https://github.com/ChandraCXC/speclib">Available on GitHub</a></li>
 </ul>
-</section>
-<section id="gavo-serializations" class="slide level2">
+</section><section id="gavo-serializations" class="slide level2">
 <h1>GAVO serializations</h1>
 <ul>
 <li>Flash/Heros observed spectra</li>
@@ -112,8 +125,7 @@ document.onkeydown = function(evt) {
 <li>Ambiguity in the spec?</li>
 </ul></li>
 </ul>
-</section>
-<section id="interoperability-demo-speclist" class="slide level2">
+</section><section id="interoperability-demo-speclist" class="slide level2">
 <h1>Interoperability Demo (SpecList)</h1>
 <ol type="1">
 <li>Load URL (GAVO) using SpecLib</li>
@@ -128,18 +140,19 @@ document.onkeydown = function(evt) {
 <div class="fragment">
 <p>Small implementation issues left to be resolved off-line.</p>
 </div>
-</section>
-<section id="interoperability-demo-speclist-1" class="slide level2">
+</section><section id="interoperability-demo-speclist-1" class="slide level2">
 <h1>Interoperability Demo (SpecList)</h1>
 <iframe height="550px" width="800px" src="http://speclist-ivoa.rhcloud.com/">
 </iframe>
-</section>
-<section id="issues" class="slide level2">
+</section><section id="issues" class="slide level2">
 <h1>Issues</h1>
 <ul>
 <li><code>UTYPE</code> Prefix: 'spec' or 'spec2' + <code>GROUP</code>s</li>
 <li>media-type</li>
-<li>AOB (e.g. Use Cases)</li>
+<li>AOB
+<ul>
+<li>e.g. Use Cases: Time Series, Normalized</li>
+</ul></li>
 </ul>
 <div class="fragment">
 <p>Our proposal:</p>
@@ -150,7 +163,7 @@ document.onkeydown = function(evt) {
 <li class="fragment">AOB: A 3.0 version will be required anyway for harmonization with Cube DM.</li>
 </ul>
 </div>
-</section>
+</section></section>
 <section><section id="resources" class="titleslide slide level1"><h1>Resources</h1></section><section id="spectral-dm-2.0-pr" class="slide level2">
 <h1>Spectral DM 2.0 PR</h1>
 <iframe height="550px" width="800px" src="http://docs.google.com/gview?url=http://ivoa.net/documents/SpectralDM/20150528/PR-SpectralDM-2.0-20150528.pdf&amp;embedded=true">

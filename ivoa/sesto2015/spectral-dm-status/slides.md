@@ -1,6 +1,20 @@
-% Spectral DM 2.0 reference implementations
+% Spectral DM 2.0 status
 % Omar Laurino
 % June 14, 2015
+
+# Specification
+
+## TCG Review
+TCG Review ended Sept 15, 2015
+
+- Major concerns:
+    - lack of reference implementations
+    - many comments from Registry WG
+- Document editor responded and provided one RI
+- GAVO provided RI
+- More comments/issues after latest PR changes
+
+# Reference implementations
 
 ## SpecLib (Java)
 >- Defines a generic meta-model for old-style UTYPEs-based models
@@ -12,7 +26,7 @@
 ## GAVO serializations
 >- Flash/Heros observed spectra
 - Theoretical spectra
-- Use `spec2` prefix
+- Uses `spec2` prefix
 - Different interpretation of `GROUP`s
     - Ambiguity in the spec?
 
@@ -39,7 +53,8 @@ Small implementation issues left to be resolved off-line.
 ## Issues
 >- `UTYPE` Prefix: 'spec' or 'spec2' + `GROUP`s
 - media-type
-- AOB (e.g. Use Cases)
+- AOB
+    - e.g. Use Cases: Time Series, Normalized
 
 . . .
 
