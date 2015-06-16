@@ -84,7 +84,7 @@ document.onkeydown = function(evt) {
 <body>
 
 <div class="reveal">
-<header class="hleft"><img src="http://library.cfa.harvard.edu/files/wolbach/files/cfalogort.png"></header>
+<header class="hleft"><img style="width:200px;" src="usvoa.png"></header>
 <header class="hbottom">Omar Laurino - VODML - Status update - June, 18 2015 - Sesto</header>
 
 <div id="light"></div>
@@ -139,18 +139,7 @@ document.onkeydown = function(evt) {
 </ul>
 </section><section id="data-model-descriptions" class="slide level2">
 <h1>Data Model descriptions</h1>
-<pre class="xml"><code>&lt;primitiveType&gt;
- &lt;vodml-id&gt;quantity/Unit&lt;/vodml-id&gt;
- &lt;name&gt;Unit&lt;/name&gt;
- &lt;description&gt;
- Must conform to definition of unit in VOUnit spec.
- &lt;/description&gt;
- &lt;extends&gt;
- &lt;utype&gt;ivoa:string&lt;/utype&gt;
- &lt;/extends&gt;
-&lt;/primitiveType&gt;
-
-&lt;dataType&gt;
+<pre class="xml"><code>&lt;dataType&gt;
  &lt;vodml-id&gt;source.SkyCoordinate&lt;/vodml-id&gt;
  &lt;name&gt;SkyCoordinate&lt;/name&gt;
  &lt;description&gt;...&lt;/description&gt;
@@ -188,34 +177,31 @@ document.onkeydown = function(evt) {
 </section><section id="updates" class="slide level2">
 <h1>Updates</h1>
 <ul>
-<li class="fragment">Nothing changed since Banff.</li>
-<li class="fragment">Normative part is basically unchanged since Heidelberg:</li>
-<li class="fragment"><code>utype</code> -&gt; <code>vodml-ref</code></li>
-<li class="fragment">Informative sections improved before Banff.</li>
-<li class="fragment">Implementation feedback is good.</li>
-<li class="fragment">Working on more XMI translation scripts.</li>
+<li>Normative part is basically unchanged since Heidelberg:</li>
+<li><code>utype</code> -&gt; <code>vodml-ref</code></li>
+<li>Informative sections improved before Banff.</li>
+<li>Nothing major changed since Banff.
+<ul>
+<li>Few minor <em>To Be Discussed</em> addressed.</li>
+</ul></li>
+<li>Implementation feedback is good: only one issue identified.</li>
+<li>Working on more XMI translation scripts.</li>
 </ul>
 <div class="fragment">
-<p>Document seems stable. Should be ready for Proposed Recommendation pending few minor <em>To Be Defined</em>.</p>
+<p>Document seems stable. Should be ready for Proposed Recommendation pending few TBDs.</p>
 </div>
-</section><section id="to-be-defined" class="slide level2">
-<h1>To Be Defined</h1>
+</section><section id="to-be-discussed" class="slide level2">
+<h1>To Be Discussed</h1>
 <ul>
-<li class="fragment">Few minor TBDs left in the document:
+<li>Few minor TBDs left in the document:
 <ul>
-<li class="fragment">detailed list of authors</li>
-<li class="fragment">confirm or remove statement: <em>all VODML elements are from UML 2.4.1</em></li>
-<li class="fragment">prefix: globally unique or defined in serialization?</li>
-<li class="fragment">SKOSConcept concrete notation (URI?)</li>
-<li class="fragment">Constraint XML description (leave it for future version? PDL?)</li>
-<li class="fragment">HTML documentation MAY or SHOULD be created?</li>
-<li class="fragment">Suggestion on DM definitions</li>
-<li class="fragment">Other notable absences?</li>
-<li class="fragment">Concrete reference to <code>IVOA</code> model</li>
+<li>prefix: globally unique or defined in serialization?</li>
+<li>SKOSConcept/RDF/Enumeration</li>
+<li>subsets issues from implementation feedback</li>
 </ul></li>
-<li class="fragment">One TODO:
+<li>One TODO:
 <ul>
-<li class="fragment">reformat a figure</li>
+<li>reformat a figure</li>
 </ul></li>
 </ul>
 </section></section>
