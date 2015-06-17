@@ -3,10 +3,10 @@ reveal-root: https://cdn.rawgit.com/hakimel/reveal.js/3.1.0
 css-root: https://cdn.rawgit.com/olaurino/presentations/master/common
 logo: <img style="width:200px;" src="usvoa.png"> 
 venue: Sesto 
-background: http://upload.wikimedia.org/wikipedia/commons/c/c7/Marmolada_nelle_Dolomiti_%E2%80%93_CN.jpg 
-bg-height: 2508
-bg-width: 4288
-bg-vert: 20
+background: bg.jpg 
+bg-height: 2322
+bg-width: 4128
+bg-vert: 50
 bg-horiz: 50
 ...
 

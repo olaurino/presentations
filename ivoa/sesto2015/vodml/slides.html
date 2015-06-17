@@ -166,52 +166,138 @@ document.onkeydown = function(evt) {
    &lt;/datatype&gt;
    &lt;multiplicity&gt;1&lt;/multiplicity&gt;
  &lt;/attribute&gt;</code></pre>
-<div class="fragment">
+</section><section id="portable-data-model-references-1" class="slide level2">
+<h1>Portable Data Model references</h1>
 <p>Can be used in VOTable (pending VOTable discussion)</p>
 <pre><code>&lt;VODML&gt;
   &lt;ROLE&gt;src:source.SkyCoordinate.longitude&lt;/ROLE&gt;
 &lt;/VODML&gt;</code></pre>
-</div>
-</section><section id="meta-model" class="slide level2">
-<h1>Meta-Model</h1>
-</section><section id="updates" class="slide level2">
-<h1>Updates</h1>
+</section></section>
+<section><section id="updates" class="titleslide slide level1"><h1>Updates</h1></section><section id="section" class="slide level2">
+<h1></h1>
 <ul>
-<li>Normative part is basically unchanged since Heidelberg:</li>
+<li>Normative part is basically unchanged since Heidelberg:
+<ul>
 <li><code>utype</code> -&gt; <code>vodml-ref</code></li>
-<li>Informative sections improved before Banff.</li>
-<li>Nothing major changed since Banff.
-<ul>
-<li>Few minor <em>To Be Discussed</em> addressed.</li>
 </ul></li>
-<li>Implementation feedback is good: only one issue identified.</li>
-<li>Working on more XMI translation scripts.</li>
 </ul>
+<div class="fragment">
+<ul>
+<li class="fragment">Informative sections improved before Banff</li>
+<li class="fragment">Nothing major changed since Banff
+<ul>
+<li class="fragment">Few minor <em>To Be Discussed</em> addressed.</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li class="fragment">Implementation feedback is good: only one issue identified.</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li class="fragment">Working on more XMI translation scripts.</li>
+</ul>
+</div>
 <div class="fragment">
 <p>Document seems stable. Should be ready for Proposed Recommendation pending few TBDs.</p>
 </div>
 </section><section id="to-be-discussed" class="slide level2">
 <h1>To Be Discussed</h1>
 <ul>
-<li>Few minor TBDs left in the document:
+<li>Few TBDs left in the document:
 <ul>
+<li>&lt;&lt;subsets&gt;&gt; issues from implementation feedback</li>
 <li>prefix: globally unique or defined in serialization?</li>
 <li>SKOSConcept/RDF/Enumeration</li>
-<li>subsets issues from implementation feedback</li>
 </ul></li>
 <li>One TODO:
 <ul>
 <li>reformat a figure</li>
 </ul></li>
 </ul>
+</section><section id="subsets-property" class="slide level2">
+<h1>Subsets property</h1>
+<p>Implements UML concepts of <code>redefines</code> and <code>subsets</code></p>
+<ul>
+<li class="fragment"><code>subsets</code>: WG chairs are a subset of the IVOA members
+<ul>
+<li class="fragment">Common pattern in Relational Models</li>
+</ul></li>
+<li class="fragment"><code>redefines</code>: the SphericalError on a SphericalCoordinate is a subtype of a generic Error on a Coordinate
+<ul>
+<li class="fragment">Common pattern in Object Models</li>
+</ul></li>
+</ul>
+</section><section id="subsets-property-1" class="slide level2">
+<h1>Subsets property</h1>
+<p>STC2 uncovered issue with <code>subsets</code> property</p>
+<div class="fragment">
+<p>The subsetted property would redefine its VODML-ID, breaking inheritance, e.g.:</p>
+<pre><code>  &lt;ROLE&gt;stc:SphericalCoordinate.error&lt;/ROLE&gt;</code></pre>
+<p>vs</p>
+<pre><code>  &lt;ROLE&gt;stc:Coordinate.error&lt;/ROLE&gt;</code></pre>
+</div>
+<div class="fragment">
+<p>Fixed by making <code>subsets</code> an attribute of the super-type.</p>
+</div>
+</section></section>
+<section><section id="implementations" class="titleslide slide level1"><h1>Implementations</h1></section><section id="models" class="slide level2">
+<h1>Models</h1>
+<ul>
+<li>STC2</li>
+<li>Spectral DM 2.0</li>
+<li>Cube DM</li>
+</ul>
+<div class="fragment">
+<p>Formal meta-modeling rules make models more robust and interoperable. We need more tools for easily translate models to VODML/XML.</p>
+</div>
+</section><section id="software" class="slide level2">
+<h1>Software</h1>
+<ul>
+<li>volib/Python: Django-like Models in MVC
+<ul>
+<li>Demonstrates that VODML can be adapted to Object Model</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>VO Mapper/Web: map models to TAP services
+<ul>
+<li>Demonstrates that compliant annotations can be made without knowledge of the specs</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Validator/Java
+<ul>
+<li>Demonstrates that models can be validated by model-agnostic software</li>
+</ul></li>
+</ul>
+</div>
+</section><section id="software-1" class="slide level2">
+<h1>Software</h1>
+<ul>
+<li class="fragment">For serializations we need the Mapping Document to settle, however:
+<ul>
+<li class="fragment">prototypes of the current Mapping Document have been successful</li>
+<li class="fragment">plenty of pre-Banff prototypes</li>
+</ul></li>
+</ul>
 </section></section>
 <section><section id="discussion-items" class="titleslide slide level1"><h1>Discussion items</h1></section><section id="model-prefix" class="slide level2">
 <h1>Model Prefix</h1>
 <ul>
-<li class="fragment">Have them globally unique (e.g. <code>stc2</code>, <code>char</code>, <code>spec</code>)</li>
-<li class="fragment">Define them dynamically (a la XML namespace)</li>
+<li>Have them globally unique (e.g. <code>stc2</code>, <code>char</code>, <code>spec2</code>)</li>
 </ul>
-<p>Consensus seems to be that they are globally unique. Can we confirm this?</p>
+<p>or</p>
+<ul>
+<li>Define them dynamically (a la XML namespace)</li>
+</ul>
+<p>Consensus seems to be that they are globally unique.</p>
+<p>Can we confirm this?</p>
 <div class="fragment">
 <p>Should models (and prefixes) be registered?</p>
 </div>
@@ -222,7 +308,6 @@ document.onkeydown = function(evt) {
 <ul>
 <li>integral part of the model</li>
 <li>a change requires an update of the model</li>
-<li>clients can rely on prior knowledge</li>
 </ul></li>
 </ul>
 <div class="fragment">
@@ -230,16 +315,12 @@ document.onkeydown = function(evt) {
 <li>Vocabularies:
 <ul>
 <li>can be extended without updating the model</li>
-<li>clients cannot <em>completely</em> rely on prior knowledge</li>
 <li>VODML supports SKOS concepts, which are more flexible
 <ul>
 <li>e.g. relationships among concepts</li>
 </ul></li>
 </ul></li>
 </ul>
-</div>
-<div class="fragment">
-<p>VODML supports both Enumerations and SKOS concepts. The alternative is dropping enumerations in favor of <em>simple</em> vocabularies.</p>
 </div>
 </section></section>
 </div>
@@ -256,10 +337,10 @@ document.onkeydown = function(evt) {
     history: true,
     center: true,
 
-    parallaxBackgroundImage: 'http://upload.wikimedia.org/wikipedia/commons/c/c7/Marmolada_nelle_Dolomiti_%E2%80%93_CN.jpg',
-    parallaxBackgroundSize: '4288 2508',
+    parallaxBackgroundImage: 'bg.jpg',
+    parallaxBackgroundSize: '4128 2322',
     parallaxBackgroundHorizontal: 50,
-    parallaxBackgroundVertical: 20,
+    parallaxBackgroundVertical: 50,
 	
   // available themes are in /css/theme
       theme: Reveal.getQueryHash().theme || 'night', 
