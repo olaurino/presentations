@@ -2,10 +2,18 @@
 % Omar Laurino; Jamie Budynkiewicz
 % June 17, 2015
 
-# What is new
+# Released Iris v2.1 beta in May
+- transitioned from VAO to SAO support last October
+- plan to transition from beta in Sept to give time 
+for feedback from the community
+- New developer started this week that will work on 
+Iris upgrades
+
+# What is new in 2.1
 - It is now possible to integrate under fitted model components
 - Template models can now be combined with regular models
 - SEDs can be statistically combined
+- Iris has been repackaged
 
 #
 <iframe src="https://drive.google.com/a/cfa.harvard.edu/file/d/0BwbX0VxOVx-idW5QeEV5S29VZE0/preview" width="800" height="600"></iframe>
@@ -17,14 +25,17 @@
     - [SedStacker](https://github.com/jdubynk/sedstacker)
 - Sherpa and SedStacker are available on GitHub as standalone packages
 
-# Future
-- Iris developed at SAO on limited resources:
-    - Specview4Iris cannot be maintained
-    - Does not support high resolution spectra
-    - Looking for a new visualizer
-- Much of the functionality available on Python, but:
-    - VO compatibility layer is Java
-- Support new models:
-    - Spectral DM 2.0
-    - Cube DM
+# Future: Short List
+- More resources available through ASDC plug-in
+- Support Spectral DM 2.0
+- Document standalone Python API
 
+# Future: Long Term
+- Replace the visualizer:
+    - Specview4Iris cannot be maintained
+    - Support high resolution spectra
+- Support Cube DM
+
+# A KDD science case
+Courtesy of Raffaele D'Abrusco <!-- ' -->
+![](images/rd.png)
