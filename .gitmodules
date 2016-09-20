@@ -1,6 +1,3 @@
-[submodule "reveal.js"]
-	path = reveal.js
-	url = https://github.com/hakimel/reveal.js/
-[submodule "gclef-vo/reveal.js"]
-	path = gclef-vo/reveal.js
-	url = https://github.com/hakimel/reveal.js/
+[submodule "saturnine"]
+	path = saturnine
+	url = /export/working/presentations/../saturnine

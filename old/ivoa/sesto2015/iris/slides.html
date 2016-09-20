@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<title>Iris 2.1 beta</title>
+
+<meta name="description" content="Iris 2.1 beta">    
+
+  <meta name="author" content="Omar Laurino" />
+  <meta name="author" content="Jamie Budynkiewicz" />
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link rel="stylesheet" href="https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/css/reveal.css">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/css/theme/night.css" id="theme">
+
+
+<!-- For syntax highlighting -->
+  <link rel="stylesheet" href="https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/lib/css/zenburn.css">
+
+<!-- Local stylesheet -->
+  <link rel="stylesheet" href="https://cdn.rawgit.com/olaurino/presentations/master/common/style-override.css">
+  <link rel="stylesheet" href="style-override.css">
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<script>
+  document.write( '<link rel="stylesheet" href="https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/css/print/' +
+    ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + 
+    '.css" type="text/css" media="print">' );
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+$(document).mousemove(function(event) {
+		var xoff = -50;
+		var yoff = -50;
+		if ($('#light').hasClass('line')) {
+			xoff = -150;
+			yoff = -5;
+		}
+    $('#light').offset({
+        top: event.pageY + yoff,
+        left: event.pageX + xoff
+    });
+});
+
+document.onkeydown = function(evt) {
+    evt = evt || window.event;
+    if (evt.keyCode==65 || evt.keyCode==90) {
+        $('#light').toggle();
+		$('#light').css('cursor', 'none');
+    }
+
+	if (evt.keyCode==67) {
+		cursor = $('div.slides').css('cursor');
+		if (cursor == 'auto') {
+			cursor = 'none';
+		} else {
+			cursor = 'auto';
+		}
+		$('div.slides').css('cursor', cursor);
+	}
+
+	if (evt.keyCode==65) {
+		$('#light').addClass('circle').removeClass('line');
+	}
+
+	if (evt.keyCode==90) {
+		$('#light').addClass('line').removeClass('circle');
+	}
+
+	if (evt.keyCode==88) {
+		$('.hleft').toggle();
+	}
+};
+
+</script>
+
+<!--[if lt IE 9]>
+<script src="https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/lib/js/html5shiv.js"></script>
+<![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+<header class="hleft"><p><img style="width:200px" src="images/usvoa.png"> <br/> <img style="width:200px" src="images/asdc.png"/></p></header>
+<header class="hbottom">Omar Laurino - Iris 2.1 beta - June 17, 2015 - Sesto</header>
+
+<div id="light"></div>
+
+
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+
+<section data-state="title">
+<h1>Iris 2.1 beta</h1>
+<h3>Omar Laurino</h3><h3>Jamie Budynkiewicz</h3>
+<p>
+<h4>June 17, 2015</h4>
+</p>
+</section>  
+
+
+<section id="released-iris-v2.1-beta-in-may" class="slide level1">
+<h1>Released Iris v2.1 beta in May</h1>
+<ul>
+<li class="fragment">transitioned from VAO to SAO support last October</li>
+<li class="fragment">plan to transition from beta in Sept to give time for feedback from the community</li>
+<li class="fragment">New developer started this week that will work on Iris upgrades</li>
+</ul>
+</section>
+<section id="what-is-new-in-2.1" class="slide level1">
+<h1>What is new in 2.1</h1>
+<ul>
+<li class="fragment">It is now possible to integrate under fitted model components</li>
+<li class="fragment">Template models can now be combined with regular models</li>
+<li class="fragment">SEDs can be statistically combined</li>
+<li class="fragment">Iris has been repackaged</li>
+</ul>
+</section>
+<section id="section" class="slide level1">
+<h1></h1>
+<iframe src="https://drive.google.com/a/cfa.harvard.edu/file/d/0BwbX0VxOVx-idW5QeEV5S29VZE0/preview" width="800" height="600">
+</iframe>
+</section>
+<section id="packaging" class="slide level1">
+<h1>Packaging</h1>
+<ul>
+<li class="fragment">Iris is now available through the <a href="&quot;http://conda.pydata.org/docs/&quot;">conda</a> package manager</li>
+<li class="fragment">Java GUI ⇄ SAMP ⇄ Python backends:
+<ul>
+<li class="fragment"><a href="https://github.com/sherpa/sherpa">Sherpa</a> for modeling</li>
+<li class="fragment"><a href="https://github.com/jdubynk/sedstacker">SedStacker</a></li>
+</ul></li>
+<li class="fragment">Sherpa and SedStacker are available on GitHub as standalone packages</li>
+</ul>
+</section>
+<section id="future-short-list" class="slide level1">
+<h1>Future: Short List</h1>
+<ul>
+<li class="fragment">More resources available through ASDC plug-in</li>
+<li class="fragment">Support Spectral DM 2.0</li>
+<li class="fragment">Document standalone Python API</li>
+</ul>
+</section>
+<section id="future-long-term" class="slide level1">
+<h1>Future: Long Term</h1>
+<ul>
+<li class="fragment">Replace the visualizer:
+<ul>
+<li class="fragment">Specview4Iris cannot be maintained</li>
+<li class="fragment">Support high resolution spectra</li>
+</ul></li>
+<li class="fragment">Support Cube DM</li>
+</ul>
+</section>
+<section id="a-kdd-science-case" class="slide level1">
+<h1>A KDD science case</h1>
+<p>Courtesy of Raffaele D'Abrusco <!-- ' --> <img src="images/rd.png" alt="" /></p>
+</section>
+</div>
+
+<script src="https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/lib/js/head.min.js"></script>
+<script src="https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/js/reveal.js"></script>
+
+<script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+
+    parallaxBackgroundImage: 'http://upload.wikimedia.org/wikipedia/commons/c/c7/Marmolada_nelle_Dolomiti_%E2%80%93_CN.jpg',
+    parallaxBackgroundSize: '4288 2508',
+    parallaxBackgroundHorizontal: 50,
+    parallaxBackgroundVertical: 20,
+	
+  // available themes are in /css/theme
+      theme: Reveal.getQueryHash().theme || 'night', 
+  
+  // default/cube/page/concave/zoom/linear/fade/none
+      transition: Reveal.getQueryHash().transition || 'default',
+  
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+    // { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+  ]
+  });
+
+</script>
+
+</body>
+</html>

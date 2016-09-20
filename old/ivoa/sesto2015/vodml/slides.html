@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<title>VODML - Status update</title>
+
+<meta name="description" content="VODML - Status update">    
+
+  <meta name="author" content="Omar Laurino" />
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link rel="stylesheet" href="https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/css/reveal.css">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/css/theme/night.css" id="theme">
+
+
+<!-- For syntax highlighting -->
+  <link rel="stylesheet" href="https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/lib/css/zenburn.css">
+
+<!-- Local stylesheet -->
+  <link rel="stylesheet" href="https://cdn.rawgit.com/olaurino/presentations/master/common/style-override.css">
+  <link rel="stylesheet" href="style-override.css">
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<script>
+  document.write( '<link rel="stylesheet" href="https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/css/print/' +
+    ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + 
+    '.css" type="text/css" media="print">' );
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+$(document).mousemove(function(event) {
+		var xoff = -50;
+		var yoff = -50;
+		if ($('#light').hasClass('line')) {
+			xoff = -150;
+			yoff = -5;
+		}
+    $('#light').offset({
+        top: event.pageY + yoff,
+        left: event.pageX + xoff
+    });
+});
+
+document.onkeydown = function(evt) {
+    evt = evt || window.event;
+
+	if (evt.keyCode==67) {
+		cursor = $('div.slides').css('cursor');
+		if (cursor == 'auto') {
+			cursor = 'none';
+		} else {
+			cursor = 'auto';
+		}
+		$('div.slides').css('cursor', cursor);
+	}
+
+	if (evt.keyCode==65) {
+		$('#light').addClass('circle').removeClass('line');
+	}
+
+	if (evt.keyCode==90) {
+		$('#light').addClass('line').removeClass('circle');
+	}
+
+    if (evt.keyCode==65 || evt.keyCode==90) {
+        $('#light').toggle();
+		$('#light').css('cursor', 'none');
+    }
+};
+
+</script>
+
+<!--[if lt IE 9]>
+<script src="https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/lib/js/html5shiv.js"></script>
+<![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+<header class="hleft"><img style="width:200px;" src="usvoa.png"></header>
+<header class="hbottom">Omar Laurino - VODML - Status update - June, 18 2015 - Sesto</header>
+
+<div id="light"></div>
+
+
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+
+<section data-state="title">
+<h1>VODML - Status update</h1>
+<h3>Omar Laurino</h3>
+<p>
+<h4>June, 18 2015</h4>
+</p>
+</section>  
+
+
+<section><section id="specification" class="titleslide slide level1"><h1>Specification</h1></section><section id="goals" class="slide level2">
+<h1>Goals</h1>
+<ul>
+<li>provide formal rules for data modeling in IVOA</li>
+<li>provide standard, machine-readable Data Model descriptions</li>
+<li>define Portable Data Model References</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>define primitives types (IVOA model)</li>
+</ul>
+</div>
+</section><section id="some-benefits" class="slide level2">
+<h1>Some benefits</h1>
+<p>From the Data Model WG charter:</p>
+<blockquote>
+<p>[The WG] provide[s] a <strong>framework for the description of metadata</strong> attached to observed or simulated data.</p>
+</blockquote>
+<div class="fragment">
+<blockquote>
+<p>[...] focuses on <strong>logical relationships between these metadata</strong>, examines how an astronomer wants to retrieve, process and interpret astronomical data, and <strong>provides an architecture</strong> to handle them.</p>
+</blockquote>
+</div>
+<div class="fragment">
+<blockquote>
+<p>[...] What is defined in this WG can then be <strong>re-used</strong> in the protocols defined <strong>by the DAL WG or in VO aware applications</strong>.</p>
+</blockquote>
+</div>
+</section><section id="formal-data-modeling-rules" class="slide level2">
+<h1>Formal Data Modeling Rules</h1>
+<ul>
+<li>Based on UML Class Diagram meta-model</li>
+<li>Relational Model, server-friendly</li>
+<li>Object Model, client-friendly</li>
+</ul>
+</section><section id="data-model-descriptions" class="slide level2">
+<h1>Data Model descriptions</h1>
+<pre class="xml"><code>&lt;dataType&gt;
+ &lt;vodml-id&gt;source.SkyCoordinate&lt;/vodml-id&gt;
+ &lt;name&gt;SkyCoordinate&lt;/name&gt;
+ &lt;description&gt;...&lt;/description&gt;
+ &lt;attribute&gt;
+   &lt;vodml-id&gt;source.SkyCoordinate.longitude&lt;/vodml-id&gt;
+   &lt;name&gt;longitude&lt;/name&gt;
+   &lt;description&gt;...&lt;/description&gt;
+   &lt;datatype&gt;
+     &lt;vodml-ref&gt;ivoa:quantity.RealQuantity&lt;/vodml-ref&gt;
+   &lt;/datatype&gt;
+   &lt;multiplicity&gt;1&lt;/multiplicity&gt;
+ &lt;/attribute&gt;
+...</code></pre>
+</section><section id="portable-data-model-references" class="slide level2">
+<h1>Portable Data Model references</h1>
+<p><code>src:source.SkyCoordinate.longitude</code></p>
+<p><em>points to</em></p>
+<pre><code> &lt;attribute&gt;
+   &lt;vodml-id&gt;source.SkyCoordinate.longitude&lt;/vodml-id&gt;
+   &lt;name&gt;longitude&lt;/name&gt;
+   &lt;description&gt;...&lt;/description&gt;
+   &lt;datatype&gt;
+     &lt;vodml-ref&gt;ivoa:quantity.RealQuantity&lt;/vodml-ref&gt;
+   &lt;/datatype&gt;
+   &lt;multiplicity&gt;1&lt;/multiplicity&gt;
+ &lt;/attribute&gt;</code></pre>
+</section><section id="portable-data-model-references-1" class="slide level2">
+<h1>Portable Data Model references</h1>
+<p>Can be used in VOTable (pending VOTable discussion)</p>
+<pre><code>&lt;VODML&gt;
+  &lt;ROLE&gt;src:source.SkyCoordinate.longitude&lt;/ROLE&gt;
+&lt;/VODML&gt;</code></pre>
+</section></section>
+<section><section id="updates" class="titleslide slide level1"><h1>Updates</h1></section><section id="section" class="slide level2">
+<h1></h1>
+<ul>
+<li>Normative part is basically unchanged since Heidelberg:
+<ul>
+<li><code>utype</code> -&gt; <code>vodml-ref</code></li>
+</ul></li>
+</ul>
+<div class="fragment">
+<ul>
+<li class="fragment">Informative sections improved before Banff</li>
+<li class="fragment">Nothing major changed since Banff
+<ul>
+<li class="fragment">Few minor <em>To Be Discussed</em> addressed.</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li class="fragment">Implementation feedback is good: only one issue identified.</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li class="fragment">Working on more XMI translation scripts.</li>
+</ul>
+</div>
+<div class="fragment">
+<p>Document seems stable. Should be ready for Proposed Recommendation pending few TBDs.</p>
+</div>
+</section><section id="to-be-discussed" class="slide level2">
+<h1>To Be Discussed</h1>
+<ul>
+<li>Few TBDs left in the document:
+<ul>
+<li>&lt;&lt;subsets&gt;&gt; issues from implementation feedback</li>
+<li>prefix: globally unique or defined in serialization?</li>
+<li>SKOSConcept/RDF/Enumeration</li>
+</ul></li>
+<li>One TODO:
+<ul>
+<li>reformat a figure</li>
+</ul></li>
+</ul>
+</section><section id="subsets-property" class="slide level2">
+<h1>Subsets property</h1>
+<p>Implements UML concepts of <code>redefines</code> and <code>subsets</code></p>
+<ul>
+<li class="fragment"><code>subsets</code>: WG chairs are a subset of the IVOA members
+<ul>
+<li class="fragment">Common pattern in Relational Models</li>
+</ul></li>
+<li class="fragment"><code>redefines</code>: the SphericalError on a SphericalCoordinate is a subtype of a generic Error on a Coordinate
+<ul>
+<li class="fragment">Common pattern in Object Models</li>
+</ul></li>
+</ul>
+</section><section id="subsets-property-1" class="slide level2">
+<h1>Subsets property</h1>
+<p>STC2 uncovered issue with <code>subsets</code> property</p>
+<div class="fragment">
+<p>The subsetted property would redefine its VODML-ID, breaking inheritance, e.g.:</p>
+<pre><code>  &lt;ROLE&gt;stc:SphericalCoordinate.error&lt;/ROLE&gt;</code></pre>
+<p>vs</p>
+<pre><code>  &lt;ROLE&gt;stc:Coordinate.error&lt;/ROLE&gt;</code></pre>
+</div>
+<div class="fragment">
+<p>Fixed by making <code>subsets</code> an attribute of the super-type.</p>
+</div>
+</section></section>
+<section><section id="implementations" class="titleslide slide level1"><h1>Implementations</h1></section><section id="models" class="slide level2">
+<h1>Models</h1>
+<ul>
+<li>STC2</li>
+<li>Spectral DM 2.0</li>
+<li>Cube DM</li>
+</ul>
+<div class="fragment">
+<p>Formal meta-modeling rules make models more robust and interoperable. We need more tools for easily translate models to VODML/XML.</p>
+</div>
+</section><section id="software" class="slide level2">
+<h1>Software</h1>
+<ul>
+<li>volib/Python: Django-like Models in MVC
+<ul>
+<li>Demonstrates that VODML can be adapted to Object Model</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>VO Mapper/Web: map models to TAP services
+<ul>
+<li>Demonstrates that compliant annotations can be made without knowledge of the specs</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Validator/Java
+<ul>
+<li>Demonstrates that models can be validated by model-agnostic software</li>
+</ul></li>
+</ul>
+</div>
+</section><section id="software-1" class="slide level2">
+<h1>Software</h1>
+<ul>
+<li class="fragment">For serializations we need the Mapping Document to settle, however:
+<ul>
+<li class="fragment">prototypes of the current Mapping Document have been successful</li>
+<li class="fragment">plenty of pre-Banff prototypes</li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="discussion-items" class="titleslide slide level1"><h1>Discussion items</h1></section><section id="model-prefix" class="slide level2">
+<h1>Model Prefix</h1>
+<ul>
+<li>Have them globally unique (e.g. <code>stc2</code>, <code>char</code>, <code>spec2</code>)</li>
+</ul>
+<p>or</p>
+<ul>
+<li>Define them dynamically (a la XML namespace)</li>
+</ul>
+<p>Consensus seems to be that they are globally unique.</p>
+<p>Can we confirm this?</p>
+<div class="fragment">
+<p>Should models (and prefixes) be registered?</p>
+</div>
+</section><section id="enumerations-vs-vocabularies" class="slide level2">
+<h1>Enumerations vs Vocabularies</h1>
+<ul>
+<li>Enumerations:
+<ul>
+<li>integral part of the model</li>
+<li>a change requires an update of the model</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Vocabularies:
+<ul>
+<li>can be extended without updating the model</li>
+<li>VODML supports SKOS concepts, which are more flexible
+<ul>
+<li>e.g. relationships among concepts</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</section></section>
+</div>
+
+<script src="https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/lib/js/head.min.js"></script>
+<script src="https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/js/reveal.js"></script>
+
+<script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+
+    parallaxBackgroundImage: 'bg.jpg',
+    parallaxBackgroundSize: '4128 2322',
+    parallaxBackgroundHorizontal: 50,
+    parallaxBackgroundVertical: 50,
+	
+  // available themes are in /css/theme
+      theme: Reveal.getQueryHash().theme || 'night', 
+  
+  // default/cube/page/concave/zoom/linear/fade/none
+      transition: Reveal.getQueryHash().transition || 'default',
+  
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+    // { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.1.0/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+  ]
+  });
+
+</script>
+
+</body>
+</html>

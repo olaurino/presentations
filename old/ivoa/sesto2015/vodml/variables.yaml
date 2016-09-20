@@ -1,0 +1,12 @@
+---
+reveal-root: https://cdn.rawgit.com/hakimel/reveal.js/3.1.0 
+css-root: https://cdn.rawgit.com/olaurino/presentations/master/common
+logo: <img style="width:200px;" src="usvoa.png"> 
+venue: Sesto 
+background: bg.jpg 
+bg-height: 2322
+bg-width: 4128
+bg-vert: 50
+bg-horiz: 50
+...
+
