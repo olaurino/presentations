@@ -1,0 +1,19 @@
+---
+author:
+  - Omar Laurino
+  - and the Sherpa team
+title: |
+  Sherpa, Python, and Astronomy\
+  A successful co-evolution
+short-title: Sherpa, Python, Astronomy coevolution
+date: October 19th, 2016
+venue: ADASS XXVI Trieste
+css: custom.css
+logo: |
+  <img src="../images/cxcheaderlogo.png"/>\
+  [![Binder](http://mybinder.org/badge.svg)](http://mybinder.org:/repo/olaurino/sherpa-standalone-notebooks)
+#transition: concave
+background: ../unita.jpg
+bg-width: 1600
+bg-height: 900
+...

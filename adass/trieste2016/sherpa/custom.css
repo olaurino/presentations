@@ -1,0 +1,277 @@
+div.left {
+  left:-20px;
+  top: 75px;
+  float: left;
+  text-align: center;
+  position: relative;
+  z-index:-10;
+  width:45%;
+}
+
+div.right {
+  right:20px;
+  top: 75px;
+  float: right;
+  text-align: center;
+  position: relative;
+  z-index:-10;
+  width:45%;
+}
+/*
+div.center p {
+  text-align: center;
+}*/
+
+.reveal pre code {
+  background-color: rgba(0, 0, 0, 0.3);
+  font-size: 1.0em;
+}
+
+section.left p {
+  text-align: left;
+}
+
+div.right p {
+  text-align: right;
+}
+
+.slides {
+	cursor: default;
+}
+
+.reveal .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@-webkit-keyframes pulse {
+ 0% {
+ -webkit-transform: scale(1, 1);
+}
+ 50% {
+ -webkit-transform: scale(1.1, 1.1);
+}
+ 100% {
+ -webkit-transform: scale(1, 1);
+};
+}
+
+@keyframes pulse {
+ 0% {
+ transform: scale(1, 1);
+}
+ 50% {
+ transform: scale(1.1, 1.1);
+}
+ 100% {
+transform: scale(1, 1);
+};
+}
+
+.reveal section img {
+  max-height: 80%;
+  max-width: 80%;
+  border: 0px;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.pulsing {
+	-webkit-animation: pulse 5s linear infinite;
+	animation: pulse 5s linear infinite;
+}
+
+.reveal section img.smaller {
+  max-height: 65%;
+  max-width: 65%;
+}
+
+.reveal section img.contrast {
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.reveal h1 {
+  font-size: 1.6em;
+}
+
+img#sc {
+  display: block;
+  position: absolute;
+  top: -200px;
+  left: 35px;
+  height: 4em;
+}
+
+img#astropy {
+  display: block;
+  position: absolute;
+  top: 150px;
+  left: 400px;
+  height: 4em;
+}
+
+img#ipynb {
+  display: block;
+  position: absolute;
+  top: -150px;
+  left: 400px;
+  height: 2em;
+}
+
+img#beaker {
+  display: block;
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  width: 200px;
+  max-width: none;
+  max-height: none;
+}
+
+.reveal div .jigsaw {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  width: 550px;
+  background-image: url("images/jigsaw.svg");
+  background-size: cover;
+  position: absolute;
+  top: 25%;
+  left: 20%;
+  -ms-transform: rotate(var(--rotate)) translate(var(--translate)); /* IE 9 */
+  -webkit-transform: rotate(var(--rotate)) translate(var(--translate)); /* Safari */
+  transform: rotate(var(--rotate)) translate(var(--translate));
+}
+
+.reveal #portability {
+  --rotate: 20deg;
+  --translate: 10px, 10px;
+}
+
+.reveal #performance {
+  --rotate: -31deg;
+  --translate: 100px, 100px;
+}
+
+.reveal #python {
+  --rotate: -14deg;
+  --translate: -10px, 5px;
+}
+
+.reveal #ciao {
+  --rotate: 7deg;
+  --translate: 20px, -50px;
+}
+
+.reveal #style {
+  --rotate: -20deg;
+  --translate: -30px, 75px;
+}
+
+.reveal #dependencies {
+  --rotate: 21deg;
+  --translate: 0px, 0px;
+}
+
+.reveal .jigsaw > span {
+  font-size: 1.5em;
+  text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -2px 0px rgba(0,0,0,.7);
+}
+
+.reveal div #filler {
+  display: block;
+  width: 800px;
+  height: 600px;
+}
+
+@keyframes balanceLeft {
+ 0% {
+ transform: translate(0px, 0px);
+}
+ 10% {
+ transform: translate(0px, 20px);
+}
+ 20% {
+ transform: translate(0px, 10px);
+}
+ 50% {
+ transform: translate(0px, 100px);
+}
+ 70% {
+ transform: translate(0px, 30px);
+}
+ 100% {
+transform: translate(0px, 0px);
+};
+}
+
+@keyframes balanceRight {
+ 0% {
+ transform: translate(0px, 100px);
+}
+ 10% {
+ transform: translate(0px, 80px);
+}
+ 20% {
+ transform: translate(0px, 90px);
+}
+ 50% {
+ transform: translate(0px, 0px);
+}
+ 70% {
+ transform: translate(0px, 70px);
+}
+ 100% {
+transform: translate(0px, 100px);
+};
+}
+
+.reveal #scale {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  width: 600px;
+  position: absolute;
+  left: 20%;
+}
+
+.reveal #infrastructure {
+  -ms-animation: balanceLeft 10s linear infinite;
+	-webkit-animation: balanceLeft 10s linear infinite;
+	animation: balanceLeft 10s linear infinite;
+}
+
+.reveal #science {
+  -ms-animation: balanceRight 10s linear infinite;
+	-webkit-animation: balanceRight 10s linear infinite;
+	animation: balanceRight 10s linear infinite;
+}
+
+.reveal div .scale {
+  display: block;
+  height: 40px;
+  width: 200px;
+  border-bottom: 2px solid #fea;
+  padding-bottom: 5px;
+}
+
+.reveal #vs {
+  display: block;
+  position: relative;
+  top: 50%;
+  border: 0px;
+}
+
+.reveal section img.white {
+  background-color: white;
+}
+
+.reveal section .left img {
+  max-width: 90%;
+  max-height: 90%;
+}

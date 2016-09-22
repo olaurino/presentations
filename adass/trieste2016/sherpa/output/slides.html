@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<title>Sherpa, Python, Astronomy coevolution - October 19th, 2016 - 0.1-15-g325beef</title>
+
+<meta name="description" content="<p>Sherpa, Python, and Astronomy<br />
+A successful co-evolution</p>">
+
+  <meta name="author" content="Omar Laurino" />
+  <meta name="author" content="and the Sherpa team" />
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link rel="stylesheet" href="https://cdn.rawgit.com/hakimel/reveal.js/3.3.0/css/reveal.css">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/hakimel/reveal.js/3.3.0/css/theme/night.css" id="theme">
+
+
+<!-- For syntax highlighting -->
+  <link rel="stylesheet" href="https://cdn.rawgit.com/hakimel/reveal.js/3.3.0/lib/css/zenburn.css">
+
+<!-- Local stylesheet -->
+  <link rel="stylesheet" href="https://cdn.rawgit.com/olaurino/saturnine/master/style-override.css">
+  <link rel="stylesheet" href="style-override.css">
+
+  <link rel="stylesheet" href="../custom.css">
+
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<script>
+  document.write( '<link rel="stylesheet" href="https://cdn.rawgit.com/hakimel/reveal.js/3.3.0/css/print/' +
+    ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) +
+    '.css" type="text/css" media="print">' );
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+$(document).mousemove(function(event) {
+		var xoff = -50;
+		var yoff = -50;
+		if ($('#light').hasClass('line')) {
+			xoff = -150;
+			yoff = -5;
+		}
+    $('#light').offset({
+        top: event.pageY + yoff,
+        left: event.pageX + xoff
+    });
+});
+
+document.onkeydown = function(evt) {
+    evt = evt || window.event;
+
+    if (evt.keyCode==65 || evt.keyCode==90) {
+        $('#light').toggle();
+		$('#light').css('cursor', 'none');
+    }
+
+  if (evt.keyCode==65) {
+    $('#light').addClass('circle').removeClass('line');
+  }
+
+	if (evt.keyCode==90) {
+		$('#light').addClass('line').removeClass('circle');
+	}
+
+	if ($('#light').is(":visible")) {
+		$('.slides').css('cursor', 'none')
+	} else {
+		$('.slides').css('cursor', 'default')
+	}
+
+  if (evt.keyCode==88) {
+    $('#logo').toggle();
+  }
+
+};
+
+</script>
+
+<!--[if lt IE 9]>
+<script src="https://cdn.rawgit.com/hakimel/reveal.js/3.3.0/lib/js/html5shiv.js"></script>
+<![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+<header class="hleft"><div id="logo"><p><img src="../images/cxcheaderlogo.png"/><br />
+<a href="http://mybinder.org:/repo/olaurino/sherpa-standalone-notebooks"><img src="http://mybinder.org/badge.svg" alt="Binder" /></a></p></div></header>
+<header class="hbottom">Omar Laurino - Sherpa, Python, Astronomy coevolution - ADASS XXVI Trieste </header>
+
+<div id="light"></div>
+
+
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+
+<section data-state="title">
+<h1><p>Sherpa, Python, and Astronomy<br />
+A successful co-evolution</p></h1>
+<h3>Omar Laurino</h3><h3>and the Sherpa team</h3>
+<p>
+<h4>October 19th, 2016</h4>
+</p>
+</section>
+
+
+<section><section id="sherpa" class="titleslide slide level1"><h1>Sherpa</h1></section><section id="section" class="slide level2 left">
+<h1></h1>
+<figure>
+<img src="../images/chandra.png" alt="Chandra X-Ray Observatory, July 1999" /><figcaption>Chandra X-Ray Observatory, July 1999</figcaption>
+</figure>
+</section><section id="sherpa-features" class="slide level2 left">
+<h1>Sherpa Features</h1>
+<div class="container">
+<div class="left">
+<figure>
+<img src="../images/fit.gif" alt="Fitting a Spectrum" /><figcaption>Fitting a Spectrum</figcaption>
+</figure>
+</div>
+<div class="right">
+<p>Fit <strong>N-D</strong> data sets in the Poisson/Gaussian regime, on <strong>Linux</strong> and <strong>OS X</strong></p>
+</div>
+</div>
+</section><section id="sherpa-features-1" class="slide level2 left">
+<h1>Sherpa Features</h1>
+<div class="container">
+<div class="left">
+<figure>
+<img src="../images/user_model.png" alt="A Python Function User Model" /><figcaption>A Python Function User Model</figcaption>
+</figure>
+</div>
+<div class="right">
+<p>Build complex <strong>model expressions</strong>, including instrument response and your own <strong>Python functions</strong></p>
+</div>
+</div>
+</section><section id="sherpa-features-2" class="slide level2 left">
+<h1>Sherpa Features</h1>
+<div class="container">
+<div class="left">
+<figure>
+<img src="../images/proj.png" alt="2D Projection of the Parameter Space" /><figcaption>2D Projection of the Parameter Space</figcaption>
+</figure>
+</div>
+<div class="right">
+<p>Calculate <strong>confidence levels</strong> and <strong>visualize parameter space</strong></p>
+</div>
+</div>
+</section><section id="sherpa-features-3" class="slide level2 left">
+<h1>Sherpa Features</h1>
+<div class="container">
+<div class="left">
+<figure>
+<img src="../images/optimizations.png" alt="Comparison of Optimization Methods" /><figcaption>Comparison of Optimization Methods</figcaption>
+</figure>
+</div>
+<div class="right">
+<p>Choose a <strong>robust optimization method</strong> for the fit:</p>
+<p>Levenberg-Marquardt<br />
+Nelder-Mead Simplex<br />
+Differential Evolution</p>
+</div>
+</div>
+</section><section id="sherpa-features-4" class="slide level2 left">
+<h1>Sherpa Features</h1>
+<div class="container">
+<div class="left">
+<figure>
+<img src="../images/mcmc.png" alt="MCMC vs 2D Projection" /><figcaption>MCMC vs 2D Projection</figcaption>
+</figure>
+</div>
+<div class="right">
+<p>Perform <strong>Bayesian analysis</strong> using the <strong>Markov Chain Monte Carlo</strong></p>
+</div>
+</div>
+</section><section id="sherpa-features-5" class="slide level2 left">
+<h1>Sherpa Features</h1>
+<div class="container">
+<div class="left">
+<figure>
+<img src="../images/triangle.png" alt="Awesome Custom Analysis" /><figcaption>Awesome Custom Analysis</figcaption>
+</figure>
+</div>
+<div class="right">
+<p>Use <strong>Python</strong> to create complex analysis tasks and <strong>extend</strong> the built-in functionality.</p>
+</div>
+</div>
+</section><section id="sherpa-from-ciao-to-standalone" class="slide level2">
+<h1>Sherpa: from CIAO to Standalone</h1>
+<figure>
+<img src="../images/CiaoVersions.svg" alt="Chandra Interactive Analysis of Observations" class="smaller" /><figcaption><strong>C</strong>handra <strong>I</strong>nteractive <strong>A</strong>nalysis of <strong>O</strong>bservations</figcaption>
+</figure>
+</section></section>
+<section><section id="how-the-landscape-has-changed" class="titleslide slide level1"><h1>How the Landscape has changed</h1></section><section id="software-development" class="slide level2">
+<h1>Software Development</h1>
+<figure>
+<img src="../images/development-paradigms.svg" />
+</figure>
+</section><section id="software-development-1" class="slide level2">
+<h1>Software Development</h1>
+<figure>
+<img src="../images/TrunkGitHubFlow.svg" />
+</figure>
+</section><section id="new-tools" class="slide level2 left">
+<h1>New Tools</h1>
+<div class="container">
+<div class="left">
+<figure>
+<img src="../images/DistributedVC.png" alt="Distributed Version Control git, GitHub, GitLab, Mercurial, BitBucket" /><figcaption><strong>Distributed Version Control</strong><br />
+git, GitHub, GitLab,<br />
+Mercurial, BitBucket</figcaption>
+</figure>
+</div>
+<div class="right">
+<p><strong>Automated Quality Assurance</strong></p>
+<p>Continuous Integration<br />
+<a href="https://travis-ci.org">Travis CI</a> &amp; Co.</p>
+<p>Coverage Analysis<br />
+<a href="https://coveralls.io/">Coveralls</a> &amp; Co.</p>
+<p>Static Code Analysis<br />
+<a href="https://codeclimate.com/">Code Climate</a> &amp; Co.</p>
+</div>
+</div>
+</section><section id="new-tools-1" class="slide level2 left">
+<h1>New Tools</h1>
+<figure>
+<img src="../images/CodeReview.png" alt="Tool-Assisted Lightweight Code Reviews" /><figcaption>Tool-Assisted Lightweight <strong>Code Reviews</strong></figcaption>
+</figure>
+</section><section id="new-tools-2" class="slide level2">
+<h1>New Tools</h1>
+<div class="container">
+<div class="left">
+<figure>
+<img src="../images/anaconda.png" alt="Packaging and Portability" class="contrast" /><figcaption><strong>Packaging</strong> and <strong>Portability</strong></figcaption>
+</figure>
+</div>
+<div class="right">
+<figure>
+<img src="../images/docker-vagrant.png" alt="Automation and Reproducibility" class="contrast" /><figcaption><strong>Automation</strong> and <strong>Reproducibility</strong></figcaption>
+</figure>
+</div>
+</div>
+</section><section id="astronomical-software-development" class="slide level2 left">
+<h1>Astronomical Software Development</h1>
+<div class="fragment">
+<figure>
+<img src="../images/sc.png" id="sc" class="contrast" />
+</figure>
+</div>
+<div class="fragment">
+<figure>
+<img src="../images/astropy-logo.png" id="astropy" class="contrast" />
+</figure>
+</div>
+<div class="fragment">
+<figure>
+<img src="../images/ipynb.png" id="ipynb" class="contrast" />
+</figure>
+</div>
+<div class="fragment">
+<figure>
+<img src="../images/mybinder.org.PNG" id="beaker" />
+</figure>
+</div>
+</section></section>
+<section><section id="modernizing-sherpa" class="titleslide slide level1"><h1>Modernizing Sherpa</h1></section><section id="challenges" class="slide level2">
+<h1>Challenges</h1>
+<p><strong>UI</strong> vs <strong>API</strong> design and documentation</p>
+<p>Some users prefer:</p>
+<pre class="bash"><code>load_data &#39;3c273.pi&#39;
+fit</code></pre>
+<pre><code>IOError: [Errno 2] No such file or directory: &#39;3c273.pi&#39;</code></pre>
+</section><section id="challenges-1" class="slide level2">
+<h1>Challenges</h1>
+<p>Other Users (and all Developers) prefer:</p>
+<pre class="python"><code>from sherpa.astro.ui.utils import Session
+s = Session()
+s.load_data(input)
+s.fit()</code></pre>
+<pre><code>...
+/soft/ciao-4.8/lib/python2.7/site-packages/sherpa/utils/__init__.pyc in is_binary_file(filename)
+   1132     1024 bytes of the file.
+   1133     &quot;&quot;&quot;
+-&gt; 1134     fd = open(filename, &#39;r&#39;)
+   1135     lines = fd.readlines(1024)
+   1136     fd.close()
+
+IOError: [Errno 2] No such file or directory: &#39;3c273.pi&#39;
+</code></pre>
+</section><section id="challenges-2" class="slide level2">
+<h1>Challenges</h1>
+<div id="filler">
+
+</div>
+<div class="fragment">
+<div id="portability" class="jigsaw">
+<span>Portability</span>
+</div>
+</div>
+<div class="fragment">
+<div id="performance" class="jigsaw">
+<span>Performance</span>
+</div>
+</div>
+<div class="fragment">
+<div id="style" class="jigsaw">
+<span>Coding Style (<strong>PEP8</strong>)</span>
+</div>
+</div>
+<div class="fragment">
+<div id="dependencies" class="jigsaw">
+<span>Open-ended Dependencies</span>
+</div>
+</div>
+<div class="fragment">
+<div id="python" class="jigsaw">
+<span>Python 2 <strong>and</strong> 3</span>
+</div>
+</div>
+<div class="fragment">
+<div id="ciao" class="jigsaw">
+<span>CIAO vs Standalone</span>
+</div>
+</div>
+</section><section id="challenges-3" class="slide level2">
+<h1>Challenges</h1>
+<div id="scale">
+<div id="infrastructure" class="scale">
+Infrastructure
+</div>
+<div id="vs" class="scale">
+<strong>vs</strong>
+</div>
+<div id="science" class="scale">
+Science
+</div>
+</div>
+</section><section id="a-new-ecosystem" class="slide level2">
+<h1>A New Ecosystem</h1>
+<figure>
+<img src="../images/eco.svg" class="white smaller" />
+</figure>
+</section><section id="projects-using-sherpa" class="slide level2 left">
+<h1>Projects using Sherpa</h1>
+<figure>
+<img src="../images/projects.svg" class="white smaller" />
+</figure>
+</section><section id="multiwavelength-analysis-with-sherpa" class="slide level2">
+<h1>Multiwavelength Analysis with Sherpa</h1>
+<figure>
+<img src="../images/paper_title.png" />
+</figure>
+<figure>
+<img src="../images/paper_plots.png" />
+</figure>
+</section></section>
+<section><section id="the-future" class="titleslide slide level1"><h1>The Future</h1></section><section id="section-1" class="slide level2 left">
+<h1></h1>
+<div class="pulsing">
+<strong><span class="math inline">⇒</span> Your code and science here <span class="math inline">⇐</span></strong>
+</div>
+<div class="fragment">
+<ul>
+<li>Migrate <strong>documentation to sphinx</strong></li>
+</ul>
+<ul>
+<li>Integrated <strong>docker pipeline</strong></li>
+</ul>
+<ul>
+<li>On demand <strong>Sherpa</strong> cloud notebooks: move Sherpa to the Data!</li>
+</ul>
+<ul>
+<li>Sherpa as a <strong>pathfinder</strong> for Chandra software projects</li>
+</ul>
+<ul>
+<li>Sherpa at AAS Grapevine</li>
+</ul>
+</div>
+</section><section id="try-it-yourself" class="slide level2">
+<h1>Try it yourself</h1>
+<p><img src='http://www.unitag.io/qreator/generate?crs=xnjFkEn%252FP85fCPDXJ%252FXXKg5g6yQi7H4qzUlRVUntU035Re8CX7iHj071HbqF%252BCfYW0fkByoDtlWAYEP%252FkF2dipjP8Ux69VtYkusoonlKTAkgSRnmfwEzhpz3ulb%252BfgcH8xxrpOTbfLtqZS7YE5Pf9g%253D%253D&crd=fhOysE0g3Bah%252BuqXA7NPQ2hQjEAiS2h4b8VE2JfNhdcqoK%252BqjCjqLostNlNtSQNURtEj7atgx1dPamhMnhLY4w%253D%253D' alt='QR Code'/></p>
+<p><a href="http://cxc.cfa.harvard.edu/contrib/sherpa/" class="uri">http://cxc.cfa.harvard.edu/contrib/sherpa/</a></p>
+<p><a href="https://github.com/sherpa/sherpa" class="uri">https://github.com/sherpa/sherpa</a></p>
+<p><a href="http://mybinder.org:/repo/olaurino/sherpa-standalone-notebooks"><img src="http://mybinder.org/badge.svg" alt="Binder" /></a></p>
+</section></section>
+</div>
+
+<script src="https://cdn.rawgit.com/hakimel/reveal.js/3.3.0/lib/js/head.min.js"></script>
+<script src="https://cdn.rawgit.com/hakimel/reveal.js/3.3.0/js/reveal.js"></script>
+
+<script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+
+    parallaxBackgroundImage: '../unita.jpg',
+    parallaxBackgroundSize: '1600 900',
+    parallaxBackgroundHorizontal: 50,
+    parallaxBackgroundVertical: 20,
+
+  // available themes are in /css/theme
+      theme: Reveal.getQueryHash().theme || 'night',
+  
+  // default/cube/page/concave/zoom/linear/fade/none
+      transition: Reveal.getQueryHash().transition || 'default',
+  
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.3.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.3.0/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.3.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.3.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.3.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.3.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+    // { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.3.0/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+  ]
+  });
+
+</script>
+
+</body>
+</html>

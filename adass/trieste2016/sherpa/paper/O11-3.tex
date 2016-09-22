@@ -1,0 +1,123 @@
+% This is the ADASS_template.tex LaTeX file, 26th August 2016.
+% It is based on the ASP general author template file, but modified to reflect the specific
+% requirements of the ADASS proceedings.
+% Copyright 2014, Astronomical Society of the Pacific Conference Series
+% Revision:  14 August 2014
+
+% To compile, at the command line positioned at this folder, type:
+% latex ADASS_template
+% latex ADASS_template
+% dvipdfm ADASS_template
+% This will create a file called aspauthor.pdf.}
+
+\documentclass[11pt,twoside]{article}
+
+% Do not use packages other than asp2014. 
+\usepackage{asp2014}
+
+\aspSuppressVolSlug
+\resetcounters
+
+% References must all use BibTeX entries in a .bibfile.
+% References must be cited in the text using \citet{} or \citep{}.
+% Do not use \cite{}.
+% See ManuscriptInstructions.pdf for more details
+\bibliographystyle{asp2014}
+
+% 1 author: "Surname"
+% 2 authors: "Surname1 and Surname2"
+% 3 authors: "Surname1, Surname2, and Surname3"
+% >3 authors: "Surname1 et al."
+% Use mixed case type for the shortened title
+% Ensure shortened title does not cause an overfull hbox LaTeX error
+% See ASPmanual2010.pdf 2.1.4  and ManuscriptInstructions.pdf for more details
+\markboth{Laurino et al.}{Sherpa, Python, and Astronomy. A successful co-evolution.}
+
+\begin{document}
+
+\title{Sherpa, Python, and Astronomy. A successful co-evolution.}
+
+% Note the position of the comma between the author name and the 
+% affiliation number.
+% Author names should be separated by commas.
+% The final author should be preceded by "and".
+% Affiliations should not be repeated across multiple \affil commands. If several
+% authors share an affiliation this should be in a single \affil which can then
+% be referenced for several author names.
+% See ManuscriptInstructions.pdf and ASPmanual2010.pdf 3.1.4 for more details
+\author{Laurino~Omar,$^1$ Burke~Douglas$^1$, Evans~Janet$^1$, McLaughlin~Warren$^1$,
+Nguyen~Dan$^1$, and Siemiginowska~Aneta$^1$
+\affil{$^1$Smithsonian Astrophysical Observatory, Cambridge, MA, USA;
+\email{olaurino@cfa.harvard.edu}}
+}
+
+% This section is for ADS Processing.  There must be one line per author.
+\paperauthor{Laurino~Omar}{olaurino@cfa.harvard.edu}{orcid.org/0000-0001-9697-4659}{Smithsonian Astrophysical Observatory}{High Energy Astrophysics Division}{Cambridge}{MA}{02136}{USA}
+\paperauthor{Burke~Douglas}{dburke@cfa.harvard.edu}{}{Smithsonian Astrophysical Observatory}{High Energy Astrophysics Division}{Cambridge}{MA}{02136}{USA}
+\paperauthor{Evans~Janet}{jevans@cfa.harvard.edu}{}{Smithsonian Astrophysical Observatory}{High Energy Astrophysics Division}{Cambridge}{MA}{02136}{USA}
+\paperauthor{McLaughlin~Warren}{wmclaugh@cfa.harvard.edu}{}{Smithsonian Astrophysical Observatory}{High Energy Astrophysics Division}{Cambridge}{MA}{02136}{USA}
+\paperauthor{Nguyen~Dan}{dnguyen@cfa.harvard.edu}{}{Smithsonian Astrophysical Observatory}{High Energy Astrophysics Division}{Cambridge}{MA}{02136}{USA}
+\paperauthor{Siemiginowska~Aneta}{asiemiginowska@cfa.harvard.edu}{}{Smithsonian Astrophysical Observatory}{High Energy Astrophysics Division}{Cambridge}{MA}{02136}{USA}
+
+
+\begin{abstract}
+Sherpa is a fitting tool originally developed as part of the Chandra X-Ray 
+Observatory data analysis software, CIAO: its first version was distributed 
+in October 1999. Seventeen years later, Sherpa is a Python package with C, C++, and Fortran 
+extensions, openly developed on GitHub. Although X-Ray scientific drivers 
+remain strong, other projects outside of the X-Ray astronomical domain are 
+starting to use Sherpa as a dependency in their systems and building on its 
+strengths. The transition from a mission-specific integrated package with a custom 
+user interface, to a community-developed, general purpose, extensible and 
+reusable module posed several challenges.
+In this paper we discuss the challenges we faced in incrementally 
+adapting our software and configuration management to the emerging trends 
+in computing, especially within the astronomical community. We describe how 
+some Python technologies like conda and IPython helped us in this 
+migration. 
+\end{abstract}
+
+\section{Sherpa}
+Sherpa \citep{sherpa} is a fitting tool originally developed as part of the Chandra X-Ray Observatory data analysis software, CIAO: its first version was distributed in October 1999. A few months earlier, Python 1.5.2 had been released: at the time, the Python Software Foundation did not exist and since then Python, Sherpa, and the way astronomers write and interact with software have changed significantly. At the time, Sherpa routines were written in C, C++, and Fortran, with a dedicated command line interpreter, and later with a S-Lang scripting interface.
+
+Seventeen years later, Sherpa is a Python package with C, C++, and Fortran extensions, openly developed on GitHub. Although X-Ray scientific drivers remain strong, other projects outside of the X-Ray astronomical domain are starting to use Sherpa as a dependency in their systems and building on its strengths.
+
+The transition from a mission-specific integrated package with a custom user interface, to a community-developed, general purpose, extensible and reusable module, required not only a major overhaul of the Sherpa code, and how it was built and tested, but it represented a paradigm shift that posed several challenges: coding standards, user interface, build and testing procedures, and documentation all had to be reevaluated and redesigned as the focus shifted from a simple command-line interpreter user interface to a modular, object-oriented, extensible Python Application Program Interface (API), while keeping high performance standards.
+
+In this presentation we discuss the challenges we faced in incrementally adapting our software and configuration management to the emerging trends in computing, especially within the astronomical community. We describe how some Python technologies like conda and IPython helped us in this migration. We present Python projects that extend Sherpa outside of the original X-Ray domain, and we show how Sherpa can now be seamlessly integrated in heterogeneous Python environments using widespread tools like astropy, matplotlib, and jupyter. We show how non-Python applications can also interact with Sherpa through Virtual Observatory interoperability standards and a Python SAMP adapter. Finally, we will outline the new opportunities offered by newer technologies we are evaluating like Docker, that could allow Sherpa to become a cloud application.
+\subsection{The Author Checklist}
+The following checklist should be followed when writing a submission to a conference proceedings to be published by the ASP for ADASS. The references are to sections in the ADASS manuscript instructions.\footnote{Most URLs should be in a footnote like this one.  In this case, you can download the online material from \url{http://www.adass.org}.} 
+
+\begin{itemize}
+\checklistitemize
+
+\item References must all use BibTeX entries in a .bib file. No use of \verb"\bibitem"! (Even though some older ASP templates have them.) (See References.)
+\item All references must be cited in the text, usually using \verb"\citet" or \verb"\citep".  Do not use \verb"\cite". (See References.)
+\item No LaTeX warnings. Particularly, no overfull hboxes or unresolved references. (See LaTeX warnings and errors.)
+\item No use of \verb"\usepackage" except for \verb"\usepackage{asp2014}". (See LaTeX packages and commands.)
+\item No use of \verb"\renewcommand" or \verb"\renewenvironment". (See LaTeX packages and commands.)
+\item Arguments to \verb"\citep" etc., should use ADS type references where possible, fall back on <author><year> or something suitably unique if not. (See References.)
+\item References in the text are all generated automatically (using \verb"\citep" etc), not put in explicitly as ordinary text that just looks like a generated reference. (See References.)
+\item Definitely no LaTeX errors. (See LaTeX warnings and errors.)
+\item Paper is the right length. References don't spill over into one more page. (See Length of Paper.)
+\item Paper has an abstract. (See Length of Paper.)
+\item References are to things that actually exist and can be expected to continue to exist. Not papers ``in preparation'' or URLs for blog items. (See References.)
+\item Graphics files have to be .eps encapsulated Postscript format. Yes they do! Sorry, but they do. (See Figures.)
+\item Name all the files properly:- figures are <paper>\_f<n>.eps, eg O1-3\_f1.eps. Paper names use dashes not periods, O1-3.tex not O1.3.tex. Posters now use the same naming convention as oral papers, e.g.\ P3-21. (See File names and Paper IDs.)
+\item Figure captions should make sense if the figure is printed in monochrome - because it will be! (See Figures.)
+\item Figures are legible at the size ADASS Proceedings volumes are printed, which is quite small. (See Figures.)
+\item Copyright forms signed and filled out - don't use electronic signatures. (See Miscellany.)
+\item Author lists follow the correct format: comma separated, with an `and' for the final author. (See Authors and Affiliations.)
+\item The first author of the paper must be the person who presented the paper at the conference. (See Authors and Affiliations.)
+\item No repetition of affiliations - list each organisation once, with multiple e-mail addresses if you really must. (See Authors and Affiliations.)
+\item Running heads should fit in the same horizontal space as the text does, not pushing the page numbers over to the right. (See LaTeX warnings and errors.)
+\item Run through a spelling checker. (I know that can be tricky with LaTeX.) (See Content and Typesetting.)
+\item Proofread, or have the text proofread, to check for proper English usage. In particular, note that ``allows to'' is not conventional English, and English uses articles (`a',`an',`the') in places where other languages, particularly Eastern European languages, don't have them. (See Content and Typesetting.)
+\end{itemize}
+
+\acknowledgements The ASP would like to thank the dedicated researchers who are publishing with the ASP.  It will make things a lot easier if you keep this text on the same line as the \verb"\acknowledgements" command.
+
+
+\bibliography{O11-3}  % For BibTex
+
+\end{document}
