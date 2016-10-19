@@ -96,7 +96,7 @@ functionality.
 
 ## Software Development
 
-![](../images/trunk-fork.svg)
+![](../images/trunk-fork.svg){.smaller}
 
 ## New Tools {.left}
 
