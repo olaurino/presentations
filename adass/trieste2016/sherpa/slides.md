@@ -150,6 +150,10 @@ Static Code Analysis\
 
 . . .
 
+![](http://openastronomy.org/img/logo/logoOA_svg.png){#openastro .contrast}
+
+. . .
+
 ![](../images/ipynb.png){#ipynb .contrast}
 
 . . .
