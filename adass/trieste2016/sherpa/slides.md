@@ -104,7 +104,7 @@ functionality.
 <div class="left">
 ![**Distributed Version Control**\
 git, GitHub, GitLab,\
-Mercurial, BitBucket](../images/DistributedVC.png)
+Mercurial, BitBucket](../images/distributed.png)
 </div>
 
 <div class="right">
