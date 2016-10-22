@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 
-<title>Implementing VO-DML Mapping Document - 2016/10/22 - SherpaAdass2016</title>
+<title>Implementing the VO-DML Mapping Draft - 2016/10/22 - SherpaAdass2016-1-gbff6272</title>
 
-<meta name="description" content="Implementing VO-DML Mapping Document">
+<meta name="description" content="Implementing the VO-DML Mapping Draft">
 
   <meta name="author" content="Omar Laurino" />
 
@@ -89,7 +89,7 @@ document.onkeydown = function(evt) {
 
 <div class="reveal">
 <header class="hleft"><div id="logo"><img src="http://library.cfa.harvard.edu/files/wolbach/files/cfalogort.png"></div></header>
-<header class="hbottom">Omar Laurino - Implementing VO-DML Mapping Document - Trieste 2016 </header>
+<header class="hbottom">Omar Laurino - Implementing the VO-DML Mapping Draft - Trieste 2016 </header>
 
 <div id="light"></div>
 
@@ -98,7 +98,7 @@ document.onkeydown = function(evt) {
 <div class="slides">
 
 <section data-state="title">
-<h1>Implementing VO-DML Mapping Document</h1>
+<h1>Implementing the VO-DML Mapping Draft</h1>
 <h3>Omar Laurino</h3>
 <p>
 <h4>2016/10/22</h4>
@@ -106,6 +106,22 @@ document.onkeydown = function(evt) {
 </section>
 
 
+<section id="aye-tom-however..." class="slide level1">
+<h1>Aye Tom, however...</h1>
+<p>You can't do much with an <strong>xml file</strong> without <strong>reading or knowing the schema</strong></p>
+<pre><code>&lt;?xml blah blah&gt;
+&lt;book blah blah&gt;
+  &lt;title&gt;Foundation&lt;/title&gt;
+  &lt;author&gt;Isaac Asimov&lt;/author&gt;
+&lt;/book&gt;</code></pre>
+<p>How many authors for a book?</p>
+</section>
+<section id="brief-recap" class="slide level1">
+<h1>Brief Recap</h1>
+<figure>
+<img src="../images/observation.png" alt="ds:experiment.ObsConfig.bandpass" class="smaller" /><figcaption>ds:experiment.ObsConfig.bandpass</figcaption>
+</figure>
+</section>
 <section id="scope" class="slide level1">
 <h1>Scope</h1>
 <p>Implement Mapping Document from a Data Provider Viewpoint</p>
@@ -128,12 +144,15 @@ document.onkeydown = function(evt) {
 </section>
 <section id="a-possible-solution-jovial" class="slide level1">
 <h1>A possible solution: Jovial</h1>
+<p>A <strong>library</strong> for VO-DML</p>
+<div class="fragment">
 <p>A <strong>Domain Specific Language</strong> implemented in <strong>Groovy</strong>.</p>
+</div>
 <div class="fragment">
 <p>Implements <strong>Current</strong> mapping proposal, <strong>Alternative</strong> mapping proposal and, since yesterday's discussion, <strong>JSON</strong> and <strong>YAML</strong> mappings.</p>
 </div>
 <div class="fragment">
-<p>IDE support (code completion, navigation) possible but not straightforward.</p>
+<p><strong>IDE support</strong> (code completion, errors) is possible but not straightforward.</p>
 </div>
 <div class="fragment">
 <p>Can be <strong>embedded</strong> in <strong>Java</strong> and <strong>Groovy</strong> applications.</p>
@@ -178,8 +197,123 @@ table() {
 }
 </code></pre>
 </section>
-<section id="example-output" class="slide level1">
-<h1>Example Output</h1>
+<section id="current-votable-output" class="slide level1">
+<h1>Current VOTable Output</h1>
+<pre class="xml"><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;VOTABLE xmlns=&quot;http://www.ivoa.net/xml/VOTable/v1.3_vodml&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+  &lt;GROUP&gt;
+    &lt;VODML&gt;
+      &lt;TYPE&gt;vodml-map:Model&lt;/TYPE&gt;
+    &lt;/VODML&gt;
+    &lt;PARAM datatype=&quot;char&quot; arraysize=&quot;92&quot; name=&quot;url&quot; value=&quot;http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ds/DatasetMetadata-1.0.vo-dml.xml&quot;&gt;
+      &lt;VODML&gt;
+        &lt;ROLE&gt;vodml-map:Model.url&lt;/ROLE&gt;
+        &lt;TYPE&gt;ivoa:anyURI&lt;/TYPE&gt;
+      &lt;/VODML&gt;
+    &lt;/PARAM&gt;
+    &lt;PARAM datatype=&quot;char&quot; arraysize=&quot;2&quot; name=&quot;name&quot; value=&quot;ds&quot;&gt;
+      &lt;VODML&gt;
+        &lt;ROLE&gt;vodml-map:Model.name&lt;/ROLE&gt;
+        &lt;TYPE&gt;ivoa:string&lt;/TYPE&gt;
+      &lt;/VODML&gt;
+    &lt;/PARAM&gt;
+  &lt;/GROUP&gt;
+  &lt;!--End ObjectType role: {No Role} type: vodml-map:Model--&gt;
+  &lt;GROUP&gt;
+    &lt;VODML&gt;
+      &lt;TYPE&gt;vodml-map:Model&lt;/TYPE&gt;
+    &lt;/VODML&gt;
+    &lt;PARAM datatype=&quot;char&quot; arraysize=&quot;101&quot; name=&quot;url&quot; value=&quot;http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/STC2/prototype/STCPrototype-2.0.vo-dml.xml&quot;&gt;
+      &lt;VODML&gt;
+        &lt;ROLE&gt;vodml-map:Model.url&lt;/ROLE&gt;
+        &lt;TYPE&gt;ivoa:anyURI&lt;/TYPE&gt;
+      &lt;/VODML&gt;
+    &lt;/PARAM&gt;
+    &lt;PARAM datatype=&quot;char&quot; arraysize=&quot;3&quot; name=&quot;name&quot; value=&quot;stc&quot;&gt;
+      &lt;VODML&gt;
+        &lt;ROLE&gt;vodml-map:Model.name&lt;/ROLE&gt;
+        &lt;TYPE&gt;ivoa:string&lt;/TYPE&gt;
+      &lt;/VODML&gt;
+    &lt;/PARAM&gt;
+  &lt;/GROUP&gt;
+  &lt;!--End ObjectType role: {No Role} type: vodml-map:Model--&gt;
+  &lt;GROUP&gt;
+    &lt;VODML&gt;
+      &lt;TYPE&gt;vodml-map:Model&lt;/TYPE&gt;
+    &lt;/VODML&gt;
+    &lt;PARAM datatype=&quot;char&quot; arraysize=&quot;103&quot; name=&quot;url&quot; value=&quot;http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/characterization/Characterization.vo-dml.xml&quot;&gt;
+      &lt;VODML&gt;
+        &lt;ROLE&gt;vodml-map:Model.url&lt;/ROLE&gt;
+        &lt;TYPE&gt;ivoa:anyURI&lt;/TYPE&gt;
+      &lt;/VODML&gt;
+    &lt;/PARAM&gt;
+    &lt;PARAM datatype=&quot;char&quot; arraysize=&quot;38&quot; name=&quot;name&quot; value=&quot;Characterization Data Model ala VO-URP&quot;&gt;
+      &lt;VODML&gt;
+        &lt;ROLE&gt;vodml-map:Model.name&lt;/ROLE&gt;
+        &lt;TYPE&gt;ivoa:string&lt;/TYPE&gt;
+      &lt;/VODML&gt;
+    &lt;/PARAM&gt;
+  &lt;/GROUP&gt;
+  &lt;!--End ObjectType role: {No Role} type: vodml-map:Model--&gt;
+  &lt;GROUP&gt;
+    &lt;VODML&gt;
+      &lt;TYPE&gt;vodml-map:Model&lt;/TYPE&gt;
+    &lt;/VODML&gt;
+    &lt;PARAM datatype=&quot;char&quot; arraysize=&quot;79&quot; name=&quot;url&quot; value=&quot;http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.vo-dml.xml&quot;&gt;
+      &lt;VODML&gt;
+        &lt;ROLE&gt;vodml-map:Model.url&lt;/ROLE&gt;
+        &lt;TYPE&gt;ivoa:anyURI&lt;/TYPE&gt;
+      &lt;/VODML&gt;
+    &lt;/PARAM&gt;
+    &lt;PARAM datatype=&quot;char&quot; arraysize=&quot;4&quot; name=&quot;name&quot; value=&quot;ivoa&quot;&gt;
+      &lt;VODML&gt;
+        &lt;ROLE&gt;vodml-map:Model.name&lt;/ROLE&gt;
+        &lt;TYPE&gt;ivoa:string&lt;/TYPE&gt;
+      &lt;/VODML&gt;
+    &lt;/PARAM&gt;
+  &lt;/GROUP&gt;
+  &lt;!--End ObjectType role: {No Role} type: vodml-map:Model--&gt;
+  &lt;RESOURCE&gt;
+    &lt;GROUP ID=&quot;ACME&quot;&gt;
+      &lt;VODML&gt;
+        &lt;TYPE&gt;ds:party.Organization&lt;/TYPE&gt;
+      &lt;/VODML&gt;
+      &lt;PARAM datatype=&quot;char&quot; arraysize=&quot;8&quot; name=&quot;name&quot; value=&quot;ACME edu&quot;&gt;
+        &lt;VODML&gt;
+          &lt;ROLE&gt;ds:party.Party.name&lt;/ROLE&gt;
+          &lt;TYPE&gt;ivoa:string&lt;/TYPE&gt;
+        &lt;/VODML&gt;
+      &lt;/PARAM&gt;
+      &lt;PARAM datatype=&quot;char&quot; arraysize=&quot;34&quot; name=&quot;address&quot; value=&quot;565 N Clinton Drive, Milwaukee, WI&quot;&gt;
+        &lt;VODML&gt;
+          &lt;ROLE&gt;ds:party.Organization.address&lt;/ROLE&gt;
+          &lt;TYPE&gt;ivoa:string&lt;/TYPE&gt;
+        &lt;/VODML&gt;
+      &lt;/PARAM&gt;
+      &lt;PARAM datatype=&quot;char&quot; arraysize=&quot;12&quot; name=&quot;phone&quot; value=&quot;555-012-3456&quot;&gt;
+        &lt;VODML&gt;
+          &lt;ROLE&gt;ds:party.Organization.phone&lt;/ROLE&gt;
+          &lt;TYPE&gt;ivoa:string&lt;/TYPE&gt;
+        &lt;/VODML&gt;
+      &lt;/PARAM&gt;
+      &lt;PARAM datatype=&quot;char&quot; arraysize=&quot;17&quot; name=&quot;email&quot; value=&quot;helpdesk@acme.org&quot;&gt;
+        &lt;VODML&gt;
+          &lt;ROLE&gt;ds:party.Organization.email&lt;/ROLE&gt;
+          &lt;TYPE&gt;ivoa:string&lt;/TYPE&gt;
+        &lt;/VODML&gt;
+      &lt;/PARAM&gt;
+      &lt;PARAM datatype=&quot;char&quot; arraysize=&quot;28&quot; name=&quot;logo&quot; value=&quot;http://acme.org/stunning.png&quot;&gt;
+        &lt;VODML&gt;
+          &lt;ROLE&gt;ds:party.Organization.logo&lt;/ROLE&gt;
+          &lt;TYPE&gt;ivoa:anyURI&lt;/TYPE&gt;
+        &lt;/VODML&gt;
+      &lt;/PARAM&gt;
+    &lt;/GROUP&gt;
+    &lt;!--End ObjectType role: {No Role} type: ds:party.Organization--&gt;
+  &lt;/RESOURCE&gt;
+&lt;/VOTABLE&gt;</code></pre>
+</section>
+<section id="alternative-votable-output" class="slide level1">
+<h1>Alternative VOTable Output</h1>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;VOTABLE xmlns=&quot;http://www.ivoa.net/xml/VOTable/v1.3_vodmlAlt&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
   &lt;RESOURCE id=&quot;globals&quot;&gt;
     &lt;MODEL name=&quot;ds&quot; url=&quot;http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ds/DatasetMetadata-1.0.vo-dml.xml&quot;/&gt;
@@ -311,33 +445,39 @@ table() {
 <section id="challenges" class="slide level1">
 <h1>Challenges</h1>
 <p>Current syntax (<strong><code>VODML</code></strong> Element in <strong><code>GROUP</code></strong>, <strong><code>FIELDref</code></strong>, <strong><code>PARAM</code></strong>) is:</p>
-<p>   complicated<br />
-   distracting<br />
-   hardly understandable for multi-table scenarios</p>
+<p>   <strong>complicated</strong><br />
+   <strong>fragmented</strong><br />
+   hardly understandable for <strong>multi-table scenarios</strong></p>
+<div class="fragment">
+<p>The current document is <strong>hard to follow</strong>.</p>
+</div>
+<div class="fragment">
+<p>How to <strong>compare</strong> different implementations?</p>
+</div>
 </section>
 <section id="lessons-learned" class="slide level1">
 <h1>Lessons learned</h1>
 <p>Single Flat Table:</p>
-<p>   rather simple to implement<br />
-   reasonable mapping with all syntaxes</p>
+<p>   rather <strong>simple</strong> to implement<br />
+   <strong>reasonable</strong> mapping with all syntaxes</p>
 </section>
 <section id="lessons-learned-1" class="slide level1">
 <h1>Lessons learned</h1>
-<p>Advanced Multi-Table mappings (e.g. Provenance)</p>
-<p>   Most Complex Part of the Mapping<br />
-   Current Syntax Explodes</p>
+<p>Advanced <em>Multi-Table</em> mappings (e.g. <strong>Provenance</strong>)</p>
+<p>   Most <strong>Complex</strong> Part of the Mapping<br />
+   Current Syntax <strong>Explodes</strong></p>
 <div class="fragment">
 <p>How Relevant is it?</p>
-<p>   ProvenanceDM Relational Tables<br />
-   SourceDM, Cross Matches, Open-Ended luminosities<br />
-   Any use case where one standalone table doesn't cut it.</p>
+<p>   <strong>ProvenanceDM</strong> Relational Tables<br />
+   SourceDM, Cross Matches, <strong>Open-Ended luminosities</strong><br />
+   Any use case where <strong>one standalone table doesn't cut it</strong>.</p>
 </div>
 </section>
 <section id="lessons-learned-2" class="slide level1">
 <h1>Lessons learned</h1>
 <p>VO-DML/Mapping value should be evident</p>
-<p>   Data Model and Serialization(s) are totally independent<br />
-   Data Model can be serialized in different formats/syntaxes</p>
+<p>   Data Model, Instances, and Serialization(s) are <strong>totally independent</strong><br />
+   Instances can be serialized in <strong>different formats/syntaxes</strong></p>
 <div class="fragment">
 <p><em>Alternative</em> syntax is appealing as it isolates semantics from data. Evidently <strong>more expressive</strong> and compact in advanced <strong>multi-table</strong> cases.</p>
 </div>
@@ -348,24 +488,24 @@ table() {
 <section id="jovial" class="slide level1">
 <h1>Jovial</h1>
 <p>Modeling</p>
-<p>   Model by GUI<br />
-   Model by DSL<br />
-   Model by Java/Groovy programs.</p>
+<p>   Model by <strong>GUI</strong><br />
+   Model by <strong>DSL</strong><br />
+   Model by <strong>Java/Groovy</strong> programs.</p>
 </section>
 <section id="jovial-1" class="slide level1">
 <h1>Jovial</h1>
 <p>Instantiations/Mappings</p>
-<p>Domain Specific Language abstracts user from specification details</p>
-<p>   Specific drivers for different output formats.<br />
-   Faithful semantic representation.</p>
+<p>Domain Specific Language <strong>abstracts user from specification details</strong></p>
+<p>   Specific <strong>drivers</strong> for different output formats.<br />
+   <strong>Faithful</strong> semantic representation.</p>
 <p><a href="https://github.com/olaurino/jovial"></a></p>
 </section>
 <section id="jovial-2" class="slide level1">
 <h1>Jovial</h1>
 <p>Potential usages</p>
-<p>   Data Model abstraction in DAL services<br />
-   Cross-Format Point-and-Click GUIs<br />
-   Try out different serialization formats</p>
+<p>   <strong>Data Model abstraction</strong> in DAL services<br />
+   Cross-Format Point-and-Click <strong>GUIs</strong><br />
+   Try out <strong>different serialization formats</strong></p>
 </section>
 <section id="lessons-learned-3" class="slide level1">
 <h1>Lessons learned</h1>

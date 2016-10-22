@@ -13,3 +13,8 @@ section p {
 .reveal pre code {
   max-height: 550px;
 }
+
+.reveal section img.smaller {
+  max-height: 50%;
+  max-width: 50%;
+}

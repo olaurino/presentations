@@ -1,3 +1,21 @@
+# Aye Tom, however...
+
+You can't do much with an **xml file** without **reading or knowing the schema**
+
+```
+<?xml blah blah>
+<book blah blah>
+  <title>Foundation</title>
+  <author>Isaac Asimov</author>
+</book>
+```
+
+How many authors for a book?
+
+# Brief Recap
+
+![ds:experiment.ObsConfig.bandpass](../images/observation.png){.smaller}
+
 # Scope
 
 Implement Mapping Document from a Data Provider Viewpoint
@@ -22,6 +40,10 @@ models with scripts that **interface with a database**, **configuration files**,
 etc.
 
 # A possible solution: Jovial
+
+A **library** for VO-DML
+
+. . .
 
 A **Domain Specific Language** implemented in **Groovy**.
 
@@ -77,7 +99,123 @@ table() {
 
 ```
 
-# VOTable Output
+# Current VOTable Output
+``` xml
+<?xml version="1.0" encoding="UTF-8"?><VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.3_vodml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <GROUP>
+    <VODML>
+      <TYPE>vodml-map:Model</TYPE>
+    </VODML>
+    <PARAM datatype="char" arraysize="92" name="url" value="http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ds/DatasetMetadata-1.0.vo-dml.xml">
+      <VODML>
+        <ROLE>vodml-map:Model.url</ROLE>
+        <TYPE>ivoa:anyURI</TYPE>
+      </VODML>
+    </PARAM>
+    <PARAM datatype="char" arraysize="2" name="name" value="ds">
+      <VODML>
+        <ROLE>vodml-map:Model.name</ROLE>
+        <TYPE>ivoa:string</TYPE>
+      </VODML>
+    </PARAM>
+  </GROUP>
+  <!--End ObjectType role: {No Role} type: vodml-map:Model-->
+  <GROUP>
+    <VODML>
+      <TYPE>vodml-map:Model</TYPE>
+    </VODML>
+    <PARAM datatype="char" arraysize="101" name="url" value="http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/STC2/prototype/STCPrototype-2.0.vo-dml.xml">
+      <VODML>
+        <ROLE>vodml-map:Model.url</ROLE>
+        <TYPE>ivoa:anyURI</TYPE>
+      </VODML>
+    </PARAM>
+    <PARAM datatype="char" arraysize="3" name="name" value="stc">
+      <VODML>
+        <ROLE>vodml-map:Model.name</ROLE>
+        <TYPE>ivoa:string</TYPE>
+      </VODML>
+    </PARAM>
+  </GROUP>
+  <!--End ObjectType role: {No Role} type: vodml-map:Model-->
+  <GROUP>
+    <VODML>
+      <TYPE>vodml-map:Model</TYPE>
+    </VODML>
+    <PARAM datatype="char" arraysize="103" name="url" value="http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/characterization/Characterization.vo-dml.xml">
+      <VODML>
+        <ROLE>vodml-map:Model.url</ROLE>
+        <TYPE>ivoa:anyURI</TYPE>
+      </VODML>
+    </PARAM>
+    <PARAM datatype="char" arraysize="38" name="name" value="Characterization Data Model ala VO-URP">
+      <VODML>
+        <ROLE>vodml-map:Model.name</ROLE>
+        <TYPE>ivoa:string</TYPE>
+      </VODML>
+    </PARAM>
+  </GROUP>
+  <!--End ObjectType role: {No Role} type: vodml-map:Model-->
+  <GROUP>
+    <VODML>
+      <TYPE>vodml-map:Model</TYPE>
+    </VODML>
+    <PARAM datatype="char" arraysize="79" name="url" value="http://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/IVOA.vo-dml.xml">
+      <VODML>
+        <ROLE>vodml-map:Model.url</ROLE>
+        <TYPE>ivoa:anyURI</TYPE>
+      </VODML>
+    </PARAM>
+    <PARAM datatype="char" arraysize="4" name="name" value="ivoa">
+      <VODML>
+        <ROLE>vodml-map:Model.name</ROLE>
+        <TYPE>ivoa:string</TYPE>
+      </VODML>
+    </PARAM>
+  </GROUP>
+  <!--End ObjectType role: {No Role} type: vodml-map:Model-->
+  <RESOURCE>
+    <GROUP ID="ACME">
+      <VODML>
+        <TYPE>ds:party.Organization</TYPE>
+      </VODML>
+      <PARAM datatype="char" arraysize="8" name="name" value="ACME edu">
+        <VODML>
+          <ROLE>ds:party.Party.name</ROLE>
+          <TYPE>ivoa:string</TYPE>
+        </VODML>
+      </PARAM>
+      <PARAM datatype="char" arraysize="34" name="address" value="565 N Clinton Drive, Milwaukee, WI">
+        <VODML>
+          <ROLE>ds:party.Organization.address</ROLE>
+          <TYPE>ivoa:string</TYPE>
+        </VODML>
+      </PARAM>
+      <PARAM datatype="char" arraysize="12" name="phone" value="555-012-3456">
+        <VODML>
+          <ROLE>ds:party.Organization.phone</ROLE>
+          <TYPE>ivoa:string</TYPE>
+        </VODML>
+      </PARAM>
+      <PARAM datatype="char" arraysize="17" name="email" value="helpdesk@acme.org">
+        <VODML>
+          <ROLE>ds:party.Organization.email</ROLE>
+          <TYPE>ivoa:string</TYPE>
+        </VODML>
+      </PARAM>
+      <PARAM datatype="char" arraysize="28" name="logo" value="http://acme.org/stunning.png">
+        <VODML>
+          <ROLE>ds:party.Organization.logo</ROLE>
+          <TYPE>ivoa:anyURI</TYPE>
+        </VODML>
+      </PARAM>
+    </GROUP>
+    <!--End ObjectType role: {No Role} type: ds:party.Organization-->
+  </RESOURCE>
+</VOTABLE>
+```
+
+# Alternative VOTable Output
 
 ```
 <?xml version="1.0" encoding="UTF-8"?><VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.3_vodmlAlt" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -217,8 +355,12 @@ votable:
 Current syntax (**`VODML`** Element in **`GROUP`**, **`FIELDref`**, **`PARAM`**) is:
 
 |    **complicated**
-|    **distracting**
+|    **fragmented**
 |    hardly understandable for **multi-table scenarios**
+
+. . .
+
+The current document is **hard to follow**.
 
 . . .
 
@@ -275,10 +417,10 @@ Modeling
 
 Instantiations/Mappings
 
-Domain Specific Language abstracts user from specification details
+Domain Specific Language **abstracts user from specification details**
 
-|    Specific drivers for different output formats.
-|    Faithful semantic representation.
+|    Specific **drivers** for different output formats.
+|    **Faithful** semantic representation.
 
 [](https://github.com/olaurino/jovial)
 
@@ -286,9 +428,9 @@ Domain Specific Language abstracts user from specification details
 
 Potential usages
 
-|    Data Model abstraction in DAL services
-|    Cross-Format Point-and-Click GUIs
-|    Try out different serialization formats
+|    **Data Model abstraction** in DAL services
+|    Cross-Format Point-and-Click **GUIs**
+|    Try out **different serialization formats**
 
 # Lessons learned
 
