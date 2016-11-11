@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<title>Iris 3.0beta1 - October, 23rd 2016 - mappingTrieste2016</title>
+
+<meta name="description" content="Iris 3.0beta1">
+
+  <meta name="author" content="Omar Laurino, Jamie Budynkiewicz" />
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link rel="stylesheet" href="https://cdn.rawgit.com/hakimel/reveal.js/3.3.0/css/reveal.css">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/hakimel/reveal.js/3.3.0/css/theme/night.css" id="theme">
+
+
+<!-- For syntax highlighting -->
+  <link rel="stylesheet" href="https://cdn.rawgit.com/hakimel/reveal.js/3.3.0/lib/css/zenburn.css">
+
+<!-- Local stylesheet -->
+  <link rel="stylesheet" href="https://cdn.rawgit.com/olaurino/saturnine/master/style-override.css">
+  <link rel="stylesheet" href="style-override.css">
+
+  <link rel="stylesheet" href="../custom.css">
+
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<script>
+  document.write( '<link rel="stylesheet" href="https://cdn.rawgit.com/hakimel/reveal.js/3.3.0/css/print/' +
+    ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) +
+    '.css" type="text/css" media="print">' );
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+$(document).mousemove(function(event) {
+		var xoff = -50;
+		var yoff = -50;
+		if ($('#light').hasClass('line')) {
+			xoff = -150;
+			yoff = -5;
+		}
+    $('#light').offset({
+        top: event.pageY + yoff,
+        left: event.pageX + xoff
+    });
+});
+
+document.onkeydown = function(evt) {
+    evt = evt || window.event;
+
+    if (evt.keyCode==65 || evt.keyCode==90) {
+        $('#light').toggle();
+		$('#light').css('cursor', 'none');
+    }
+
+  if (evt.keyCode==65) {
+    $('#light').addClass('circle').removeClass('line');
+  }
+
+	if (evt.keyCode==90) {
+		$('#light').addClass('line').removeClass('circle');
+	}
+
+	if ($('#light').is(":visible")) {
+		$('.slides').css('cursor', 'none')
+	} else {
+		$('.slides').css('cursor', 'default')
+	}
+
+  if (evt.keyCode==88) {
+    $('#logo').toggle();
+  }
+
+};
+
+</script>
+
+<!--[if lt IE 9]>
+<script src="https://cdn.rawgit.com/hakimel/reveal.js/3.3.0/lib/js/html5shiv.js"></script>
+<![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+<header class="hleft"><div id="logo"><img src="http://library.cfa.harvard.edu/files/wolbach/files/cfalogort.png"></div></header>
+<header class="hbottom">Omar Laurino, Jamie Budynkiewicz - Iris 3.0beta1 - IVOA Interop Trieste 2016 </header>
+
+<div id="light"></div>
+
+
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+
+<section data-state="title">
+<h1>Iris 3.0beta1</h1>
+<h3>Omar Laurino, Jamie Budynkiewicz</h3>
+<p>
+<h4>October, 23rd 2016</h4>
+</p>
+</section>
+
+
+<section id="history" class="slide level1">
+<h1>History</h1>
+<p>Initially developed by <strong>U.S. Virtual Astronomical Observatory</strong></p>
+<div class="fragment">
+<p><strong>Existing components</strong> orchestrated by a new <strong>Desktop GUI</strong></p>
+</div>
+<div class="fragment">
+<p>Development continued at <strong>SAO</strong></p>
+</div>
+</section>
+<section id="sed-analysis-with-iris" class="slide level1">
+<h1>SED Analysis with Iris</h1>
+<figure>
+<img src="../images/intro.jpg" alt="Iris 2.1" /><figcaption>Iris 2.1</figcaption>
+</figure>
+</section>
+<section id="features" class="slide level1">
+<h1>Features</h1>
+<ul>
+<li class="fragment"><strong>Aggregate</strong> spectro-photometric data from VO and non-VO data sources</li>
+<li class="fragment"><strong>Fit</strong> complex models to data (with Sherpa)</li>
+<li class="fragment"><strong>Import</strong> custom models and Templates</li>
+<li class="fragment"><strong>Visualize</strong>, <strong>Explore</strong>, and <strong>Filter</strong> data</li>
+<li class="fragment"><strong>Stack</strong> datasets</li>
+<li class="fragment"><strong>Interpolate</strong>, <strong>Shift</strong>, <strong>Integrate</strong> SEDs.</li>
+<li class="fragment"><strong>Save</strong> and <strong>Export</strong> data</li>
+</ul>
+</section>
+<section id="overview" class="slide level1">
+<h1>Overview</h1>
+<p>Major <strong>infrastructure</strong> and <strong>GUI</strong> overhaul.<br />
+<em>STILTS</em> API for plotting (<strong>Thanks Mark!</strong>).</p>
+<div class="fragment">
+<p><strong>Visualizer</strong>, <strong>Metadata Browser</strong>, and <strong>Fitting Tool</strong><br />
+now heavily rely on <strong>STIL</strong>'s <code>StarTable</code>.</p>
+</div>
+<div class="fragment">
+<p><strong>We can now more easily add capabilities.</strong></p>
+</div>
+</section>
+<section id="overview-1" class="slide level1">
+<h1>Overview</h1>
+<p>Iris now supports high-resolution spectra<br />
+<strong>and</strong> broad-band photometry.</p>
+<div class="fragment">
+<p><strong>User Experience improved</strong></p>
+<ul>
+<li class="fragment"><strong>Integrated</strong> Fitting Tool window</li>
+<li class="fragment">Plot <strong>model components</strong></li>
+<li class="fragment"><strong>Mask</strong> points</li>
+<li class="fragment"><strong>SED Stacker</strong> GUI redesigned</li>
+</ul>
+</div>
+<div class="fragment">
+<p>New <strong>VizieR photometry service</strong> integrated client.</p>
+</div>
+</section>
+<section id="section" class="slide level1">
+<h1></h1>
+<iframe src="https://drive.google.com/file/d/0BwbX0VxOVx-iYUlYZjhZWE1JLTQ/preview" width="640" height="480">
+</iframe>
+</section>
+<section id="future" class="slide level1">
+<h1>Future</h1>
+<ul>
+<li class="fragment">Python/Sherpa <strong>API</strong> for bulk analysis</li>
+<li class="fragment">Improved Templates support</li>
+<li class="fragment">Update documentation</li>
+</ul>
+</section>
+</div>
+
+<script src="https://cdn.rawgit.com/hakimel/reveal.js/3.3.0/lib/js/head.min.js"></script>
+<script src="https://cdn.rawgit.com/hakimel/reveal.js/3.3.0/js/reveal.js"></script>
+
+<script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+
+    parallaxBackgroundImage: '../unita.jpg',
+    parallaxBackgroundSize: '1600 900',
+    parallaxBackgroundHorizontal: 50,
+    parallaxBackgroundVertical: 20,
+
+  // available themes are in /css/theme
+      theme: Reveal.getQueryHash().theme || 'night',
+  
+  // default/cube/page/concave/zoom/linear/fade/none
+      transition: Reveal.getQueryHash().transition || 'default',
+  
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.3.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.3.0/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.3.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.3.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.3.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+    { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.3.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+    // { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.3.0/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+  ]
+  });
+
+</script>
+
+</body>
+</html>
