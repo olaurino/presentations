@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>VODML Mapping</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/sky.css" id="theme">
+  <link rel="stylesheet" href="css/custom.css"/>
+  <link rel="stylesheet" href="css/mermaid.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+  <script src="lib/mermaid.min.js"></script>
+  <script>
+  mermaid.initialize({
+    startOnLoad: false,
+    cloneCssStyles: false
+  });
+  </script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+  <h1 class="title">VODML Mapping</h1>
+  <p class="subtitle">Ongoing Interoperable Implementations</p>
+  <p class="author"><p>Omar Laurino, Gerard Lemson,<br />
+Tom Donaldson</p></p>
+  <p class="date">May 28 2018</p>
+</section>
+
+<section id="outline" class="slide level2">
+<h2>Outline</h2>
+<ul>
+<li class="fragment">Modeling Implementations Website (OL)</li>
+<li class="fragment">Rama, an Astropy-Aware Python parser for VODML (OL)</li>
+<li class="fragment">Mapping Tool (GL)</li>
+<li class="fragment">Hubble Source Catalog implementation (TD)</li>
+<li class="fragment">Demo of interoperability between independend implementations - STScI/JHU/CfA (TD)</li>
+<li class="fragment">Simplifying the VODML Mapping Syntax (OL)</li>
+<li class="fragment">Collaborating and Testing: Git and Continuous Integration (OL)</li>
+</ul>
+</section>
+<section id="implementations-website" class="slide level2">
+<h2><a href="https://olaurino.gitlab.io/ivoa-dm-examples">Implementations Website</a></h2>
+</section>
+<section id="modeling-workflow" class="slide level2">
+<h2>Modeling Workflow</h2>
+<figure>
+<img src="workflow.png" />
+</figure>
+</section>
+<section id="writing-models" class="slide level2">
+<h2>Writing Models</h2>
+<p>By hand/XML editor</p>
+<p>with a UML tool + translation scripts</p>
+<p>with a Domain Specific Language</p>
+<!--
+## Writing Models
+
+  * XML is *ambivert*
+    * more machine-readible than human-writable
+  * DSLs are also *ambivert*
+    * more human-writable than machine-readable
+  * DSLs are custom languages
+    * but Internal DSLs mitigate issue
+  * UML tools a compromise?
+    * but interoperability is minimal
+-->
+</section>
+<section id="writing-models-javagroovy-dsl" class="slide level2">
+<h2>Writing Models (JAVA/Groovy DSL)</h2>
+<p><a href="https://github.com/olaurino/jovial">Jovial</a></p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby">model(<span class="st">&quot;source&quot;</span>) {
+    include(<span class="st">&quot;ivoa&quot;</span>, <span class="st">version: &quot;1.0&quot;</span>)
+    dataType(<span class="st">&quot;Position&quot;</span>) {
+        attribute(<span class="st">name: &quot;ra&quot;</span>, <span class="st">dataType: &quot;ivoa:real&quot;</span>)
+        attribute(<span class="st">name: &quot;dec&quot;</span>, <span class="st">dataType: &quot;ivoa:real&quot;</span>)
+    }
+    objectType(<span class="st">&quot;Source&quot;</span>) {
+        attribute(<span class="st">name: &quot;name&quot;</span>, <span class="st">dataType: &quot;ivoa:real&quot;</span>)
+        attribute(<span class="st">name: &quot;position&quot;</span>, <span class="st">dataType: &quot;source:Position&quot;</span>)
+    }
+}</code></pre></div>
+</section>
+<section id="how-to-write-instances" class="slide level2">
+<h2>How to write Instances</h2>
+<ul>
+<li class="fragment">Error prone: we are overloading the xml semantics to describe non-xml data models</li>
+<li class="fragment">XML validation against VOTable schema, not model semantics</li>
+<li class="fragment">We don't have a validator yet</li>
+</ul>
+</section>
+<section id="how-to-write-instances-1" class="slide level2">
+<h2>How to write Instances</h2>
+<p><del>By hand/XML editor</del></p>
+<p><del>With a UML tool + translation scripts</del></p>
+<p>With a Domain Specific Language</p>
+<p>Gerard's Mapping Tool (point 'n click!)</p>
+</section>
+<section id="jovial-javagroovy" class="slide level2">
+<h2>Jovial (JAVA/Groovy)</h2>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="kw">def</span> modelLocation = <span class="st">&quot;file:example.vodml.xml&quot;</span>
+<span class="kw">def</span> ivoaModelLocation = <span class="st">&quot;https://volute.g-vo.org/svn/trunk/projects/dm/vo-dml/models/ivoa/vo-dml/IVOA-v1.0.vo-dml.xml&quot;</span>
+
+dmInstance {
+    model(<span class="st">vodmlURL: </span>modelLocation)
+    model(<span class="st">vodmlURL: </span>ivoaModelLocation)
+    instance(<span class="st">type: &quot;source:Source&quot;</span>) {
+        instance(<span class="st">role: &quot;name&quot;</span>, <span class="st">value: &quot;A Source&quot;</span>)
+        instance(<span class="st">role: &quot;position&quot;</span>) {
+            instance(<span class="st">role: &quot;ra&quot;</span>, <span class="st">value: </span><span class="fl">122.02</span>)
+            instance(<span class="st">role: &quot;dec&quot;</span>, <span class="st">value: </span>-<span class="fl">12.44</span>)
+        }
+    }
+}</code></pre></div>
+</section>
+<section id="parsing-annotated-votables" class="slide level2">
+<h2>Parsing Annotated VOTables</h2>
+<p><a href="https://github.com/olaurino/rama">Rama</a></p>
+<p>Parses almost all the single-table patterns</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="at">@VO</span>(<span class="st">&#39;source:Position&#39;</span>)
+<span class="kw">class</span> Position(BaseType):
+    ra <span class="op">=</span> Attribute(<span class="st">&#39;source:Position.ra&#39;</span>, min_occurs<span class="op">=</span><span class="dv">1</span>, max_occurs<span class="op">=</span><span class="dv">1</span>)
+    dec <span class="op">=</span> Attribute(<span class="st">&#39;source:Position.dec&#39;</span>, min_occurs<span class="op">=</span><span class="dv">1</span>, max_occurs<span class="op">=</span><span class="dv">1</span>)
+
+
+<span class="at">@VO</span>(<span class="st">&#39;source:Source&#39;</span>)
+<span class="kw">class</span> Source(BaseType):
+    name <span class="op">=</span> Attribute(<span class="st">&#39;source:Source.name&#39;</span>, min_occurs<span class="op">=</span><span class="dv">1</span>, max_occurs<span class="op">=</span><span class="dv">1</span>)
+    position <span class="op">=</span> Attribute(<span class="st">&#39;source:Source.position&#39;</span>, min_occurs<span class="op">=</span><span class="dv">1</span>, max_occurs<span class="op">=</span><span class="dv">1</span>)</code></pre></div>
+</section>
+<section id="addressing-duality" class="slide level2">
+<h2>Addressing Duality</h2>
+<ul>
+<li class="fragment">Row-based (Objects) vs Column-based (Tables) Views</li>
+<li class="fragment">Sources: one source per row, multiple per table.</li>
+<li class="fragment">Light Curves: one per table, data in columns.</li>
+</ul>
+</section>
+<section id="tricky-use-cases" class="slide level2">
+<h2>Tricky Use Cases</h2>
+<p>HSC catalog has columns referring to photometry filters.</p>
+<table>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>...</th>
+<th>Instrument</th>
+<th>Filter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>247770718</td>
+<td>...</td>
+<td>WFPC2</td>
+<td>F814W</td>
+</tr>
+<tr class="even">
+<td>255488227</td>
+<td>...</td>
+<td>ACS</td>
+<td>F606W</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="astropy-integration" class="slide level2">
+<h2>Astropy integration</h2>
+<p>Astropy is used to parse <code>&lt;TABLE&gt;</code></p>
+<p>Data is represented as Astropy quantities/columns when possible</p>
+</section>
+<section id="astropy-integration-1" class="slide level2">
+<h2>Astropy integration</h2>
+<p>Adapters can be provided to decorate VODML objects</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">from</span> astropy.coordinates <span class="im">import</span> SkyCoord
+<span class="im">from</span> rama.models.coordinates <span class="im">import</span> EquatorialCoord
+
+simple_position_file <span class="op">=</span> read(<span class="st">&quot;file.vot.xml&quot;</span>)
+position <span class="op">=</span> simple_position_file.find_instances(StdPosition)[<span class="dv">0</span>]
+
+<span class="cf">assert</span> <span class="bu">isinstance</span>(position.coord, SkyCoord)
+<span class="cf">assert</span> <span class="bu">isinstance</span>(position.coord.__vo_object__, EquatorialCoord)</code></pre></div>
+</section>
+<section id="gerards-mapping-tool-demo" class="slide level2">
+<h2>Gerard's Mapping Tool Demo</h2>
+</section>
+<section id="toms-hsc-and-interoperability-demo" class="slide level2">
+<h2>Tom's HSC and Interoperability Demo</h2>
+</section>
+<section id="simplifying-the-mapping-syntax" class="slide level2">
+<h2>Simplifying the Mapping Syntax</h2>
+<p>feedback:</p>
+<ul>
+<li>too many elements</li>
+<li>use attribute names only, not full identifies</li>
+<li>leave annotation unchanged when <code>FIELD</code>s <em>become</em> <code>PARAM</code>s and vice-versa</li>
+<li>remove <code>LITERAL</code> and only use <code>CONSTANT</code>/<code>COLUMN</code>?</li>
+</ul>
+</section>
+<section id="simplifying-the-mapping-syntax-1" class="slide level2">
+<h2>Simplifying the Mapping Syntax</h2>
+<p>You can only start by <em>mapping</em> VODML concepts (roles, types) to VOTable concepts (tables, columns, params)</p>
+</section>
+<section id="simplifying-the-mapping-syntax-2" class="slide level2">
+<h2>Simplifying the Mapping Syntax</h2>
+<p><a href="https://github.com/olaurino/rama/tree/simplified-syntax">View it on Github</a></p>
+<ul>
+<li><a href="https://github.com/olaurino/rama/commit/ad5eb73cf2cd7311cd263a33f9b51891e79288ef">ad5eb73 ATTRIBUTE -&gt; ROLE</a></li>
+<li><a href="https://github.com/olaurino/rama/commit/f010d19780970a24bcdf51c1919022f51e6f81a1">f010d19 remove CONSTANT for INSTANCE</a></li>
+<li><a href="https://github.com/olaurino/rama/commit/92ad2109a404ad78a49a42c5e8bfd524c103f739">92ad210 support CONSTANT</a></li>
+<li><a href="https://github.com/olaurino/rama/commit/61c6cf41ade959b77254bc4e023bfdd1d35b1602">61c6cf4 replace COLUMN with INSTANCE</a></li>
+<li><a href="https://github.com/olaurino/rama/commit/3615fcc2840187039a97704d5083d02ea5b93781">3615fcc replace LITERAL with INSTANCE</a></li>
+<li><a href="https://github.com/olaurino/rama/commit/a7a84bc09466b700fbb841dba271ebd6557b98fd">a7a84bc use only role's name</a></li>
+<li><a href="https://github.com/olaurino/rama/commit/00c41d83c2f9ab303d97c56708da18ef1e3c64c5">00c41d8 remove COMPOSITION and REFERENCE</a></li>
+</ul>
+</section>
+<section id="before" class="slide level2">
+<h2>Before</h2>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;INSTANCE</span><span class="ot"> ID=</span><span class="st">&quot;_source&quot;</span><span class="ot"> dmtype=</span><span class="st">&quot;source:Detection&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;COMPOSITION</span><span class="ot"> dmrole=</span><span class="st">&quot;source:Source.position&quot;</span><span class="kw">&gt;</span>
+        <span class="kw">&lt;INSTANCE</span><span class="ot"> dmtype=</span><span class="st">&quot;source:SourcePosition&quot;</span><span class="kw">&gt;</span>
+            <span class="kw">&lt;ATTRIBUTE</span><span class="ot"> dmrole=</span><span class="st">&quot;meas:CoordMeasure.coord&quot;</span><span class="kw">&gt;</span>
+                <span class="kw">&lt;INSTANCE</span><span class="ot"> dmtype=</span><span class="st">&quot;coords:domain.space.EquatorialCoord&quot;</span><span class="kw">&gt;</span>
+                    <span class="kw">&lt;ATTRIBUTE</span><span class="ot"> dmrole=</span><span class="st">&quot;coords:domain.space.EquatorialCoord.ra&quot;</span><span class="kw">&gt;</span>
+                        <span class="kw">&lt;COLUMN</span><span class="ot"> ref=</span><span class="st">&quot;SourceRA&quot;</span><span class="ot"> dmtype=</span><span class="st">&quot;ivoa:real&quot;</span><span class="kw">/&gt;</span>
+                    <span class="kw">&lt;/ATTRIBUTE&gt;</span>
+                    <span class="kw">&lt;ATTRIBUTE</span><span class="ot"> dmrole=</span><span class="st">&quot;coords:domain.space.EquatorialCoord.dec&quot;</span><span class="kw">&gt;</span>
+                        <span class="kw">&lt;COLUMN</span><span class="ot"> ref=</span><span class="st">&quot;SourceDec&quot;</span><span class="ot"> dmtype=</span><span class="st">&quot;ivoa:real&quot;</span><span class="kw">/&gt;</span>
+                    <span class="kw">&lt;/ATTRIBUTE&gt;</span>
+                    <span class="kw">&lt;REFERENCE</span><span class="ot"> dmrole=</span><span class="st">&quot;coords:Coordinate.frame&quot;</span><span class="kw">&gt;</span>
+                        <span class="kw">&lt;IDREF&gt;</span>_icrs_<span class="kw">&lt;/IDREF&gt;</span>
+                    <span class="kw">&lt;/REFERENCE&gt;</span>
+                    <span class="kw">&lt;ATTRIBUTE</span><span class="ot"> dmrole=</span><span class="st">&quot;omar:Made.this.up&quot;</span><span class="kw">&gt;</span>
+                        <span class="kw">&lt;CONSTANT</span><span class="ot"> ref=</span><span class="st">&quot;_SOME_PARAM&quot;</span><span class="ot"> dmtype=</span><span class="st">&quot;ïvoa:real&quot;</span><span class="kw">/&gt;</span>
+                    <span class="kw">&lt;/ATTRIBUTE&gt;</span>
+                    <span class="kw">&lt;ATTRIBUTE</span><span class="ot"> dmrole=</span><span class="st">&quot;omar:Something.different&quot;</span><span class="kw">&gt;</span>
+                        <span class="kw">&lt;LITERAL</span><span class="ot"> value=</span><span class="st">&quot;42&quot;</span><span class="ot"> dmtype=</span><span class="st">&quot;ïvoa:real&quot;</span><span class="kw">/&gt;</span>
+                    <span class="kw">&lt;/ATTRIBUTE&gt;</span>
+                <span class="kw">&lt;/INSTANCE&gt;</span>
+            <span class="kw">&lt;/ATTRIBUTE&gt;</span>
+        <span class="kw">&lt;/INSTANCE&gt;</span>
+    <span class="kw">&lt;/COMPOSITION&gt;</span>
+<span class="kw">&lt;/INSTANCE&gt;</span></code></pre></div>
+</section>
+<section id="after" class="slide level2">
+<h2>After</h2>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;INSTANCE</span><span class="ot"> ID=</span><span class="st">&quot;_source&quot;</span><span class="ot"> dmtype=</span><span class="st">&quot;source:Detection&quot;</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;ROLE</span><span class="ot"> dmrole=</span><span class="st">&quot;position&quot;</span><span class="kw">&gt;</span>
+        <span class="kw">&lt;INSTANCE</span><span class="ot"> dmtype=</span><span class="st">&quot;source:SourcePosition&quot;</span><span class="kw">&gt;</span>
+            <span class="kw">&lt;ROLE</span><span class="ot"> dmrole=</span><span class="st">&quot;coord&quot;</span><span class="kw">&gt;</span>
+                <span class="kw">&lt;INSTANCE</span><span class="ot"> dmtype=</span><span class="st">&quot;coords:domain.space.EquatorialCoord&quot;</span><span class="kw">&gt;</span>
+                    <span class="kw">&lt;ROLE</span><span class="ot"> dmrole=</span><span class="st">&quot;ra&quot;</span><span class="kw">&gt;</span>
+                        <span class="kw">&lt;INSTANCE</span><span class="ot"> ref=</span><span class="st">&quot;SourceRA&quot;</span><span class="ot"> dmtype=</span><span class="st">&quot;ivoa:real&quot;</span><span class="kw">/&gt;</span>
+                    <span class="kw">&lt;/ROLE&gt;</span>
+                    <span class="kw">&lt;ROLE</span><span class="ot"> dmrole=</span><span class="st">&quot;dec&quot;</span><span class="kw">&gt;</span>
+                        <span class="kw">&lt;INSTANCE</span><span class="ot"> ref=</span><span class="st">&quot;SourceDec&quot;</span><span class="ot"> dmtype=</span><span class="st">&quot;ivoa:real&quot;</span><span class="kw">/&gt;</span>
+                    <span class="kw">&lt;/ROLE&gt;</span>
+                    <span class="kw">&lt;ROLE</span><span class="ot"> dmrole=</span><span class="st">&quot;frame&quot;</span><span class="kw">&gt;</span>
+                        <span class="kw">&lt;IDREF&gt;</span>_icrs_<span class="kw">&lt;/IDREF&gt;</span>
+                    <span class="kw">&lt;/ROLE&gt;</span>
+                    <span class="kw">&lt;ROLE</span><span class="ot"> dmrole=</span><span class="st">&quot;up&quot;</span><span class="kw">&gt;</span>
+                        <span class="kw">&lt;INSTANCE</span><span class="ot"> ref=</span><span class="st">&quot;_SOME_PARAM&quot;</span><span class="ot"> dmtype=</span><span class="st">&quot;ïvoa:real&quot;</span><span class="kw">/&gt;</span>
+                    <span class="kw">&lt;/ROLE&gt;</span>
+                    <span class="kw">&lt;ROLE</span><span class="ot"> dmrole=</span><span class="st">&quot;different&quot;</span><span class="kw">&gt;</span>
+                        <span class="kw">&lt;INSTANCE</span><span class="ot"> value=</span><span class="st">&quot;42&quot;</span><span class="ot"> dmtype=</span><span class="st">&quot;ïvoa:real&quot;</span><span class="kw">/&gt;</span>
+                    <span class="kw">&lt;/ROLE&gt;</span>
+                <span class="kw">&lt;/INSTANCE&gt;</span>
+            <span class="kw">&lt;/ROLE&gt;</span>
+        <span class="kw">&lt;/INSTANCE&gt;</span>
+    <span class="kw">&lt;/ROLE&gt;</span>
+<span class="kw">&lt;/INSTANCE&gt;</span></code></pre></div>
+</section>
+<section id="two-different-approaches" class="slide level2">
+<h2>Two different approaches</h2>
+<p>model driven</p>
+<p>annotation driven/dynamic</p>
+</section>
+<section id="my-recommendation" class="slide level2">
+<h2>My recommendation</h2>
+<ul>
+<li class="fragment"><strong>Explicit syntax</strong> is trivial-to-simple to implement for single table cases</li>
+<li class="fragment"><strong>Maybe</strong> replace <code>COMPOSITON</code>, <code>REFERENCE</code>, <code>ATTRIBUTE</code> with <code>ROLE</code></li>
+<li class="fragment">Using attribute names imho <strong>only</strong> facilitates dynamic parsers</li>
+<li class="fragment">Merging <code>CONSTANT</code> and <code>COLUMN</code> is a mess (<strong>compelling use case?</strong>)</li>
+</ul>
+</section>
+<section id="implementations-repository" class="slide level2">
+<h2>Implementations repository</h2>
+<ul>
+<li class="fragment">Volute simply doesn't cut it, for so many reasons.</li>
+<li class="fragment">Model changes require changes to many examples/notebooks</li>
+<li class="fragment">Git(Lab) repository with Continuous Integration:</li>
+</ul>
+<ol type="1">
+<li class="fragment">static pages are built upon push (<a href="https://jekyllrb.com/">jekyll</a>)</li>
+<li class="fragment">tests are run</li>
+<li class="fragment">pages are deployed.</li>
+</ol>
+</section>
+<section id="gitlab-ci-pipelines" class="slide level2">
+<h2>Gitlab-CI Pipelines</h2>
+<p><img src="pipeline1.png" alt="feature branch" /> <img src="pipeline2.png" alt="master branch" /></p>
+</section>
+<section id="tests" class="slide level2">
+<h2>Tests</h2>
+<p><img src="tests.png" /> <img src="tests-nb.png" /></p>
+</section>
+<section id="thank-you" class="slide level2">
+<h2>Thank you!</h2>
+<figure>
+<img src="xml-fun.png" style="width:50.0%" />
+</figure>
+<p><a href="https://blog.safe.com/2016/07/understanding-xml-humans-guide-machine-readable-data/">Understanding XML: The Human’s Guide to Machine-Readable Data</a></p>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+              { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>

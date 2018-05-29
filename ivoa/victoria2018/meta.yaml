@@ -1,0 +1,22 @@
+---
+author: |
+  Omar Laurino, Gerard Lemson,\
+  Tom Donaldson
+title: VODML Mapping
+subtitle: Ongoing Interoperable Implementations
+date: May 28 2018
+venue: Victoria Interop 2018
+theme: sky
+css:
+  - css/custom.css
+  - css/mermaid.css
+header-includes: |
+  <script src="lib/mermaid.min.js"></script>
+  <script>
+  mermaid.initialize({
+    startOnLoad: false,
+    cloneCssStyles: false
+  });
+  </script>
+
+...
