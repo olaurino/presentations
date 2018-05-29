@@ -9,14 +9,5 @@ venue: Victoria Interop 2018
 theme: sky
 css:
   - css/custom.css
-  - css/mermaid.css
-header-includes: |
-  <script src="lib/mermaid.min.js"></script>
-  <script>
-  mermaid.initialize({
-    startOnLoad: false,
-    cloneCssStyles: false
-  });
-  </script>
 
 ...

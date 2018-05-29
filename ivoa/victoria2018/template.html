@@ -45,6 +45,43 @@ $endfor$
   <!--[if lt IE 9]>
   <script src="$revealjs-url$/lib/js/html5shiv.js"></script>
   <![endif]-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script>
+$$(document).mousemove(function(event) {
+		var xoff = -50;
+		var yoff = 0;
+		if ($$('#light').hasClass('line')) {
+			xoff = -50;
+			yoff = -0;
+		}
+    $$('#light').offset({
+        top: event.pageY + yoff,
+        left: event.pageX + xoff
+    });
+});
+document.onkeydown = function(evt) {
+    evt = evt || window.event;
+    if (evt.keyCode==65 || evt.keyCode==90) {
+        $$('#light').toggle();
+		$$('#light').css('cursor', 'none');
+    }
+  if (evt.keyCode==65) {
+    $$('#light').addClass('circle').removeClass('line');
+  }
+	if (evt.keyCode==90) {
+		$$('#light').addClass('line').removeClass('circle');
+	}
+	if ($$('#light').is(":visible")) {
+		$$('.slides').css('cursor', 'none')
+	} else {
+		$$('.slides').css('cursor', 'default')
+	}
+  if (evt.keyCode==88) {
+    $$('#logo').toggle();
+  }
+};
+</script>
+
 $if(math)$
   $math$
 $endif$
@@ -53,6 +90,7 @@ $for(header-includes)$
 $endfor$
 </head>
 <body>
+
 $for(include-before)$
 $include-before$
 $endfor$
@@ -82,7 +120,7 @@ $endif$
 $body$
     </div>
   </div>
-
+<div id="light"></div>
   <script src="$revealjs-url$/lib/js/head.min.js"></script>
   <script src="$revealjs-url$/js/reveal.js"></script>
 
@@ -239,5 +277,6 @@ $endif$
   $for(include-after)$
   $include-after$
   $endfor$
+
   </body>
 </html>
