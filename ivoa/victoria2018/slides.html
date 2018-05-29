@@ -87,7 +87,7 @@ Tom Donaldson</p></p>
 <li class="fragment">Rama, an Astropy-Aware Python parser for VODML (OL)</li>
 <li class="fragment">Mapping Tool (GL)</li>
 <li class="fragment">Hubble Source Catalog implementation (TD)</li>
-<li class="fragment">Demo of interoperability between independend implementations - STScI/JHU/CfA (TD)</li>
+<li class="fragment">Demo of interoperability between independent implementations - STScI/JHU/CfA (TD)</li>
 <li class="fragment">Simplifying the VODML Mapping Syntax (OL)</li>
 <li class="fragment">Collaborating and Testing: Git and Continuous Integration (OL)</li>
 </ul>
@@ -100,12 +100,19 @@ Tom Donaldson</p></p>
 <figure>
 <img src="workflow.png" />
 </figure>
+<ol type="1">
+<li>Modeling</li>
+<li>Annotating instances</li>
+<li>Parsing instances</li>
+</ol>
 </section>
 <section id="writing-models" class="slide level2">
 <h2>Writing Models</h2>
-<p>By hand/XML editor</p>
-<p>with a UML tool + translation scripts</p>
-<p>with a Domain Specific Language</p>
+<ul>
+<li class="fragment">By hand/XML editor</li>
+<li class="fragment">with a UML tool + translation scripts</li>
+<li class="fragment">with a Domain Specific Language</li>
+</ul>
 <!--
 ## Writing Models
 
@@ -144,10 +151,12 @@ Tom Donaldson</p></p>
 </section>
 <section id="how-to-write-instances-1" class="slide level2">
 <h2>How to write Instances</h2>
-<p><del>By hand/XML editor</del></p>
-<p><del>With a UML tool + translation scripts</del></p>
-<p>With a Domain Specific Language</p>
-<p>Gerard's Mapping Tool (point 'n click!)</p>
+<ul>
+<li class="fragment"><del>By hand/XML editor</del></li>
+<li class="fragment"><del>With a UML tool + translation scripts</del></li>
+<li class="fragment">With a Domain Specific Language</li>
+<li class="fragment">Gerard's Mapping Tool (point 'n click!)</li>
+</ul>
 </section>
 <section id="jovial-javagroovy" class="slide level2">
 <h2>Jovial (JAVA/Groovy)</h2>
@@ -325,8 +334,10 @@ position <span class="op">=</span> simple_position_file.find_instances(StdPositi
 </section>
 <section id="two-different-approaches" class="slide level2">
 <h2>Two different approaches</h2>
-<p>model driven</p>
-<p>annotation driven/dynamic</p>
+<ul>
+<li>model driven</li>
+<li>annotation driven/dynamic</li>
+</ul>
 </section>
 <section id="my-recommendation" class="slide level2">
 <h2>My recommendation</h2>

@@ -6,7 +6,7 @@
   - Rama, an Astropy-Aware Python parser for VODML (OL)
   - Mapping Tool (GL)
   - Hubble Source Catalog implementation (TD)
-  - Demo of interoperability between independend implementations - STScI/JHU/CfA (TD)
+  - Demo of interoperability between independent implementations - STScI/JHU/CfA (TD)
   - Simplifying the VODML Mapping Syntax (OL)
   - Collaborating and Testing: Git and Continuous Integration (OL) 
 
@@ -16,13 +16,15 @@
 
 ![](workflow.png)
 
+ 1. Modeling
+ 2. Annotating instances
+ 3. Parsing instances
+
 ## Writing Models
 
-By hand/XML editor
-
-with a UML tool + translation scripts
-
-with a Domain Specific Language
+> - By hand/XML editor
+> - with a UML tool + translation scripts
+> - with a Domain Specific Language
 
 <!--
 ## Writing Models
@@ -62,14 +64,11 @@ model("source") {
 
 ## How to write Instances
 
-~~By hand/XML editor~~
+> - ~~By hand/XML editor~~
+> - ~~With a UML tool + translation scripts~~
+> - With a Domain Specific Language
+> - Gerard's Mapping Tool (point 'n click!)
 
-~~With a UML tool + translation scripts~~
-
-With a Domain Specific Language
-
-Gerard's Mapping Tool (point 'n click!)
-  
 ## Jovial (JAVA/Groovy)
 ```ruby
 def modelLocation = "file:example.vodml.xml"
@@ -232,9 +231,8 @@ You can only start by *mapping* VODML concepts (roles, types) to VOTable concept
 
 ## Two different approaches
 
-model driven
-
-annotation driven/dynamic
+  - model driven
+  - annotation driven/dynamic
 
 ## My recommendation
 
