@@ -41,7 +41,10 @@ def slugify(path: Path) -> str:
 def build_manifest(repo_root: Path) -> list[dict[str, str]]:
     """Collect and structure all slide decks."""
     manifest: list[dict[str, str]] = []
-    for slides_path in sorted(repo_root.glob("**/output/slides.html")):
+    slide_candidates = set(repo_root.glob("**/output/slides.html"))
+    slide_candidates.update(repo_root.glob("old/**/slides.html"))
+
+    for slides_path in sorted(slide_candidates):
         rel_path = slides_path.relative_to(repo_root)
         parts = rel_path.parts
         category = parts[0] if len(parts) > 0 else "presentations"

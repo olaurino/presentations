@@ -22,5 +22,45 @@
     "path": "ivoa/trieste2016/mapping/output/slides.html",
     "category": "ivoa",
     "event": "trieste2016"
+  },
+  {
+    "id": "old-gclef-vo",
+    "title": "Virtual Observatory Data Modeling in a Nutshell",
+    "description": "",
+    "path": "old/gclef-vo/slides.html",
+    "category": "old",
+    "event": "gclef-vo"
+  },
+  {
+    "id": "old-ivoa-sesto2015-iris",
+    "title": "Iris 2.1 beta",
+    "description": "Iris 2.1 beta",
+    "path": "old/ivoa/sesto2015/iris/slides.html",
+    "category": "old",
+    "event": "ivoa"
+  },
+  {
+    "id": "old-ivoa-sesto2015-reference-implementation",
+    "title": "Reference Implementation of Data Models",
+    "description": "Reference Implementation of Data Models",
+    "path": "old/ivoa/sesto2015/reference-implementation/slides.html",
+    "category": "old",
+    "event": "ivoa"
+  },
+  {
+    "id": "old-ivoa-sesto2015-spectral-dm-status",
+    "title": "Spectral DM 2.0 status",
+    "description": "Spectral DM 2.0 status",
+    "path": "old/ivoa/sesto2015/spectral-dm-status/slides.html",
+    "category": "old",
+    "event": "ivoa"
+  },
+  {
+    "id": "old-ivoa-sesto2015-vodml",
+    "title": "VODML - Status update",
+    "description": "VODML - Status update",
+    "path": "old/ivoa/sesto2015/vodml/slides.html",
+    "category": "old",
+    "event": "ivoa"
   }
 ]
