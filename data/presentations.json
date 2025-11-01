@@ -1,0 +1,26 @@
+[
+  {
+    "id": "adass-trieste2016-sherpa",
+    "title": "Sherpa, Python, Astronomy coevolution - October 19th, 2016 - SherpaAdass2016",
+    "description": "<p>Sherpa, Python, and Astronomy<br />\nA successful co-evolution</p>",
+    "path": "adass/trieste2016/sherpa/output/slides.html",
+    "category": "adass",
+    "event": "trieste2016"
+  },
+  {
+    "id": "ivoa-trieste2016-iris",
+    "title": "Iris 3.0beta1 - October, 23rd 2016 - mappingTrieste2016",
+    "description": "Iris 3.0beta1",
+    "path": "ivoa/trieste2016/iris/output/slides.html",
+    "category": "ivoa",
+    "event": "trieste2016"
+  },
+  {
+    "id": "ivoa-trieste2016-mapping",
+    "title": "Implementing the VO-DML Mapping Draft - 2016/10/22 - SherpaAdass2016-1-gbff6272",
+    "description": "Implementing the VO-DML Mapping Draft",
+    "path": "ivoa/trieste2016/mapping/output/slides.html",
+    "category": "ivoa",
+    "event": "trieste2016"
+  }
+]

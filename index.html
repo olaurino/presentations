@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Presentations</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrapper">
+      <h1>Presentations</h1>
+      <p class="lead">
+        Browse the available slide decks. Use the filters or search to jump straight to a talk.
+      </p>
+      <div class="controls">
+        <nav class="filters" aria-label="Filter presentations">
+          <span class="filter-label">Category:</span>
+          <div id="category-filters"></div>
+        </nav>
+        <label class="search" for="search-input">
+          <span class="sr-only">Search presentations</span>
+          <input id="search-input" type="search" placeholder="Search title or description…" autocomplete="off">
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrapper">
+    <section id="presentations" class="presentation-grid" aria-live="polite">
+      <p class="empty">Loading presentations…</p>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <div class="wrapper">
+      <p>
+        Missing a presentation? Run <code>python3 tools/generate_manifest.py</code> after adding a new <code>output/slides.html</code> file.
+      </p>
+    </div>
+  </footer>
+
+  <script src="assets/app.js" type="module"></script>
+</body>
+</html>
